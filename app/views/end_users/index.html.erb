@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>End Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Family name kanji</th>
+      <th>Given name kanji</th>
+      <th>Family name kana</th>
+      <th>Given name kana</th>
+      <th>Address</th>
+      <th>Post code</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Phone number</th>
+      <th>Is deleted</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @end_users.each do |end_user| %>
+      <tr>
+        <td><%= end_user.family_name_kanji %></td>
+        <td><%= end_user.given_name_kanji %></td>
+        <td><%= end_user.family_name_kana %></td>
+        <td><%= end_user.given_name_kana %></td>
+        <td><%= end_user.address %></td>
+        <td><%= end_user.post_code %></td>
+        <td><%= end_user.email %></td>
+        <td><%= end_user.password %></td>
+        <td><%= end_user.phone_number %></td>
+        <td><%= end_user.is_deleted %></td>
+        <td><%= link_to 'Show', end_user %></td>
+        <td><%= link_to 'Edit', edit_end_user_path(end_user) %></td>
+        <td><%= link_to 'Destroy', end_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New End User', new_end_user_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_user_id: 1
+  delivery_address: MyText
+  delivery_name: MyText
+  delivery_post_code: MyString
+
+two:
+  end_user_id: 1
+  delivery_address: MyText
+  delivery_name: MyText
+  delivery_post_code: MyString

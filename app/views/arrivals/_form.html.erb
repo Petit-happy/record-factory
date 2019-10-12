@@ -1,0 +1,32 @@
+<%= form_with(model: arrival, local: true) do |form| %>
+  <% if arrival.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(arrival.errors.count, "error") %> prohibited this arrival from being saved:</h2>
+
+      <ul>
+      <% arrival.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%= form.number_field :product_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrival_sam %>
+    <%= form.number_field :arrival_sam %>
+  </div>
+
+  <div class="field">
+    <%= form.label :arrived_at %>
+    <%= form.text_field :arrived_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
