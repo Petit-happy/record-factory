@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>End user:</strong>
+  <%= @address.end_user_id %>
+</p>
+
+<p>
+  <strong>Delivery address:</strong>
+  <%= @address.delivery_address %>
+</p>
+
+<p>
+  <strong>Delivery name:</strong>
+  <%= @address.delivery_name %>
+</p>
+
+<p>
+  <strong>Delivery post code:</strong>
+  <%= @address.delivery_post_code %>
+</p>
+
+<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>

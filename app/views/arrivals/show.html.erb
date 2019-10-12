@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @arrival.product_id %>
+</p>
+
+<p>
+  <strong>Arrival sam:</strong>
+  <%= @arrival.arrival_sam %>
+</p>
+
+<p>
+  <strong>Arrived at:</strong>
+  <%= @arrival.arrived_at %>
+</p>
+
+<%= link_to 'Edit', edit_arrival_path(@arrival) %> |
+<%= link_to 'Back', arrivals_path %>

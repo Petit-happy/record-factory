@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @disc.product_id %>
+</p>
+
+<p>
+  <strong>Desc no:</strong>
+  <%= @disc.desc_no %>
+</p>
+
+<%= link_to 'Edit', edit_disc_path(@disc) %> |
+<%= link_to 'Back', discs_path %>
