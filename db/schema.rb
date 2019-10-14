@@ -21,18 +21,6 @@ ActiveRecord::Schema.define(version: 2019_10_14_093617) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "admin_users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admin_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
-  end
-
   create_table "arrivals", force: :cascade do |t|
     t.integer "product_id"
     t.integer "arrival_sam"
@@ -58,21 +46,6 @@ ActiveRecord::Schema.define(version: 2019_10_14_093617) do
   create_table "discs", force: :cascade do |t|
     t.integer "product_id"
     t.integer "desc_no"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "end_users", force: :cascade do |t|
-    t.string "family_name_kanji"
-    t.string "given_name_kanji"
-    t.string "family_name_kana"
-    t.string "given_name_kana"
-    t.text "address"
-    t.string "post_code"
-    t.string "email"
-    t.string "password"
-    t.string "phone_number"
-    t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -131,7 +104,7 @@ ActiveRecord::Schema.define(version: 2019_10_14_093617) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -141,6 +114,16 @@ ActiveRecord::Schema.define(version: 2019_10_14_093617) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "family_name_kanji"
+    t.string "given_name_kanji"
+    t.string "family_name_kana"
+    t.string "given_name_kana"
+    t.text "address"
+    t.string "post_code"
+    t.string "password"
+    t.string "phone_number"
+    t.boolean "is_deleted"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
