@@ -1,10 +1,17 @@
 class ArrivalsController < ApplicationController
   before_action :set_arrival, only: [:show, :edit, :update, :destroy]
 
+  def top
+    @arrivals = Arrival.all
+    #@products = Product.all
+  end
+
   # GET /arrivals
   # GET /arrivals.json
   def index
     @arrivals = Arrival.all
+    @products = Product.all
+
   end
 
   # GET /arrivals/1
@@ -31,7 +38,7 @@ class ArrivalsController < ApplicationController
         format.html { redirect_to @arrival, notice: 'Arrival was successfully created.' }
         format.json { render :show, status: :created, location: @arrival }
       else
-        format.html { render :new }
+        format.html { render :top }
         format.json { render json: @arrival.errors, status: :unprocessable_entity }
       end
     end

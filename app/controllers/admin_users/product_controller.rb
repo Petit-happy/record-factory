@@ -1,5 +1,6 @@
 class Admin::ProductController < ApplicationController
   def index
+    @products = Product.all
   end
 
   def show
@@ -9,5 +10,9 @@ class Admin::ProductController < ApplicationController
   end
 
   def new
+  end
+
+  def search
+    @products = Product.search(params[:search])
   end
 end
