@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  namespace :end_user do
+    get 'end_users/top'
+    get 'orders/order_check'
+    get 'orders/confirmation'
+    get 'products/search'
+    resources :orders
+    resources :products
+    resources :end_users
+    root to: 'end_users#top'
+  end
+  namespace :admin do
+    get 'products/search'
+    resources :orders
+    resources :products
+    resources :end_users
+    root to: 'end_users#top'
+  end
   get 'end_users/show'
   get 'end_users/edit'
   get 'end_users/top'
@@ -14,18 +31,6 @@ Rails.application.routes.draw do
     passwords:     'end_users/passwords',
     registrations: 'end_users/registrations'
   }
-  namespace :admin do
-    resources :orders
-    resources :products
-    resources :end_users
-    root to: 'end_user#top'
-  end
-  namespace :end_user do
-    resources :orders
-    resources :products
-    resources :end_users
-    root to: 'end_user#top'
-  end
   resources :songs
   resources :discs
   resources :labels
