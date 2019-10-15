@@ -1,5 +1,6 @@
 class Admin::ProductController < ApplicationController
   def index
+    @products = Product.all
   end
 
   def show
