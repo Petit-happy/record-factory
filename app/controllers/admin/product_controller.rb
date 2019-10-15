@@ -10,4 +10,8 @@ class Admin::ProductController < ApplicationController
 
   def new
   end
+
+  def search
+    @products = Product.search(params[:search])
+  end
 end
