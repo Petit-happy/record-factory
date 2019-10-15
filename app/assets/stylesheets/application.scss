@@ -15,3 +15,55 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+header {
+ background-color: #650000;
+  font-family: 'Noto Sans JP', 'sans-serif', 'Noto Serif JP';
+}
+
+.nav {
+  margin: 10px 0;
+}
+
+footer {
+  background-color: #CB6500;
+    font-family: 'Noto Sans JP',
+    'sans-serif',
+    'Noto Serif JP';
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.contact {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-icon {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+}
+
+.fab {
+  margin: 5px;
+}
+
+.fas {
+  margin: 5px;
+}
+
+.copyright{
+  text-align: center;
+}
