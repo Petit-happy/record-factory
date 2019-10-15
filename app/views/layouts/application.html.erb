@@ -9,17 +9,33 @@
   </head>
 
   <body>
-    <header class="">
+    <header>
       <div class="container">
         <div class="row">
           <nav class="nav navbar-nav navbar-left logo">
-            <%= image_tag 'logo.png', :size=>'200x50'%>
+            <%= link_to image_tag('logo.png', :size=>'200x50'), '#'%>
           </nav>
           <nav class="header-icon">
-              <p><i class="fas fa-cogs fa-3x"></i><br>Setting</p>
-              <p><i class="fas fa-desktop fa-3x"></i><br>Order</p>
-              <p><i class="fas fa-compact-disc fa-3x"></i><br>Product</p>
-              <p><i class="fas fa-user fa-3x"></i><br>User</p>
+              <p>
+                <%= link_to '#' do %>
+                <i class="fas fa-cogs fa-3x"></i>
+                <% end %>
+              <br>Setting</p>
+              <p>
+                <%= link_to '#' do %>
+                <i class="fas fa-desktop fa-3x"></i>
+                <% end %>
+              <br>Order</p>
+              <p>
+                <%= link_to '#' do %>
+                <i class="fas fa-compact-disc fa-3x"></i>
+                <% end %>
+              <br>Product</p>
+              <p>
+                <%= link_to '#' do %>
+                <i class="fas fa-user fa-3x"></i>
+                <% end %>
+              <br>User</p>
           </nav>
         </div>
       </div>
@@ -27,20 +43,18 @@
   <%= yield %>
     <footer>
       <div class="container">
-        <div class="row">
           <div class="icons">
             <p><i class="fab fa-youtube fa-3x"></i></p>
             <p><i class="fab fa-instagram fa-3x"></i></p>
             <p><i class="fab fa-facebook fa-3x"></i></p>
             <p><i class="fab fa-twitter fa-3x"></i></p>
           </div>
-          <div class="copyright">
+          <div class="copy">
             <p class="copyright">© Record Factory Co.,Ltd</p>
           </div>
           <div class="contact">
             <p>Contact<br>tel:123-4567-8900<br>email:xxx@xxx.com<br><br>特商法に関する表記</p>
           </div>
-        </div>
       </div>
     </footer>
   </body>
