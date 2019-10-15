@@ -13,4 +13,6 @@ class Admin::EndUserController < ApplicationController
 
   def update
   end
+  def top
+  end
 end
