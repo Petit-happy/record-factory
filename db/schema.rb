@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_14_093617) do
+ActiveRecord::Schema.define(version: 2019_10_15_044211) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id"
@@ -19,6 +19,27 @@ ActiveRecord::Schema.define(version: 2019_10_14_093617) do
     t.string "delivery_post_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "family_name_kanji"
+    t.string "given_name_kanji"
+    t.string "family_name_kana"
+    t.string "given_name_kana"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
   create_table "arrivals", force: :cascade do |t|
@@ -48,6 +69,31 @@ ActiveRecord::Schema.define(version: 2019_10_14_093617) do
     t.integer "desc_no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "end_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.string "family_name_kanji"
+    t.string "given_name_kanji"
+    t.string "family_name_kana"
+    t.string "given_name_kana"
+    t.text "address"
+    t.string "post_code"
+    t.string "phone_number"
+    t.boolean "is_deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_end_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
@@ -101,33 +147,6 @@ ActiveRecord::Schema.define(version: 2019_10_14_093617) do
     t.string "song_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
-    t.string "family_name_kanji"
-    t.string "given_name_kanji"
-    t.string "family_name_kana"
-    t.string "given_name_kana"
-    t.text "address"
-    t.string "post_code"
-    t.string "password"
-    t.string "phone_number"
-    t.boolean "is_deleted"
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
