@@ -1,2 +1,4 @@
 class Label < ApplicationRecord
+    has_many :products, dependent: :destroy
+    # accepts_nested_attributes_for :products, allow: true
 end
