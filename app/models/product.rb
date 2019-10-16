@@ -8,4 +8,7 @@ class Product < ApplicationRecord
     belongs_to :genre
     belongs_to :label
     belongs_to :artist
+    has_many :arrivals, dependent: :destroy
+    has_many :discs, dependent: :destroy
+    has_many :cart_item, dependent: :destroy
 end
