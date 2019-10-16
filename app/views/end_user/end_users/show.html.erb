@@ -1,2 +1,35 @@
-<h1>EndUser::EndUsers#show</h1>
-<p>Find me in app/views/end_user/end_users/show.html.erb</p>
+<h1>マイページ</h1>
+
+<table>
+  <tr>
+    <th>名前（姓・名）</th>
+  　<td><%= @end_user.family_name_kanji %><%= @end_user.given_name_kanji %></td>
+  </tr>
+  <tr>
+    <th>名前（カナ姓・カナ名）</th>
+    <td><%= @end_user.family_name_kana %><%= @end_user.given_name_kana %></td>
+  </tr>
+  <tr>
+    <th>郵便番号</th>
+    <td><%= @end_user.post_code %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @end_user.address %></td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td><%= @end_user.phone_number %></td>
+  </tr>
+  <tr>
+    <th>メールアドレス</th>
+    <td><%= @end_user.email %></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td><%= link_to "退会する", end_user_end_user_path%></td>
+    <td><%= link_to "購入履歴", end_user_end_user_path%></td>
+    <td><%= link_to "編集", edit_end_user_end_user_path %></td>
+  </tr>
+</table>
