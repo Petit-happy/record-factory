@@ -13,6 +13,18 @@ Arrival.create(:product_id => '00000', :arrival_sam => '00000', :arrived_at =>'9
 Arrival.create(:product_id => '11111', :arrival_sam => '11111', :arrived_at =>'9999/99/99' )
 
 
-Admin_user.create(:family_name_kanji => '長野', :given_name_kanji => '太郎', :family_name_kana =>'ナガノ', :given_name_kana =>'タロウ', :email =>'web@camp.com', :password =>'infratop')
+# Admin_user.create(:family_name_kanji => '長野', :given_name_kanji => '太郎', :family_name_kana =>'ナガノ', :given_name_kana =>'タロウ', :email =>'web@camp.com', :password =>'infratop')
 
 
+EndUser.create!(
+    email: 'aaa@aaa',
+    password: '111111',
+    family_name_kanji: '中村',
+    given_name_kanji: '圭介',
+    family_name_kana: 'ナカムラ',
+    given_name_kana: 'ケイスケ',
+    address: '東京',
+    post_code: '1000001',
+    phone_number: '08012345678',
+    is_deleted: 'true'
+ )
