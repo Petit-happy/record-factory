@@ -1,2 +1,12 @@
-<h1>Admin::EndUsers#top</h1>
-<p>Find me in app/views/admin/end_users/top.html.erb</p>
+<h1>Welcome Administor!!</h1>
+<table border="0">
+    <tr>
+    <th>入荷履歴</th><th>入荷日時</th><th></th>
+    </tr>
+    <tr>
+    <% @arrivals.each do |arrival| %>
+    <td></td>
+    <td><%= arrival.arrived_at %></td>
+    <td>delete</td>
+</tr>
+<% end %>

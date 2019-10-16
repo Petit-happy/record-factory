@@ -1,2 +1,27 @@
-<h1>Admin::EndUsers#index</h1>
-<p>Find me in app/views/admin/end_users/index.html.erb</p>
+<h2>会員一覧</h2>
+<table class="" border="1" width="100%" height="50">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>住所</th>
+      <th>郵便番号</th>
+      <th>電話番号</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @end_users.each do |end_user| %>
+    <tr align="center">
+      <td><%= end_user.id %></td>
+      <td><%= end_user.family_name_kanji %><%= end_user.given_name_kanji %></td>
+      <td><%= end_user.email %></td>
+      <td><%= end_user.address %></td>
+      <td><%= end_user.post_code %></td>
+      <td><%= end_user.phone_number %></td>
+      <td><%= link_to "編集", admin_end_user_path(end_user) %>　　<%= link_to "削除", admin_end_user_path(@end_users), method: :delete, "data-confirm" => "削除します。よろしいですか？" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
