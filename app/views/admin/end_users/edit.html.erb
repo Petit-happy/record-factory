@@ -1,2 +1,37 @@
-<h1>Admin::EndUsers#edit</h1>
-<p>Find me in app/views/admin/end_users/edit.html.erb</p>
+<h1>会員情報編集</h1>
+ <%= form_for [:admin, @end_user] do |f| %>
+ <div class="field">
+   <%= f.label :'名前（姓）' %>
+   <%= f.text_field :family_name_kanji %>
+ </div>
+ <div class="field">
+   <%= f.label :'名前（名）' %>
+   <%= f.text_field :given_name_kanji %>
+ </div>
+ <div class="field">
+   <%= f.label :'名前（カナ姓）' %>
+   <%= f.text_field :family_name_kana %>
+ </div>
+ <div class="field">
+   <%= f.label :'名前（カナ名）' %>
+   <%= f.text_field :given_name_kana %>
+ </div>
+ <div class="field">
+   <%= f.label :'郵便番号' %>
+   <%= f.text_field :post_code %>
+ </div>
+ <div class="field">
+   <%= f.label :'電話番号' %>
+   <%= f.text_field :post_code %>
+ </div>
+ <div class="field">
+   <%= f.label :'メールアドレス' %>
+   <%= f.email_field :email %>
+ </div>
+ <div class="actions">
+   <%= f.submit '変更を保存' %> <%= link_to "一覧画面に戻る", admin_end_users_path, class:"btn-sm btn-info" %>
+ </div>
+
+ <%= link_to "お客様を退会させる", admin_end_user_path, method: :delete, "data-confirm" => "本当に退会させますか？", class:"btn-sm btn-danger" %>
+
+ <% end %>
