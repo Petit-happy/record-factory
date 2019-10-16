@@ -29,6 +29,38 @@ EndUser.create!(
     phone_number: '08012345678',
     is_deleted: 'true'
  )
+ Artist.create!(
+    [
+        {
+            artist_name: '宇多田ヒカル'
+        },
+        {
+            artist_name: '桑田佳祐'
+        }
+    ]
+)
+
+Genre.create!(
+    [
+        {
+            genre_name: 'poops'
+        },
+        {
+            genre_name: 'rock'
+        }
+    ]
+)
+
+Label.create!(
+    [
+        {
+            label_name: 'レーベル名A'
+        },
+        {
+            label_name: 'レーベル名B'
+        }
+    ]
+)
  Product.create!(
     genre_id: '1',
     label_id: '1',
@@ -84,40 +116,6 @@ Address.create!(
         }
     ]
 )
-
-Artist.create!(
-    [
-        {
-            artist_name: '宇多田ヒカル'
-        },
-        {
-            artist_name: '桑田佳祐'
-        }
-    ]
-)
-
-Genre.create!(
-    [
-        {
-            genre_name: 'poops'
-        },
-        {
-            genre_name: 'rock'
-        }
-    ]
-)
-
-Label.create!(
-    [
-        {
-            label_name: 'レーベル名A'
-        },
-        {
-            label_name: 'レーベル名B'
-        }
-    ]
-)
-
 Song.create!(
     [
         {
