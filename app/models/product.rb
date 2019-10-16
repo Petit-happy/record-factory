@@ -5,4 +5,7 @@ class Product < ApplicationRecord
       Product.where(['content LIKE ?', "%#{search}%"])
     end
 
+    belongs_to :genre
+    belongs_to :label
+    belongs_to :artist
 end
