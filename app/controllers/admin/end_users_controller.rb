@@ -1,5 +1,7 @@
 class Admin::EndUsersController < ApplicationController
   def top
+    @arrivals = Arrival.all
+
   end
 
   def index
