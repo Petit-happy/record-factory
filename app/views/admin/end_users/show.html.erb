@@ -1,25 +1,27 @@
 <h1>会員様詳細情報画面</h1>
-<table class="" border="1" width="100%" height="50">
-  <thead>
+<table align="center" class="" border="1" width="50%" height="50">
     <tr>
-      <th>ID</th>
+      <th>お客様ID</th>
+      <td><%= @end_user.id %></td>
     </tr>
     <tr>
       <th>メールアドレス</th>
+      <td><%= @end_user.email %></td>
     </tr>
     <tr>
       <th>住所</th>
+      <td><%= @end_user.address %></td>
     </tr>
     <tr>
       <th>郵便番号</th>
+      <td><%= @end_user.post_code %></td>
     </tr>
     <tr>
       <th>電話番号</th>
+      <td><%= @end_user.phone_number %></td>
     </tr>
-  </thead>
-  <tbody>
-  </tbody>
 </table>
+<h3>この会員様の注文一覧</h3>
 <table class="" border="1" width="100%" height="50">
   <thead>
     <tr>
@@ -33,6 +35,17 @@
     </tr>
   </thead>
   <tbody>
-
+    <% @orders.each do |order| %>
+    <tr align="center">
+      <td><%= order.id %></td>
+      <td><%= order.created_at %></td>
+      <td><%= order.product_name %></td>
+      <td><%= order.order_detail.unit %></td>
+      <td><%= order.order_detail.price %></td>
+      <td><%= order.order_address %></td>
+      <td><%= order.order_status %></td>
+    </tr>
+    <% end %>
   </tbody>
 </table>
+<%= link_to "この会員様の情報を編集する", edit_admin_end_user_path(end_user.id) %>
