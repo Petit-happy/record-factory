@@ -20,7 +20,7 @@
       <td><%= end_user.address %></td>
       <td><%= end_user.post_code %></td>
       <td><%= end_user.phone_number %></td>
-      <td><%= link_to "編集", admin_end_user_path(end_user) %>　　<%= link_to "削除", admin_end_user_path(@end_users), method: :delete, "data-confirm" => "削除します。よろしいですか？" %></td>
+      <td><%= link_to "詳細", admin_end_user_path(end_user) %>　　<%= link_to "編集", edit_admin_end_user_path(end_user.id) %></td>
     </tr>
     <% end %>
   </tbody>

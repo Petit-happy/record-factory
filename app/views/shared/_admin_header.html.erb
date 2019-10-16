@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <nav class="nav navbar-nav navbar-left logo">
-        <%= link_to image_tag('logo.png', :size=>'200x50'), '#'%>
+        <%= link_to image_tag('logo.png', :size=>'200x50'), admin_path %>
       </nav>
       <nav class="header-icon">
         <p>
@@ -11,12 +11,12 @@
           <% end %>
           <br>Setting</p>
         <p>
-          <%= link_to '#' do %>
+          <%= link_to admin_orders_path do %>
           <i class="fas fa-desktop fa-3x"></i>
           <% end %>
           <br>Order</p>
         <p>
-          <%= link_to '#' do %>
+          <%= link_to admin_products_path do %>
           <i class="fas fa-compact-disc fa-3x"></i>
           <% end %>
           <br>Product</p>
