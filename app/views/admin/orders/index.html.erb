@@ -5,14 +5,14 @@
     <th>注文番号</th><th>購入日</th><th>氏名</th><th>商品名</th><th>購入枚数</th><th>小計</th><th>購入価格総計</th><th>ステータス</th>
     </tr>
     <tr>
-        < @users.each do |user| >
-        <td>order.id</td>
+        <% @orders.each do |order| %>
+        <td><%= order.id %></td>
         <td>購入日</td>
-        <td><%= .family_name_kanji %><%= @users.given_name_kanji %></td>
-        <td>商品名</td>
-        <td>購入枚数</td>
-        <td>小計</td>
-        <td>購入価格総計</td>
-        <td>ステータス</td>
+        <td><%= order.end_user.family_name_kanji %><%= order.end_user.given_name_kanji %></td>
+        <td><%= order.product.product_name %></td>
+        <td><%= order_detail.unit %></td>
+        <td> 小計</td>
+        <td> 購入価格総計 </td>
+        <td><%= order.order_status %></td>
 </tr>
-< end >
+<% end %>
