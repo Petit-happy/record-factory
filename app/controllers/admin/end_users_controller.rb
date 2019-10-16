@@ -1,7 +1,6 @@
 class Admin::EndUsersController < ApplicationController
   def top
     @arrivals = Arrival.all
-    #@products = Product.all
   end
 
   def index
