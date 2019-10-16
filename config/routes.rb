@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     get 'orders/confirmation'
     get 'products/search'
     resources :orders
-    resources :products
     resources :end_users, only: [:show, :edit, :update, :destroy]
+    resources :products, only: [:show]
     root to: 'end_users#top'
   end
   namespace :admin do
