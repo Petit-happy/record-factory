@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'products/search'
     resources :orders
     resources :products
-    resources :end_users
+    resources :end_users, only: [:show, :edit, :update, :destroy]
     root to: 'end_users#top'
   end
   namespace :admin do
