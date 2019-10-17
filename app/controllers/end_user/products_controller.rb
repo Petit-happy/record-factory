@@ -4,12 +4,15 @@ class EndUser::ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @genre  = @product.genre
+    @artist = @product.artist
     # @genre_id = @product.genre_id
-    @genre = Genre.find(@product.genre_id).genre_name
+    # @genre = Genre.find(@product.genre_id).genre_name
     # binding.pry
     @label = Label.find(@product.label_id).label_name
     # binding.pry
-    @artist= Artist.find(@product.artist_id).artist_name
+    # @artist = Artist.find(@product.artist_id).artist_name
+
   end
   def search
   end
