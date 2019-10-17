@@ -35,24 +35,19 @@
     </tr>
   </thead>
   <tbody>
+    <!-- end_userの子のordersを一つもっているOrder_detail -->
     <% @end_user.orders.each do |order| %>
     <tr align="center">
       <td><%= order.id %></td>
-      <td><%= order.created_at %></td>
-
-      <% order.order_detail.each do |detail| %>
-        <td><%= detail.product.product_name %></td>
-      <% end %>
-
-      <%
-=begin%>
- <td><%= @order_detail.unit %></td>
-      <td><%= @order_detail.price %></td>
+      <td><%= order.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+        <% order.order_detail.each do |detail| %>
+          <td><%= detail.product.product_name %></td>
+          <td><%= detail.unit %></td>
+          <td><%= detail.price.to_s(:delimited, delimiter: ',') %>円</td>
+        <% end %>
       <td><%= order.order_address %></td>
-      <td><%= order.order_status %></td> 
-<%
-=end%>
-    </tr>
+      <td><%= order.order_status_i18n %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
