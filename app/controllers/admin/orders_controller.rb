@@ -1,9 +1,15 @@
 class Admin::OrdersController < ApplicationController
   def index
-    #@orders = Order.all
-    @users = End_user.all
+    @orders = Order.all
   end
 
   def show
   end
+
+
+
+  def order_params
+    params.require(:order).permit(:order_id, :product_id, :price, :unit)
+  end
 end
+
