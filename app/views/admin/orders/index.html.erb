@@ -2,17 +2,29 @@
 
 <table border="0">
     <tr>
-    <th>注文番号</th><th>購入日</th><th>氏名</th><th>商品名</th><th>購入枚数</th><th>小計</th><th>購入価格総計</th><th>ステータス</th>
+    <th>注文番号</th>
+    <th>購入日</th>
+    <th>氏名</th>
+    <th>商品名</th>
+    <th>購入枚数</th>
+    <th>小計</th>
+    <th>購入価格総計</th>
+    <th>ステータス</th>
     </tr>
-    <tr>
-        <% @orders.each do |order| %>
-        <td><%= order.id %></td>
-        <td>購入日</td>
-        <td><%= order.end_user.family_name_kanji %><%= order.end_user.given_name_kanji %></td>
-        <td><%= order.product.product_name %></td>
-        <td><%= order_detail.unit %></td>
-        <td> 小計</td>
-        <td> 購入価格総計 </td>
-        <td><%= order.order_status %></td>
-</tr>
-<% end %>
+    <!--order情報を繰り返し-->
+    <% @orders.each do |order| %>
+        <tr>
+            <td><%= order.id %></td>
+            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= order.end_user.family_name_kanji %><%= order.end_user.given_name_kanji %></td>
+            <!--orderの中でorderdetial情報を繰り返す-->
+            <% order.order_details.each do |order_detail|%>
+                <!--たくさんあるorderdetailの箱の中で１つのproduct情報をもってくる-->
+                <td><%= order_detail.product.product_name %></td>
+                <td><%= order_detail.unit %></td>
+            <% end %>
+            <td> 小計</td>
+            <td> 購入価格総計 </td>
+            <td><%= order.order_status %></td>
+        </tr>
+    <% end %>
