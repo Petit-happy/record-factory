@@ -72,6 +72,7 @@ Label.create!(
     is_deleted: 'true'
  )
  Order.create!(
+    end_user_id: '1',
     delivery_cost: '500',
     total_price: '2000',
     order_status: '1',

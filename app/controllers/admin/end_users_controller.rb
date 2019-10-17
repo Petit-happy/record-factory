@@ -10,7 +10,6 @@ class Admin::EndUsersController < ApplicationController
   def show
     @end_user = EndUser.find(params[:id])
     @orders = @end_user.orders
-    binding.pry
   end
 
   def edit
