@@ -1,0 +1,7 @@
+ja:
+  enums:
+    order:
+      order_status:
+        accept: "受付中"
+        prepare: "出荷準備中"
+        delivery: "出荷済み"
