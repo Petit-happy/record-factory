@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <strong>Genre:</strong>
-  <%= @genre　%>
+  <%
+=begin%>
+ <%= @genre.genre_name　%> 
+<%
+=end%>
 </p>
 
 <p>
@@ -12,7 +17,7 @@
 
 <p>
   <strong>Artist:</strong>
-  <%= @artist %>
+  <%= @artist.artist_name %>
 </p>
 
 <p>
