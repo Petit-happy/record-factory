@@ -20,7 +20,7 @@
 
 <p>
   <strong>Photo:</strong>
-  <%= @product.photo_id %>
+  <%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
 </p>
 
 <p>

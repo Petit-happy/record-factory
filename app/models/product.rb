@@ -11,4 +11,5 @@ class Product < ApplicationRecord
     has_many :arrivals, dependent: :destroy
     has_many :discs, dependent: :destroy
     has_many :cart_item, dependent: :destroy
+    attachment :photo
 end

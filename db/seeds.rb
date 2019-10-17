@@ -75,7 +75,7 @@ Label.create!(
     end_user_id: '1',
     delivery_cost: '500',
     total_price: '2000',
-    order_status: '1',
+    order_status: '1'.to_i,
     order_post_code: '200-0001',
     order_address: 'アメリカ'
  )
