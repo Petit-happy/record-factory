@@ -39,13 +39,19 @@
     <tr align="center">
       <td><%= order.id %></td>
       <td><%= order.created_at %></td>
-      <%= order.order_dedails.each do |detail| >
+
+      <% order.order_detail.each do |detail| %>
         <td><%= detail.product.product_name %></td>
       <% end %>
-      <td><%= @order_detail.unit %></td>
+
+      <%
+=begin%>
+ <td><%= @order_detail.unit %></td>
       <td><%= @order_detail.price %></td>
       <td><%= order.order_address %></td>
-      <td><%= order.order_status %></td>
+      <td><%= order.order_status %></td> 
+<%
+=end%>
     </tr>
     <% end %>
   </tbody>
