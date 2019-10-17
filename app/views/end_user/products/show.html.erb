@@ -3,21 +3,19 @@
 
 <p>
   <strong>Genre:</strong>
-  <%
-=begin%>
- <%= @genre.genre_name　%> 
-<%
-=end%>
+
+ <%= @product.genre.genre_name %>
+
 </p>
 
 <p>
   <strong>Label:</strong>
-  <%= @label %>
+  <%= @product.label.label_name %>
 </p>
 
 <p>
   <strong>Artist:</strong>
-  <%= @artist.artist_name %>
+  <%= @product.artist.artist_name %>
 </p>
 
 <p>
