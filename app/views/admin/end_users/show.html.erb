@@ -1,4 +1,4 @@
-<h1>会員様詳細情報画面</h1>
+<h2><span class="label label-primary">会員様詳細情報画面</span></h2>
 <table align="center" class="" border="1" width="50%" height="50">
     <tr>
       <th>お客様ID</th>
@@ -21,7 +21,7 @@
       <td><%= @end_user.phone_number %></td>
     </tr>
 </table>
-<h3>この会員様の注文一覧</h3>
+<h3><span class="label label-info">この会員様の注文一覧</span></h3>
 <table class="" border="1" width="100%" height="50">
   <thead>
     <tr>
@@ -35,19 +35,20 @@
     </tr>
   </thead>
   <tbody>
+    <!-- end_userの子のordersを一つもっているOrder_detail -->
     <% @end_user.orders.each do |order| %>
     <tr align="center">
       <td><%= order.id %></td>
-      <td><%= order.created_at %></td>
-      <%= order.order_dedails.each do |detail| >
-        <td><%= detail.product.product_name %></td>
-      <% end %>
-      <td><%= @order_detail.unit %></td>
-      <td><%= @order_detail.price %></td>
+      <td><%= order.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+        <% order.order_detail.each do |detail| %>
+          <td><%= detail.product.product_name %></td>
+          <td><%= detail.unit %></td>
+          <td><%= detail.price.to_s(:delimited, delimiter: ',') %>円</td>
+        <% end %>
       <td><%= order.order_address %></td>
-      <td><%= order.order_status %></td>
-    </tr>
+      <td><%= order.order_status_i18n %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to "この会員様の情報を編集する", edit_admin_end_user_path(@end_user) %>
+<%= link_to "この会員様の情報を編集する", edit_admin_end_user_path(@end_user), class:"btn-sm btn-primary" %>

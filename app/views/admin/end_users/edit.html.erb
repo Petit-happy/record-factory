@@ -1,4 +1,4 @@
-<h1>会員情報編集</h1>
+<h2><span class="label label-success">会員様情報編集</span></h2>
  <%= form_for [:admin, @end_user] do |f| %>
  <div class="field">
    <%= f.label :'名前（姓）' %>
@@ -29,7 +29,7 @@
    <%= f.email_field :email %>
  </div>
  <div class="actions">
-   <%= f.submit '変更を保存' %> <%= link_to "一覧画面に戻る", admin_end_users_path, class:"btn-sm btn-info" %>
+   <%= f.submit '変更を保存', class:"btn-sm btn-primary" %> <%= link_to "一覧画面に戻る", admin_end_users_path, class:"btn-sm btn-info" %>
  </div>
 
  <%= link_to "お客様を退会させる", admin_end_user_path, method: :delete, "data-confirm" => "本当に退会させますか？", class:"btn-sm btn-danger" %>
