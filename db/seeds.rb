@@ -62,76 +62,83 @@ Label.create!(
     ]
 )
  Product.create!(
-    genre_id: '1',
-    label_id: '1',
-    artist_id: '2',
-    photo_id: '1',
-    product_price: '1280',
-    sales_status: '1',
+    genre_id: 1,
+    label_id: 1,
+    artist_id: 2,
+    photo_id: 1,
+    product_price: 1280,
+    sales_status: 1,
     product_name: '製品名A',
     is_deleted: 'true'
  )
  Order.create!(
+<<<<<<< HEAD
     end_user_id: '1',
     delivery_cost: '500',
     total_price: '2000',
     order_status: '1'.to_i,
+=======
+    end_user_id: 1,
+    delivery_cost: 500,
+    total_price: 2000,
+    order_status: 1,
+>>>>>>> master
     order_post_code: '200-0001',
     order_address: 'アメリカ'
  )
  OrderDetail.create!(
-    order_id: '1',
-    product_id: '1',
-    price: '1285',
-    unit: '2'
+    order_id: 1,
+    product_id: 1,
+    price: 1285,
+    unit: 2
  )
 
  CartItem.create!(
-    end_user_id: '1',
-    product_id: '1',
-    cart_sum: '3'
+    end_user_id: 1,
+    product_id: 1,
+    cart_sum: 3
  )
 
 Address.create!(
-    end_user_id: '1',
+    end_user_id: 1,
     delivery_address: 'ここは=order_addressでコピー作成',
     delivery_name: 'おじいちゃんの家',
     delivery_post_code: '300-0001'
  )
 
  Arrival.create!(
-    product_id: '1',
-    arrival_sam: '2',
+    product_id: 1,
+    arrival_sam: 2,
     arrived_at: '2019/08/18'
 )
 
  Disc.create!(
     [
         {
-            product_id: '1',
-            desc_no: '1'
+            product_id: 1,
+            desc_no: 1
         },
         {
-            product_id: '1',
-            desc_no: '2'
+            product_id: 1,
+            desc_no: 2
         }
     ]
 )
 Song.create!(
     [
         {
-            disc_id: '1',
-            song_no: '1',
+            disc_id: 1,
+            song_no: 1,
             song_name: '曲名A'
         },
         {
-            disc_id: '1',
-            song_no: '2',
+            disc_id: 1,
+            song_no: 2,
             song_name: '曲名B'
         },
         {
-            disc_id: '1',
-            song_no: '3',
+            disc_id: 1,
+            song_no: 3,
             song_name: '曲名C'
         },
     ]
