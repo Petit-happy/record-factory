@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     get 'orders/confirmation'
     get 'products/search'
     resources :orders
-    resources :products, only: [:show]
+    resources :products, only: [:show] 
+    resources :genres
     resources :end_users
     root to: 'end_users#top'
   end
