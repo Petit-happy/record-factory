@@ -88,8 +88,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_044211) do
     t.string "given_name_kana"
     t.text "address"
     t.string "post_code"
-    t.string "phone_number
-
+    t.string "phone_number"
     t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
