@@ -16,25 +16,22 @@
 
   <%= yield %>
 
-  <%= render 'shared/footer' %>
-
 <% elsif end_user_signed_in? %>
 
  <%= render 'shared/end_user_header' %>
 
   <%= yield %>
 
-  <%= render 'shared/footer' %>
-
 <% else %>
 
 <%= render 'shared/before_sign_in_header' %>
 
 　<%= yield %>
-
-<%= render 'shared/footer' %>
-
 <% end %>
+</body>
+<footer>
+<%= render 'shared/footer' %>
+</footer>
 
-  </body>
+
 </html>
