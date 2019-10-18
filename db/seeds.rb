@@ -43,7 +43,7 @@ Artist.create!(
 Genre.create!(
    [
        {
-           genre_name: 'poops'
+           genre_name: 'pops'
        },
        {
            genre_name: 'rock'

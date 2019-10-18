@@ -6,13 +6,6 @@ class Order < ApplicationRecord
     enum order_status: { accept: 0, prepare: 1, delivery: 2} #enumを使ってステータス表示を可能にした
 
       #Order.Detail.unit_price
-      def self.hello_world
-        'Hello, World!'
-      end
-
-      def sayId
-        puts id
-      end
 
 
     def total_unit_price
@@ -28,6 +21,13 @@ class Order < ApplicationRecord
       total_price
     end
 
+    def order_total_unit
+        u = 0
+      order_details.each do |detail|
+        u += detail.unit
+      end
+        u
+    end
 
 
 
