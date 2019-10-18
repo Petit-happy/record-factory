@@ -5,5 +5,4 @@ class Order < ApplicationRecord
     belongs_to :end_user
     enum order_status: { accept: 0, prepare: 1, delivery: 2} #enumを使ってステータス表示を可能にした
 
-
 end
