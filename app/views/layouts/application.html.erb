@@ -10,11 +10,32 @@
 
   <body>
 
+ <% if admin_user_signed_in? %>
+
   <%= render 'shared/admin_header' %>
 
   <%= yield %>
 
   <%= render 'shared/footer' %>
+
+<% elsif end_user_signed_in? %>
+
+ <%= render 'shared/end_user_header' %>
+
+  <%= yield %>
+
+  <%= render 'shared/footer' %>
+
+<% else %>
+
+<%= render 'shared/end_user_header' %>
+
+  <%= yield %>
+  
+
+<%= render 'shared/footer' %>
+
+<% end %>
 
   </body>
 </html>
