@@ -1,6 +1,5 @@
-<h1>Admin::Orders#index</h1>
 
-<table border="0">
+<table border="1">
     <tr>
     <th>注文番号</th>
     <th>購入日</th>
@@ -11,6 +10,7 @@
     <th>購入価格総計</th>
     <th>ステータス</th>
     </tr>
+
     <!--order情報を繰り返し-->
     <% @orders.each do |order| %>
         <tr>
@@ -22,9 +22,9 @@
                 <!--たくさんあるorderdetailの箱の中で１つのproduct情報をもってくる-->
                 <td><%= order_detail.product.product_name %></td>
                 <td><%= order_detail.unit %></td>
+                <td><%= order_detail.unit_price.to_s(:currency, locale: :ja) %></td>
             <% end %>
-            <td> 小計</td>
-            <td> 購入価格総計 </td>
-            <td><%= order.order_status %></td>
+            <td><%= order.total_price.to_s(:currency, locale: :ja) %></td>
+            <td><%= order.order_status_i18n %></td>
         </tr>
     <% end %>
