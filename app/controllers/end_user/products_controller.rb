@@ -1,4 +1,5 @@
 class EndUser::ProductsController < ApplicationController
+  before_action :authenticate_end_user!
   # before_action :set_product, only: [:show, :edit, :update, :destroy]
   # GET /products/1
   # GET /products/1.json
