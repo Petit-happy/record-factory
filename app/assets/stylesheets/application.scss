@@ -48,6 +48,8 @@ footer .container {
   flex-wrap: wrap;
   width: 100%;
   height: 100px;
+  font-weight:800;
+  -webkit-text-stroke: 0.2px #ffffff;
 }
 
 .icons {
@@ -87,10 +89,17 @@ footer .container {
 
 .fab {
   margin: 5px;
+  color: #db7093;
 }
 
 .fas {
   margin: 10px 15px;
+  color: #ffd700;
+}
+.header-letter {
+  color: #ffd700;
+  font-weight:800;
+  -webkit-text-stroke: 1px #000000;
 }
 
 .copyright{
