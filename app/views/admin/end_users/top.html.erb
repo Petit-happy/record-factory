@@ -1,12 +1,14 @@
 <h1>Welcome Administor!!</h1>
 <table border="0">
     <tr>
-    <th>入荷履歴</th><th>入荷日時</th><th></th>
+    <th>入荷履歴</th>
+    <th>入荷日時</th>
+    <th></th>
     </tr>
-    <tr>
     <% @arrivals.each do |arrival| %>
-    <td>arrival.product.product.name </td>
-    <td><%= arrival.arrived_at %></td>
-    <td>delete</td>
-</tr>
+        <tr>
+            <td><%= arrival.product.product_name %></td>
+            <td><%= arrival.arrived_at %></td>
+            <td><%= link_to "destroy", admin_path, method: :delete, class:"btn btn-danger" %></td>
+        </tr>
 <% end %>
