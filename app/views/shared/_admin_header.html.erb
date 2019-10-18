@@ -5,27 +5,27 @@
         <%= link_to image_tag('logo.png', :size=>'200x50'), admin_path %>
       </nav>
       <nav class="header-icon">
-        <p>
+        <p class="header-letter">
           <%= link_to '#' do %>
           <i class="fas fa-cogs fa-3x"></i>
           <% end %>
           <br>Setting</p>
-        <p>
+        <p class="header-letter">
           <%= link_to admin_orders_path do %>
           <i class="fas fa-desktop fa-3x"></i>
           <% end %>
           <br>Order</p>
-        <p>
+        <p class="header-letter">
           <%= link_to admin_products_path do %>
           <i class="fas fa-compact-disc fa-3x"></i>
           <% end %>
           <br>Product</p>
-        <p>
+        <p class="header-letter">
           <%= link_to admin_end_users_path do %>
           <i class="fas fa-user fa-3x"></i>
           <% end %>
           <br>User</p>
-        <p>
+        <p class="header-letter">
           <%= link_to destroy_admin_user_session_path, method: :delete do %>
           <i class="fas fa-shoe-prints fa-3x"></i>
           <% end %>

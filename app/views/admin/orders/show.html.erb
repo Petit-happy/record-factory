@@ -1,2 +1,40 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2><span class="label label-primary">会員様ご注文内容</span></h2>
+
+<h3><span class="label label-primary">会員様情報</span></h3>
+<table class="" width="100%" height="">
+
+
+<% @details.each do |detail| %>
+    <tr>
+      <th>会員様氏名</th>
+      <td><%= @order.end_user.family_name_kanji %> <%= @order.end_user.given_name_kanji %></td>
+    </tr>
+    <tr>
+      <th>配送先住所</th>
+      <th>請求先住所</th>
+      <td><%= @order.end_user.address %></td>
+      <!-- <th>支払い方法</th>
+      <td></td> -->
+    </tr>
+    <tr>
+      <th>商品小計</th>
+      <td></td>
+    </tr>
+    <tr>
+      <th>消費税</th>
+      <td><%=  %>円</td>
+    </tr>
+    <tr>
+      <th>配送料</th>
+      <td><%=  %>円</td>
+    </tr>
+    <tr>
+      <th>合計</th>
+      <td><%=  %>円</td>
+    </tr>
+    <tr>
+      <th>ステータス</th>
+      <td></td>
+    </tr>
+</table>
+<% end %>
