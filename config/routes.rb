@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   namespace :end_user do
-    get 'end_users/top'
     get 'orders/order_check'
     get 'orders/confirmation'
     get 'products/search'
@@ -20,8 +19,6 @@ Rails.application.routes.draw do
   get 'end_users/show'
   get 'end_users/edit'
   get 'end_users/top'
-  # devise_for :admin_users
-  # devise_for :end_users
   devise_for :admin_users, controllers: {
     sessions:      'admin_users/sessions',
     passwords:     'admin_users/passwords',
