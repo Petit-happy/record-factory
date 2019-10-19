@@ -45,5 +45,8 @@
 
 
 <%= link_to '商品一覧に戻る', admin_products_path %>
-<%= link_to '入荷情報を編集する', arrival_new_path %>
-<%= link_to '商品情報を編集する', edit_admin_products_path(@product) %>
+<%= link_to '入荷情報を編集する', new_admin_product_arrival_path(@product) %>
+<%= link_to '商品情報を編集する', edit_admin_product_path(@product) %>
+
+
+

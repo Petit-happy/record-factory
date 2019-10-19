@@ -1,4 +1,4 @@
-class ArrivalsController < ApplicationController
+class Admin::ArrivalsController < ApplicationController
   before_action :set_arrival, only: [:show, :edit, :update, :destroy]
 
   def top
@@ -21,7 +21,7 @@ class ArrivalsController < ApplicationController
 
   # GET /arrivals/new
   def new
-    @pronduct = Produnct.find(params[:product_id])
+    @product = Product.find(params[:product_id])
   end
 
   # GET /arrivals/1/edit
