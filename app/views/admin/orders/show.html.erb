@@ -1,2 +1,90 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2><span class="label label-primary">会員様ご注文内容</span></h2>
+
+<table>
+  <tr>
+    <th>受注ID : </th>
+    <td><%= @order.id %></td>
+    <th>購入日 : </th>
+    <td><%= @order.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+  </tr>
+</table>
+
+<table>
+<% @details.each do |detail| %>
+
+  <tr>
+    <th>画像</th>
+    <td><%= attachment_image_tag detail.product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %></td>
+  </tr>
+  <tr>
+    <th>商品名</th>
+    <td><%= detail.product.product_name %></td>
+  </tr>
+  <tr>
+    <th>アーティスト名</th>
+    <td><%= detail.product.artist.artist_name %></td>
+  </tr>
+  <tr>
+    <th>価格(税別)</th>
+    <td><%= detail.product.product_price.to_s(:delimited, delimiter: ',') %>円</td>
+  </tr>
+  <tr>
+    <th>ジャンル</th>
+    <td><%= detail.product.genre.genre_name %></td>
+  </tr>
+  <tr>
+    <th>レーベル名</th>
+    <td><%= detail.product.label.label_name %></td>
+  </tr>
+  <tr>
+    <th>在庫数</th>
+    <td><%=  %></td>
+  </tr>
+  <tr>
+    <th>購入個数</th>
+    <td><%= @order.order_total_unit %></td>
+  </tr>
+  <tr>
+    <th>ステータス</th>
+    <td><%= detail.product.sales_status_i18n %></td>
+  </tr>
+</table>
+<% end %>
+
+<h3><span class="label label-primary">会員様情報</span></h3>
+<table class="" width="100%" height="">
+
+    <tr>
+      <th>会員様氏名</th>
+      <td><%= @order.end_user.family_name_kanji %> <%= @order.end_user.given_name_kanji %></td>
+    </tr>
+    <tr>
+      <th>配送先住所</th>
+      <td><%= @order.order_address %></td>
+      <th>請求先住所</th>
+      <td><%= @order.end_user.address %></td>
+      <!-- <th>支払い方法</th>
+      <td></td> -->
+    </tr>
+    <tr>
+      <th>商品小計(税込み)</th>
+      <td><%= @order.total_unit_price.round.to_s(:delimited, delimiter: ',') %>円</td>
+    </tr>
+    <tr>
+      <th>消費税(内税)</th>
+      <td><%= (@order.total_unit_price.to_i*0.1).round.to_s(:delimited, delimiter: ',') %>円</td>
+    </tr>
+    <tr>
+      <th>配送料</th>
+      <td><%= @order.delivery_cost %>円</td>
+    </tr>
+    <tr>
+      <th>合計</th>
+      <td><%= @order.total_price.round.to_s(:delimited, delimiter: ',') %>円</td>
+    </tr>
+  </table>
+    <%= form_for(@order, url: {controller: "orders", action: "update"}) do |f| %>
+    <p>発送ステータス</p>
+    <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+    <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
+    <% end %>

@@ -5,3 +5,8 @@ ja:
         accept: "受付中"
         prepare: "出荷準備中"
         delivery: "出荷済み"
+    product:
+      sales_status:
+        sold: "販売終了"
+        selling: "販売中"
+        stop: "販売停止"

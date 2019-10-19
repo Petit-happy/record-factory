@@ -9,12 +9,29 @@
   </head>
 
   <body>
+  <div class="cont">
+
+ <% if admin_user_signed_in? %>
 
   <%= render 'shared/admin_header' %>
 
-  <%= yield %>
+<% elsif end_user_signed_in? %>
 
-  <%= render 'shared/footer' %>
+ <%= render 'shared/end_user_header' %>
 
-  </body>
+<% else %>
+
+<%= render 'shared/before_sign_in_header' %>
+
+<% end %>
+
+  <div class="footer_m">
+    <%= yield %>
+  </div>
+
+<footer>
+<%= render 'shared/footer' %>
+</footer>
+</div>
+</body>
 </html>

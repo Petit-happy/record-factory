@@ -1,0 +1,31 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <nav class="nav navbar-nav navbar-left logo">
+        <%= link_to image_tag('logo.png', :size=>'200x50'), end_user_root_path %>
+      </nav>
+      <nav class="header-icon">
+        <p>
+          <%= link_to end_user_root_path do %>
+          <i class="fas fa-home fa-3x" ></i>
+          <% end %>
+          <br>ホーム</p>
+        <p>
+          <%= link_to end_user_end_user_path(current_end_user.id) do %>
+          <i class="fas fa-cogs fa-3x"></i>
+          <% end %>
+          <br>ユーザー情報詳細</p>
+        <p>
+          <%= link_to cart_items_path do %>
+          <i class="fas fa-shopping-cart fa-3x"></i>
+          <% end %>
+          <br>カート内の商品</p>
+        <p>
+          <%= link_to destroy_end_user_session_path, method: :delete do %>
+          <i class="fas fa-shoe-prints fa-3x"></i>
+          <% end %>
+          <br>Log Out</p>
+      </nav>
+    </div>
+  </div>
+</header>
