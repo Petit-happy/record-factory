@@ -6,8 +6,6 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @details = @order.order_details
-    # @order.update(order_params)
-    # redirect_to admin_orders_path
   end
 
   def edit

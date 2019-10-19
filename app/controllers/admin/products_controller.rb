@@ -5,6 +5,8 @@ class Admin::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @disc = @product.discs
+    @songs = Song.all
   end
 
   def search
