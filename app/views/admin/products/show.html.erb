@@ -53,6 +53,7 @@
 
 <% end %>
 
-<%= link_to '商品一覧に戻る', admin_products_path %>
-<%= link_to '入荷情報を編集する', new_arrival_path %>
-<%= link_to '商品情報を編集する', edit_admin_product_path(@product) %>
+<%= link_to '商品一覧に戻る', admin_products_path, class:"btn-sm btn-success" %>
+<%= link_to '入荷情報を編集する', new_arrival_path, class:"btn-sm btn-primary" %>
+<%= link_to '商品情報を編集する', edit_admin_product_path(@product), class:"btn-sm btn-info" %>
+
