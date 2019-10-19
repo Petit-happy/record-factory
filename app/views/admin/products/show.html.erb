@@ -38,12 +38,21 @@
   <%= @product.product_name %>
 </p>
 
-<!-- <p>
-  <strong>Is deleted:</strong>
-  <%= @product.is_deleted %>
-</p> -->
 
+<% @disc.each do |disc| %>
+
+  <p>DISC NO</p>
+  <%= disc.desc_no %>
+
+    <% @songs.each do |song| %>
+
+    <%= song.song_no %>
+    <%= song.song_name %>
+
+    <% end %>
+
+<% end %>
 
 <%= link_to '商品一覧に戻る', admin_products_path %>
-<%= link_to '入荷情報を編集する', arrival_new_path %>
-<%= link_to '商品情報を編集する', edit_admin_products_path(@product) %>
+<%= link_to '入荷情報を編集する', new_arrival_path %>
+<%= link_to '商品情報を編集する', edit_admin_product_path(@product) %>
