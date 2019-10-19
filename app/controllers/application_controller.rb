@@ -22,12 +22,9 @@ class ApplicationController < ActionController::Base
       end
     end
 #sign outした後に飛ぶページ
-    def after_sign_out_path_for(resource)
-      case resource
-      when EndUser
+#sign outするとエンドユーザートップに飛びます（admin含)
+      def after_sign_out_path_for(resource)
         end_user_root_path
-      when AdminUser
-        admin_root_path
       end
-    end
+
   end
