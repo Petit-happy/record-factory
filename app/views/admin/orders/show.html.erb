@@ -82,11 +82,9 @@
       <th>合計</th>
       <td><%= @order.total_price.round.to_s(:delimited, delimiter: ',') %>円</td>
     </tr>
-    <tr>
-      <%= form_for(@order, url: admin_order_path()) do |f| %>
-      <th>発送ステータス</th>
-      <td><%= f.select :order_status, [["受付中", 0], ["発送準備中", 1], ["出荷済み", 2]] %></td>
-      <td></td>
-      <% end %>
-    </tr>
-</table>
+  </table>
+    <%= form_for(@order, url: {controller: "orders", action: "update"}) do |f| %>
+    <p>発送ステータス</p>
+    <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+    <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
+    <% end %>
