@@ -11,7 +11,7 @@ class OrderDetail < ApplicationRecord
 #price　= sum_price(d_price)
 
 def  unit_price
-    unit * price * 1.1
+    (unit * price * 1.1).round
 end
 
 # Order.Detail.unit_price

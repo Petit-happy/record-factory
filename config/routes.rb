@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'products/search'
     resources :orders
-    resources :products
+    resources :products do
+      resources :arrivals
+    end
     resources :end_users
     root to: 'end_users#top'
   end
@@ -38,7 +40,7 @@ Rails.application.routes.draw do
   resources :artists
   resources :addresses
   resources :genres
-  resources :arrivals
+  
   resources :order_details
   resources :cart_items
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

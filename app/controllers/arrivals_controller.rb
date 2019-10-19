@@ -21,7 +21,7 @@ class ArrivalsController < ApplicationController
 
   # GET /arrivals/new
   def new
-    @arrival = Arrival.new
+    @pronduct = Produnct.find(params[:product_id])
   end
 
   # GET /arrivals/1/edit
