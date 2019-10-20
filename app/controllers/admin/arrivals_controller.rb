@@ -22,6 +22,7 @@ class Admin::ArrivalsController < ApplicationController
   # GET /arrivals/new
   def new
     @product = Product.find(params[:product_id])
+    @arrival = Arrival.new
   end
 
   # GET /arrivals/1/edit
@@ -32,16 +33,8 @@ class Admin::ArrivalsController < ApplicationController
   # POST /arrivals.json
   def create
     @arrival = Arrival.new(arrival_params)
-
-    respond_to do |format|
-      if @arrival.save
-        format.html { redirect_to @arrival, notice: 'Arrival was successfully created.' }
-        format.json { render :show, status: :created, location: @arrival }
-      else
-        format.html { render :top }
-        format.json { render json: @arrival.errors, status: :unprocessable_entity }
-      end
-    end
+    @arrival.save
+    redirect_to admin_path
   end
 
   # PATCH/PUT /arrivals/1
@@ -54,6 +47,7 @@ class Admin::ArrivalsController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @arrival.errors, status: :unprocessable_entity }
+        redirect_to admin_path
       end
     end
   end
