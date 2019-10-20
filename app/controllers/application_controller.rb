@@ -27,4 +27,12 @@ class ApplicationController < ActionController::Base
         end_user_root_path
       end
 
+      protect_from_forgery with: :exception
+      # 第 1 引数 => model名 :user (必須)
+      # 第 2 引数 => column名 :name (必須)
+      # 第 3 引数 => オプション full: true (任意)
+      autocomplete :artist, :artist_name, full: true
+
+
+
   end

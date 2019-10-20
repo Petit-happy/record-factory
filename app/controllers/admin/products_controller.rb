@@ -16,5 +16,21 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
+    
+  end
+
+  def update
+
+  end
+
+  def create
+
+  end
+
+  private
+
+  def product_params
+    params.require(:product).permit(:photo_id)
   end
 end

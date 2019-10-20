@@ -1,2 +1,20 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<p>新規商品</p>
+
+<%= form_for @product, url: admin_products_path do |f| %>
+    <%= f.attachment_field :photo, placeholder: "画像" %>
+    商品名（シングル・アルバム名）
+    <%= f.text_field :product_name %>
+    アーティスト名
+    <%= autocomplete_field_tag 'artist[artist_name]', nil,  autocomplete_artist_artist_name_artists_path %>
+    価格（税別）
+    <%
+=begin%>
+ <%= f.text_field :product.product_price %>
+    ジャンル
+    <%= f.select genre,[["ロック","ロック"],["ポップス","ポップス"]]%>
+    <%= f.submit "一括登録" %> 
+<%
+=end%>
+<%end%>
+
+

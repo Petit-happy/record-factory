@@ -9,12 +9,16 @@ Rails.application.routes.draw do
     resources :products, only: [:show]
     root to: 'end_users#top'
   end
+  resources :artists do
+    get :autocomplete_artist_artist_name, on: :collection # 追加
+  end
   namespace :admin do
     get 'products/search'
     resources :orders
     resources :products do
       resources :arrivals
     end
+    
     resources :end_users
     root to: 'end_users#top'
   end
