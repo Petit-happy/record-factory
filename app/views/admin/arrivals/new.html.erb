@@ -1,4 +1,4 @@
-<h1>arrival_new</h1>
+<h2><span class="label label-success">入荷情報編集</span></h2>
 
 <%= attachment_image_tag @product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
 <table border="1">
@@ -15,21 +15,19 @@
   <td><%= @product.product_price %></td>
 </tr>
 <tr>
-<th>ジャンル</th>
+<th>ジャンル:</th>
 <td><%= @product.genre.genre_name %></td>
 </tr>
 <tr>
-<th>レーベル</th>
+<th>レーベル:</th>
 <td><%= @product.label.label_name %></td>
 </tr>
 </table>
 <!--idをもった情報を更新するため、@product(id)情報が必要-->
 <%= form_for([:admin, @product, @arrival]) do |f| %>
-  個数
+  個数:
   <%= f.text_field :arrival_sam %><!--入荷個数の入力-->
-入荷日
+入荷日:
   <%= f.text_area :arrived_at %><!--入荷日の入力-->
   <%= f.submit '入荷情報を確定する' %>
 <% end %>
-
-
