@@ -40,15 +40,18 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   # PATCH/PUT /addresses/1.json
   def update
-    respond_to do |format|
-      if @address.update(address_params)
-        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
-        format.json { render :show, status: :ok, location: @address }
-      else
-        format.html { render :edit }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+      # if
+        @address = Address.find(params[:id])
+        @address.update(address_params)
+        redirect_to end_user_end_user_path(@address.end_user)
+        # format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @address }
+      # else
+      #   format.html { render :edit }
+      #   format.json { render json: @address.errors, status: :unprocessable_entity }
+      # end
+    # end
   end
 
   # DELETE /addresses/1

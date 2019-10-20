@@ -1,24 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>End user:</strong>
+  <strong>ユーザー名:</strong>
   <%= @address.end_user_id %>
 </p>
 
 <p>
-  <strong>Delivery address:</strong>
-  <%= @address.delivery_address %>
-</p>
-
-<p>
-  <strong>Delivery name:</strong>
+  <strong>配送先名:</strong>
   <%= @address.delivery_name %>
 </p>
 
 <p>
-  <strong>Delivery post code:</strong>
+  <strong>配送先郵便番号:</strong>
   <%= @address.delivery_post_code %>
 </p>
 
+<p>
+  <strong>配送先住所:</strong>
+  <%= @address.delivery_address %>
+</p>
+
+
+
 <%= link_to 'Edit', edit_address_path(@address) %> |
-<%= link_to 'Back', addresses_path %>
+<%= link_to 'Back', end_user_end_user_path(@address) %>
