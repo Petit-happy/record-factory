@@ -1,2 +1,32 @@
-<h1>EndUser::Orders#index</h1>
-<p>Find me in app/views/end_user/orders/index.html.erb</p>
+<h1>注文履歴一覧</h1>
+<table class="" border="1" width="100%" height="50">
+  <thead>
+    <tr>
+      <th>注文番号</th>
+      <th>購入日</th>
+      <th>商品名</th>
+      <th>購入点数</th>
+      <th>小計</th>
+      <th>総計</th>
+      <th>送付先</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- end_userの子のordersを一つもっているOrder_detail -->
+    <% @orders.each do |order| %>
+    <tr align="center">
+      <td>注文番号</td>
+      <td><%= order.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
+        <% order.order_details.each do |detail| %>
+          <td><%= detail.product.product_name %></td>
+          <td><%= detail.unit %></td>
+          <td><%= detail.unit_price.to_s(:delimited, delimiter: ',') %>円</td>
+        <% end %>
+      <td><%= order.order_address %></td>
+      <td><%= prder.total_price %></td>
+      <td><%= order.order_status_i18n %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
