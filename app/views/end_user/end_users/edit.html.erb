@@ -5,8 +5,18 @@
     <div>名前（姓カナ） <%= f.text_field :family_name_kana %></div>
     <div>名前（姓カナ） <%= f.text_field :given_name_kana %></div>
     <div>郵便番号 <%= f.text_field :post_code %></div>
+    <div>住所　<%= f.text_field :address %></div>
     <div>電話番号<%= f.text_field :phone_number %></div>
     <div>メールアドレス <%= f.email_field :email %></div>
 
     <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+<% end %>
+<% @end_user.addresses.each do |address| %>
+  <h3>配送情報</h3>
+    <%= form_for(address) do |f| %>
+        <div>配送先名　<%= f.text_field :delivery_name %></div>
+        <div>配送先郵便番号　<%= f.text_field :delivery_post_code %></div>
+        <div>配送先住所　<%= f.text_field :delivery_address %></div>
+    <%= f.submit "変更を保存",　class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+    <% end %>
 <% end %>

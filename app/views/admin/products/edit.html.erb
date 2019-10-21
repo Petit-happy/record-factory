@@ -1,2 +1,32 @@
-<h1>Admin::Products#edit</h1>
-<p>Find me in app/views/admin/products/edit.html.erb</p>
+<h2><span class="label label-success">登録商品情報編集</span></h2>
+<p>ジャケット写真:<%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+<p>ジャンル名:<%= @product.genre.genre_name %></p>
+<p>レーベル名:<%= @product.label.label_name %></p>
+<p>アーティスト名:<%= @product.artist.artist_name %></p>
+
+<% @disc.each do |disc| %>
+<p>DISC NO. <%= disc.desc_no %></p>
+<% @songs.each do |song| %>
+<p>NO. <%= song.song_no %></p>
+<%= song.song_name %>
+<% end %>
+<% end %>
+
+<%= form_for ([:admin, @product]) do |f| %>
+<div class="field">
+  <%= f.label :'商品価格' %>
+  <%= f.text_field :product_price %>
+</div>
+<div class="field">
+  <%= f.label :'商品名' %>
+  <%= f.text_field :product_name %>
+</div>
+<div class="field">
+  <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]} %>
+</div>
+<%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
+<% end %>
+
+<br>
+<%= link_to '商品詳細に戻る', admin_product_path(@product), class:"btn-sm btn-success" %>
+<%= link_to '商品情報を削除する', admin_products_path, class:"btn-sm btn-danger", "data-confirm" => "本当に商品情報を削除ますか？"  %>

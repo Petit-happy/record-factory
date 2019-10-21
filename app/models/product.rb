@@ -1,9 +1,12 @@
 class Product < ApplicationRecord
 
   def self.search(search)
-      return Product.all unless search
-      Product.where(['content LIKE ?', "%#{search}%"])
+    if search
+      where(['product_name LIKE ?', "%#{search}%"])
+    else
+      all
     end
+  end
 
     belongs_to :genre
     belongs_to :label

@@ -17,7 +17,22 @@
     <th>住所</th>
     <td><%= @end_user.address %></td>
   </tr>
-  <tr>
+
+   <% @end_user.addresses.each do |address| %>
+   <tr>
+      <th>配送先名</th>
+      <td><%= address.delivery_name %></td>
+   </tr>
+   <tr>
+      <th>配送先郵便番号</th>
+      <td><%= address.delivery_post_code %></td>
+   </tr>
+   <tr>
+      <th>配送先住所</th>
+      <td><%= address.delivery_address %></td>
+   </tr>
+   <% end %>
+   <tr>
     <th>電話番号</th>
     <td><%= @end_user.phone_number %></td>
   </tr>
