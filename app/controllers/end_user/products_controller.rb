@@ -3,7 +3,6 @@ class EndUser::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
-
     # binding.pry
   end
   def search
