@@ -42,6 +42,11 @@
   <strong>Is deleted:</strong>
   <%= @product.is_deleted %>
 </p>
-
+          <div class="row">
+					<%= form_for([:user, @product @cart_item]) do |f| %>
+						<%= f.select :cart_sum, [["1点", 1],["2点", 2]], class:"btn btn-primary form-control mt-5 col-sm-12" %>
+          <%= f.submit "cartに入れる" %>
+          </div>
+          <% end %>
 
 <%= link_to 'Back', end_user_root_path %>

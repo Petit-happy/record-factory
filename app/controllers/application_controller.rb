@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-#userがsign_inしていない時に表示できる画面。
+  #userがsign_inしていない時に表示できる画面。
   #before_action :authenticate_end_user!, except: []
   # before_action :authenticate_admin_user!, except: []
 
@@ -26,5 +26,7 @@ class ApplicationController < ActionController::Base
       def after_sign_out_path_for(resource)
         end_user_root_path
       end
+
+
 
   end
