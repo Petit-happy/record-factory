@@ -1,44 +1,30 @@
 <h2><span class="label label-success">登録商品情報編集</span></h2>
-
-<%= form_for ([:admin, @product]) do |f| %>
-  <div class="field">
-    <%= f.label :'ジャケット写真' %>
-    <%= f.attachment_field :photo %>
-  </div>
-  <div class="field">
-    <%= f.label :'ジャンル名' %>
-    <%= f.select :genre_id, Genre.all.map {|k| [k.genre_name, k.id]} %>
-
-  </div>
-  <div class="field">
-    <%= f.label :'レーベル名' %>
-    <%= f.select :label_id, Label.all.map {|k| [k.label_name, k.id]} %>
-  </div>
-  <div class="field">
-    <%= f.label :'アーティスト名' %>
-    <%= f.select :artist_id, Artist.all.map {|k| [k.artist_name, k.id]} %>
-  </div>
-  <div class="field">
-    <%= f.label :'商品価格' %>
-    <%= f.text_field :product_price %>
-  </div>
-  <div class="field">
-    <%= f.label :'商品名' %>
-    <%= f.text_field :product_name %>
-  </div>
-  <div class="field">
-    <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]} %>
-  </div>
-  <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
-  <% end %>
+<p>ジャケット写真:<%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+<p>ジャンル名:<%= @product.genre.genre_name %></p>
+<p>レーベル名:<%= @product.label.label_name %></p>
+<p>アーティスト名:<%= @product.artist.artist_name %></p>
 
 <% @disc.each do |disc| %>
-  <p>DISC NO</p>
-  <%= disc.desc_no %>
-    <% @songs.each do |song| %>
-    <%= song.song_no %>
-    <%= song.song_name %>
-  <% end %>
+<p>DISC NO. <%= disc.desc_no %></p>
+<% @songs.each do |song| %>
+<p>NO. <%= song.song_no %></p>
+<%= song.song_name %>
+<% end %>
+<% end %>
+
+<%= form_for ([:admin, @product]) do |f| %>
+<div class="field">
+  <%= f.label :'商品価格' %>
+  <%= f.text_field :product_price %>
+</div>
+<div class="field">
+  <%= f.label :'商品名' %>
+  <%= f.text_field :product_name %>
+</div>
+<div class="field">
+  <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]} %>
+</div>
+<%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
 <% end %>
 
 <br>

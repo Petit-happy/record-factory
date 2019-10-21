@@ -1,4 +1,8 @@
 <h2><span class="label label-info">登録商品一覧</span></h2>
+<%= form_tag(admin_products_path, :method => 'get' ) do %>
+<%= text_field_tag :search %>
+<%= submit_tag '商品を検索する', :product_name => nil %>
+<% end %>
 <table>
   <% @products.each do |product| %>
   <tr>
@@ -12,7 +16,7 @@
     <td><%= link_to product.product_name, admin_product_path(product) %></td>
   </tr>
   <tr>
-    <td><%= product.product_price %></td>
+    <td><%= product.product_price.to_s(:currency, locale: :ja) %></td>
   </tr>
   <% end %>
 </table>
