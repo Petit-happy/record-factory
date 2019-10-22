@@ -2,7 +2,7 @@
 
 <%= form_for(@genre) do |f| %>
 <div class="field">
-  <%= f.label :genre_name %><br>
+  <%= f.label :'ジャンル名' %><br>
   <%= f.text_field :genre_name, autofocus: true %>
 </div>
 <%= f.submit '新規ジャンル名を登録する', class:"btn btn-primary" %>
