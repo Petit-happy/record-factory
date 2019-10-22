@@ -62,14 +62,28 @@ Label.create!(
    ]
 )
 Product.create!(
-   genre_id: 1,
-   label_id: 1,
-   artist_id: 2,
-   photo_id: 1,
-   product_price: 1280,
-   sales_status: 1,
-   product_name: '製品名A',
-   is_deleted: 'true'
+    [
+        {
+            genre_id: 1,
+            label_id: 1,
+            artist_id: 2,
+            photo_id: 1,
+            product_price: 1280,
+            sales_status: 1,
+            product_name: '製品名A',
+            is_deleted: 'true'
+        },
+        {
+            genre_id: 1,
+            label_id: 1,
+            artist_id: 2,
+            photo_id: 1,
+            product_price: 3500,
+            sales_status: 1,
+            product_name: '製品名C',
+            is_deleted: 'true'
+        }
+    ]
 )
 Order.create!(
    end_user_id: 1,
@@ -80,10 +94,20 @@ Order.create!(
    order_address: 'アメリカ'
 )
 OrderDetail.create!(
-   order_id: 1,
-   product_id: 1,
-   price: 1285,
-   unit: 2
+    [
+        {
+        order_id: 1,
+        product_id: 1,
+        price: 1285,
+        unit: 2
+        },
+        {
+        order_id: 1,
+        product_id: 2,
+        price: 3500,
+        unit: 1
+        }
+    ]
 )
 
 CartItem.create!(
@@ -100,20 +124,29 @@ Address.create!(
 )
 
 Arrival.create!(
-   product_id: 1,
-   arrival_sam: 2,
-   arrived_at: '2019/08/18'
+    [
+       {
+        product_id: 1,
+        arrival_sam: 2,
+        arrived_at: '2019/08/18'
+       },
+       {
+        product_id: 2,
+        arrival_sam: 3,
+        arrived_at: '2019/08/18'
+       }
+    ]
 )
 
 Disc.create!(
    [
        {
            product_id: 1,
-           desc_no: 1
+           disc_no: 1
        },
        {
            product_id: 1,
-           desc_no: 2
+           disc_no: 2
        }
    ]
 )

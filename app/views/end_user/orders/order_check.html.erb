@@ -1,2 +1,7 @@
-<h1>EndUser::Orders#order_check</h1>
-<p>Find me in app/views/end_user/orders/order_check.html.erb</p>
+<h1>購入方法選択画面</h1>
+
+
+<div>お届け先住所</div>
+<%= form_for([end_user, @order]) do |f| %>
+  <%= select_tag :address_id, options_for_select(@addresses_for_options) %>
+<% end %>
