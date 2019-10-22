@@ -142,11 +142,11 @@ Disc.create!(
    [
        {
            product_id: 1,
-           desc_no: 1
+           disc_no: 1
        },
        {
            product_id: 1,
-           desc_no: 2
+           disc_no: 2
        }
    ]
 )
