@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Product</th>
-      <th>Arrival sam</th>
+      <th>Arrival sum</th>
       <th>Arrived at</th>
       <th colspan="3"></th>
     </tr>
@@ -16,7 +16,7 @@
     <% @arrivals.each do |arrival| %>
       <tr>
         <td><%= arrival.product_id %></td>
-        <td><%= arrival.arrival_sam %></td>
+        <td><%= arrival.arrival_sum %></td>
         <td><%= arrival.arrived_at %></td>
         <td><%= link_to 'Show', arrival %></td>
         <td><%= link_to 'Edit', edit_arrival_path(arrival) %></td>
