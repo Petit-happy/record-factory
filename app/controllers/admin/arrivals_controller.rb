@@ -25,41 +25,26 @@ class Admin::ArrivalsController < ApplicationController
     @arrival = Arrival.new
   end
 
-  # GET /arrivals/1/edit
-  def edit
-  end
 
   # POST /arrivals
   # POST /arrivals.json
   def create
     @arrival = Arrival.new(arrival_params)
+    @p = Product.find(params[:product_id])
+    @arrival.product_id = @p.id #アライバルが持っているプロダクトid
     @arrival.save
-    redirect_to admin_path
+    #binding.pry
+    redirect_to admin_root_path
   end
 
-  # PATCH/PUT /arrivals/1
-  # PATCH/PUT /arrivals/1.json
-  def update
-    respond_to do |format|
-      if @arrival.update(arrival_params)
-        format.html { redirect_to @arrival, notice: 'Arrival was successfully updated.' }
-        format.json { render :show, status: :ok, location: @arrival }
-      else
-        format.html { render :edit }
-        format.json { render json: @arrival.errors, status: :unprocessable_entity }
-        redirect_to admin_path
-      end
-    end
-  end
 
   # DELETE /arrivals/1
   # DELETE /arrivals/1.json
   def destroy
+    # arrivalにidをもたせる必要がある
+    @arrival = Arrival.find(params[:id])
     @arrival.destroy
-    respond_to do |format|
-      format.html { redirect_to arrivals_url, notice: 'Arrival was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_back(fallback_location: admin_root_path)
   end
 
   private
