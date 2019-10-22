@@ -1,18 +1,40 @@
 class Product < ApplicationRecord
-
+  belongs_to :genre
+  belongs_to :label
+  belongs_to :artist
+  has_many :arrivals, dependent: :destroy
+  has_many :discs, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
+  has_many :order_details, dependent: :destroy
+  enum sales_status: { sold: 0, selling: 1, stop: 2} # enumを使ってステータス表示を可能にした
+  attachment :photo
   def self.search(search)
       return Product.all unless search
       Product.where(['content LIKE ?', "%#{search}%"])
+  end
+  def total_arrival_unit_a
+    total_arrival_unit = 0
+    arrivals.each do |arrival|
+      total_arrival_unit += arrival.arrival_sam
     end
+    total_arrival_unit
 
-    belongs_to :genre
-    belongs_to :label
-    belongs_to :artist
-    has_many :arrivals, dependent: :destroy
-    has_many :discs, dependent: :destroy
-    has_many :cart_item, dependent: :destroy
-    enum sales_status: { sold: 0, selling: 1, stop: 2} # enumを使ってステータス表示を可能にした
+    if search
+      where(['product_name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
+  end
 
+  def total_order_detail_unit_a
+    total_order_detail_unit = 0
+    order_details.each do |detail|
+      total_order_detail_unit += detail.unit
+    end
+    total_order_detail_unit
+  end
 
-    attachment :photo
+  def stock
+    stock = total_arrival_unit_a - total_order_detail_unit_a
+  end
 end

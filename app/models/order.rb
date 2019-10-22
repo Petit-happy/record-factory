@@ -7,7 +7,7 @@ class Order < ApplicationRecord
 
       #Order.Detail.unit_price
 
-
+    # 小計
     def total_unit_price
       total_unit_price = 0
       order_details.each do |detail|
@@ -15,12 +15,12 @@ class Order < ApplicationRecord
       end
      total_unit_price
     end
-
+    # 総額
     def total_price
       total_price = total_unit_price + delivery_cost
       total_price
     end
-
+    #合計点数
     def order_total_unit
         u = 0
       order_details.each do |detail|
@@ -28,10 +28,6 @@ class Order < ApplicationRecord
       end
         u
     end
-
-
-
-
     # def total
     #   d_price = 500
     #   total(d_price)

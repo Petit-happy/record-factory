@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
   def index
     @products = Product.all
+    @products = Product.search(params[:search])
   end
 
   def show
@@ -9,30 +10,34 @@ class Admin::ProductsController < ApplicationController
     @songs = Song.all
   end
 
-  def search
-  end
-
   def edit
+    @product = Product.find(params[:id])
+    @disc = @product.discs
+    @songs = Song.all
   end
 
   def new
-    @product = Product.find(1)
-    @disc = @product.discs
-    @song = Song.all
-    # binding.pry
+    @product = Product.new
   end
 
   def update
-
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = "successfully updated"
+      redirect_to admin_products_path
+    else
+      render 'edit'
+    end
   end
 
-  def create
-
+  def destroy
+    @order = Product.find(params[:id])
+    @order.destroy
+    redirect_to admin_products_path
   end
 
   private
-
   def product_params
-    params.require(:product).permit(:photo_id)
+    params.require(:product).permit(:product_price, :sales_status, :product_name, :photo_id)
   end
 end
