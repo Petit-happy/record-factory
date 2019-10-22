@@ -17,7 +17,7 @@ class DiscsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create disc" do
     assert_difference('Disc.count') do
-      post discs_url, params: { disc: { desc_no: @disc.desc_no, product_id: @disc.product_id } }
+      post discs_url, params: { disc: { disc_no: @disc.disc_no, product_id: @disc.product_id } }
     end
 
     assert_redirected_to disc_url(Disc.last)
@@ -34,7 +34,7 @@ class DiscsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update disc" do
-    patch disc_url(@disc), params: { disc: { desc_no: @disc.desc_no, product_id: @disc.product_id } }
+    patch disc_url(@disc), params: { disc: { disc_no: @disc.disc_no, product_id: @disc.product_id } }
     assert_redirected_to disc_url(@disc)
   end
 

@@ -69,6 +69,6 @@ class DiscsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def disc_params
-      params.require(:disc).permit(:product_id, :desc_no)
+      params.require(:disc).permit(:product_id, :disc_no)
     end
 end
