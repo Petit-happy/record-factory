@@ -1,47 +1,45 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+</p>
 
 <p>
-  <strong>Genre:</strong>
+  <strong>商品名:</strong>
+  <%= @product.product_name %>
+</p>
+<p>
+  <strong>アーティスト名:</strong>
+  <%= @product.artist.artist_name %>
+</p>
+<p>
+  <strong>価格（税抜）:</strong>
+  <%= @product.product_price %>
+</p>
+<p>
+  <strong>ジャンル名:</strong>
 
  <%= @product.genre.genre_name %>
 
 </p>
 
 <p>
-  <strong>Label:</strong>
+  <strong>レーベル名:</strong>
   <%= @product.label.label_name %>
 </p>
 
 <p>
-  <strong>Artist:</strong>
-  <%= @product.artist.artist_name %>
-</p>
-
+  <strong>在庫数:</strong>
+  <%= @product.stock %>
 <p>
-  <strong>Photo:</strong>
-  <%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-</p>
-
-<p>
-  <strong>Product price:</strong>
-  <%= @product.product_price %>
-</p>
-
-<p>
-  <strong>Sales status:</strong>
+  <strong>ステータス（販売中・販売停止中）:</strong>
   <%= @product.sales_status %>
 </p>
 
-<p>
-  <strong>Product name:</strong>
-  <%= @product.product_name %>
-</p>
+  <% @product.is_deleted %>
 
 <p>
-  <strong>Is deleted:</strong>
-  <%= @product.is_deleted %>
-</p>
+  <div>収録内容</div>
 
 
-<%= link_to 'Back', end_user_root_path %>
+<%= link_to 'トップへ', end_user_root_path %>

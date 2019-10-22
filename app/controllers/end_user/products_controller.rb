@@ -7,7 +7,6 @@ class EndUser::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @artist = @product.artist
     # binding.pry
-    # binding.pry
 
   end
   def search
