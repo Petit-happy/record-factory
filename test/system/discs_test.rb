@@ -14,7 +14,7 @@ class DiscsTest < ApplicationSystemTestCase
     visit discs_url
     click_on "New Disc"
 
-    fill_in "Desc no", with: @disc.desc_no
+    fill_in "Disc no", with: @disc.disc_no
     fill_in "Product", with: @disc.product_id
     click_on "Create Disc"
 
@@ -26,7 +26,7 @@ class DiscsTest < ApplicationSystemTestCase
     visit discs_url
     click_on "Edit", match: :first
 
-    fill_in "Desc no", with: @disc.desc_no
+    fill_in "Disc no", with: @disc.disc_no
     fill_in "Product", with: @disc.product_id
     click_on "Update Disc"
 
