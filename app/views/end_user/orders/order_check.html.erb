@@ -1,7 +1,62 @@
 <h1>購入方法選択画面</h1>
 
-
 <div>お届け先住所</div>
-<%= form_for([end_user, @order]) do |f| %>
+<%= form_for([:end_user, @order]) do |f| %>
   <%= select_tag :address_id, options_for_select(@addresses_for_options) %>
+
+  <%= f.submit "決定" %>
 <% end %>
+<div>
+
+<div>支払い方法選択</div>
+<%= form_for([:end_user, @order]) do |f| %>
+<label><%=f.radio_button :method_of_payment, 1 %>クレジットカード</label>
+<label><%=f.radio_button :method_of_payment, 2 %>銀行振込</label>
+<label><%=f.radio_button :method_of_payment, 3 %>代引き</label>
+<%= f.submit "決定" %>
+
+<% end %>
+
+<p>
+  <%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+</p>
+
+<p>
+  <strong>商品名:</strong>
+  <%= @product.product_name %>
+</p>
+<p>
+  <strong>アーティスト名:</strong>
+  <%= @product.artist.artist_name %>
+</p>
+<p>
+  <strong>価格（税抜）:</strong>
+  <%= @product.product_price %>
+</p>
+<p>
+  <strong>ジャンル名:</strong>
+
+ <%= @product.genre.genre_name %>
+
+</p>
+
+<p>
+  <strong>レーベル名:</strong>
+  <%= @product.label.label_name %>
+</p>
+
+<p>
+  <strong>在庫数:</strong>
+  <%= @product.stock %>
+<p>
+  <strong>ステータス（販売中・販売停止中）:</strong>
+  <%= @product.sales_status %>
+</p>
+
+  <% @product.is_deleted %>
+
+<p>
+  <div>収録内容</div>
+
+  <strong>Is deleted:</strong>
+  <%= @product.is_deleted %>

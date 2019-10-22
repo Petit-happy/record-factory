@@ -1,7 +1,9 @@
 class EndUser::OrdersController < ApplicationController
   
   def create
+    @order = Order.new
     @order.save
+    redirect_to end_user_orders_order_check_path
   end
 
   def index

@@ -117,10 +117,20 @@ CartItem.create!(
 )
 
 Address.create!(
-   end_user_id: 1,
-   delivery_address: 'ここは=order_addressでコピー作成',
-   delivery_name: 'おじいちゃんの家',
-   delivery_post_code: '300-0001'
+    [
+        {
+        end_user_id: 1,
+        delivery_address: 'ここは=order_addressでコピー作成',
+        delivery_name: 'おじいちゃんの家',
+        delivery_post_code: '300-0001'
+        },
+        {
+        end_user_id: 1,
+        delivery_address: 'aaaa',
+        delivery_name: 'おばあちゃんの家',
+        delivery_post_code: '300-0002'
+        }
+    ]
 )
 
 Arrival.create!(
