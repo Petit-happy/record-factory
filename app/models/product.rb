@@ -18,6 +18,12 @@ class Product < ApplicationRecord
       total_arrival_unit += arrival.arrival_sam
     end
     total_arrival_unit
+
+    if search
+      where(['product_name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
   end
 
   def total_order_detail_unit_a

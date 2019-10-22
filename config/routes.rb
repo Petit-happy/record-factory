@@ -4,7 +4,10 @@ Rails.application.routes.draw do
     get 'orders/confirmation'
     get 'products/search'
     resources :orders
-    resources :products, only: [:show]
+    resources :products, only: [:show] do
+      resources :cart_items, only: [:create]
+    end
+    resources :cart_items, only: [:index, :destroy, :edit, :new]
     resources :end_users, only: [:show, :edit, :update, :destroy]
     resources :products, only: [:show]
     root to: 'end_users#top'
@@ -37,9 +40,7 @@ Rails.application.routes.draw do
   resources :artists
   resources :addresses
   resources :genres
-  
   resources :order_details
-  resources :cart_items
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 get 'admin' => 'arrivals#top'
