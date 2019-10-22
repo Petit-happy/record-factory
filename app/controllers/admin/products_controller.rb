@@ -1,8 +1,8 @@
 class Admin::ProductsController < ApplicationController
   PER = 16
   def index
-    @products = Product.page(params[:page]).reverse_order
     @products = Product.search(params[:search])
+    @products = Product.page(params[:page]).reverse_order
   end
 
   def show
