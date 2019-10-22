@@ -18,3 +18,4 @@
 //= require autocomplete-rails
 //= require bootstrap-sprockets
 //= require_tree .
+//= require jquery_nested_form   #追記

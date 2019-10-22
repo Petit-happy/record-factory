@@ -16,8 +16,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
-    
+    @product = Product.find(1)
+    @disc = @product.discs
+    @song = Song.all
+    # binding.pry
   end
 
   def update

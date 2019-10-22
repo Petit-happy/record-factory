@@ -73,3 +73,5 @@ gem 'cocoon'
 gem 'rails4-autocomplete'
 gem 'enum_help'
 gem 'rails-i18n'
+gem "nested_form"
+

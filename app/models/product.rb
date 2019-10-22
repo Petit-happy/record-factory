@@ -13,5 +13,6 @@ class Product < ApplicationRecord
     has_many :cart_item, dependent: :destroy
     enum sales_status: { sold: 0, selling: 1, stop: 2} # enumを使ってステータス表示を可能にした
 
+
     attachment :photo
 end
