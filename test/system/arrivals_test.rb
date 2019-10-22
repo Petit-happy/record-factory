@@ -14,7 +14,7 @@ class ArrivalsTest < ApplicationSystemTestCase
     visit arrivals_url
     click_on "New Arrival"
 
-    fill_in "Arrival sam", with: @arrival.arrival_sam
+    fill_in "Arrival sum", with: @arrival.arrival_sum
     fill_in "Arrived at", with: @arrival.arrived_at
     fill_in "Product", with: @arrival.product_id
     click_on "Create Arrival"
@@ -27,7 +27,7 @@ class ArrivalsTest < ApplicationSystemTestCase
     visit arrivals_url
     click_on "Edit", match: :first
 
-    fill_in "Arrival sam", with: @arrival.arrival_sam
+    fill_in "Arrival sum", with: @arrival.arrival_sum
     fill_in "Arrived at", with: @arrival.arrived_at
     fill_in "Product", with: @arrival.product_id
     click_on "Update Arrival"

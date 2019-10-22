@@ -70,6 +70,6 @@ class Admin::ArrivalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def arrival_params
-      params.require(:arrival).permit(:product_id, :arrival_sam, :arrived_at)
+      params.require(:arrival).permit(:product_id, :arrival_sum, :arrived_at)
     end
 end

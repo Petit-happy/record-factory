@@ -127,12 +127,12 @@ Arrival.create!(
     [
        {
         product_id: 1,
-        arrival_sam: 2,
+        arrival_sum: 2,
         arrived_at: '2019/08/18'
        },
        {
         product_id: 2,
-        arrival_sam: 3,
+        arrival_sum: 3,
         arrived_at: '2019/08/18'
        }
     ]

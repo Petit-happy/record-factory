@@ -29,4 +29,4 @@
 
 <br>
 <%= link_to '商品詳細に戻る', admin_product_path(@product), class:"btn-sm btn-success" %>
-<%= link_to '商品情報を削除する', admin_products_path, class:"btn-sm btn-danger", "data-confirm" => "本当に商品情報を削除ますか？"  %>
+<%= link_to '商品情報を削除する', admin_product_path, class:"btn-sm btn-danger",method: :delete ,  "data-confirm" => "本当に商品情報を削除しますか？"  %>
