@@ -19,11 +19,11 @@ class Product < ApplicationRecord
     end
     total_arrival_unit
 
-    if search
-      where(['product_name LIKE ?', "%#{search}%"])
-    else
-      all
-    end
+    # if search
+    #   where(['product_name LIKE ?', "%#{search}%"])
+    # else
+    #   all
+    # end
   end
 
   def total_order_detail_unit_a

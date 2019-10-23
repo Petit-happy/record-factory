@@ -11,7 +11,6 @@ class Admin::ArrivalsController < ApplicationController
   def index
     @arrivals = Arrival.all
     @products = Product.all
-
   end
 
   # GET /arrivals/1
