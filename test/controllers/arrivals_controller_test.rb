@@ -17,7 +17,7 @@ class ArrivalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create arrival" do
     assert_difference('Arrival.count') do
-      post arrivals_url, params: { arrival: { arrival_sam: @arrival.arrival_sam, arrived_at: @arrival.arrived_at, product_id: @arrival.product_id } }
+      post arrivals_url, params: { arrival: { arrival_sum: @arrival.arrival_sum, arrived_at: @arrival.arrived_at, product_id: @arrival.product_id } }
     end
 
     assert_redirected_to arrival_url(Arrival.last)
@@ -34,7 +34,7 @@ class ArrivalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update arrival" do
-    patch arrival_url(@arrival), params: { arrival: { arrival_sam: @arrival.arrival_sam, arrived_at: @arrival.arrived_at, product_id: @arrival.product_id } }
+    patch arrival_url(@arrival), params: { arrival: { arrival_sum: @arrival.arrival_sum, arrived_at: @arrival.arrived_at, product_id: @arrival.product_id } }
     assert_redirected_to arrival_url(@arrival)
   end
 

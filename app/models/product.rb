@@ -9,21 +9,19 @@ class Product < ApplicationRecord
   enum sales_status: { sold: 0, selling: 1, stop: 2} # enumを使ってステータス表示を可能にした
   attachment :photo
   def self.search(search)
-      return Product.all unless search
-      Product.where(['content LIKE ?', "%#{search}%"])
+    if search
+      where(['product_name LIKE ?', "%#{search}%"])
+    else
+      all
+    end
   end
+
   def total_arrival_unit_a
     total_arrival_unit = 0
     arrivals.each do |arrival|
-      total_arrival_unit += arrival.arrival_sam
+      total_arrival_unit += arrival.arrival_sum
     end
     total_arrival_unit
-
-    # if search
-    #   where(['product_name LIKE ?', "%#{search}%"])
-    # else
-    #   all
-    # end
   end
 
   def total_order_detail_unit_a
