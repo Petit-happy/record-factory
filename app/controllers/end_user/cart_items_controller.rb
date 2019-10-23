@@ -41,6 +41,16 @@ class EndUser::CartItemsController < ApplicationController
     end
   end
 
+  def order_check
+    addresses = Address.all
+    @addresses_for_options = Hash.new
+    addresses.each do |address|
+      @addresses_for_options.store(address.delivery_address, address.id)
+    end
+  end
+  def confirmation
+  end
+
   private
     def set_cart_item
       @cart_item = CartItem.find(params[:id])
@@ -48,4 +58,6 @@ class EndUser::CartItemsController < ApplicationController
     def cart_item_params
       params.require(:cart_item).permit(:end_user_id, :product_id, :cart_sum)
     end
+    
+    
 end
