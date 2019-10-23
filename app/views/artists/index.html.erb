@@ -2,7 +2,7 @@
 
 <%= form_for(@artist) do |f| %>
 <div class="field">
-  <%= f.label :artist_name %><br>
+  <%= f.label :'アーティスト名'%><br>
   <%= f.text_field :artist_name, autofocus: true %>
 </div>
 <%= f.submit '新規アーティスト名を登録する', class:"btn btn-primary" %>

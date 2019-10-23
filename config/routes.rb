@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :arrivals
     end
     resources :end_users
-    root to: 'end_users#top'
+    root to: 'arrivals#top'
   end
   get 'end_users/show'
   get 'end_users/edit'
@@ -44,7 +44,6 @@ Rails.application.routes.draw do
   resources :order_details
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-get 'admin' => 'arrivals#top'
 
 
 end
