@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  validates :product_price, presence: true
+  validates :sales_status, presence: true
   acts_as_paranoid
   belongs_to :genre
   belongs_to :label
