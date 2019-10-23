@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :product_price
       t.integer :sales_status
       t.string :product_name
-      t.boolean :is_deleted
+      t.datetime :deleted_at
 
       t.timestamps
     end

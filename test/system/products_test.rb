@@ -16,7 +16,7 @@ class ProductsTest < ApplicationSystemTestCase
 
     fill_in "Artist", with: @product.artist_id
     fill_in "Genre", with: @product.genre_id
-    check "Is deleted" if @product.is_deleted
+    check "Is deleted" if @product.deleted_at
     fill_in "Label", with: @product.label_id
     fill_in "Photo", with: @product.photo_id
     fill_in "Product name", with: @product.product_name
@@ -34,7 +34,7 @@ class ProductsTest < ApplicationSystemTestCase
 
     fill_in "Artist", with: @product.artist_id
     fill_in "Genre", with: @product.genre_id
-    check "Is deleted" if @product.is_deleted
+    check "Is deleted" if @product.deleted_at
     fill_in "Label", with: @product.label_id
     fill_in "Photo", with: @product.photo_id
     fill_in "Product name", with: @product.product_name

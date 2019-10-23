@@ -20,7 +20,7 @@ class EndUsersTest < ApplicationSystemTestCase
     fill_in "Family name kanji", with: @end_user.family_name_kanji
     fill_in "Given name kana", with: @end_user.given_name_kana
     fill_in "Given name kanji", with: @end_user.given_name_kanji
-    check "Is deleted" if @end_user.is_deleted
+    check "Is deleted" if @end_user.deleted_at
     fill_in "Password", with: @end_user.password
     fill_in "Phone number", with: @end_user.phone_number
     fill_in "Post code", with: @end_user.post_code
@@ -40,7 +40,7 @@ class EndUsersTest < ApplicationSystemTestCase
     fill_in "Family name kanji", with: @end_user.family_name_kanji
     fill_in "Given name kana", with: @end_user.given_name_kana
     fill_in "Given name kanji", with: @end_user.given_name_kanji
-    check "Is deleted" if @end_user.is_deleted
+    check "Is deleted" if @end_user.deleted_at
     fill_in "Password", with: @end_user.password
     fill_in "Phone number", with: @end_user.phone_number
     fill_in "Post code", with: @end_user.post_code

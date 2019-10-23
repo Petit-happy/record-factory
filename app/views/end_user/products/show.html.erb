@@ -35,13 +35,13 @@
   <%= @product.sales_status %>
 </p>
 
-  <% @product.is_deleted %>
+  <% @product.deleted_at %>
 
 <p>
   <div>収録内容</div>
 
   <strong>Is deleted:</strong>
-  <%= @product.is_deleted %>
+  <%= @product.deleted_at %>
 </p>
 <!--idをもった情報を更新するため、@product(id)情報が必要-->
           <div class="row">

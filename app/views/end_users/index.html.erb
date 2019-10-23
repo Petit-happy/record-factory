@@ -31,7 +31,7 @@
         <td><%= end_user.email %></td>
         <td><%= end_user.password %></td>
         <td><%= end_user.phone_number %></td>
-        <td><%= end_user.is_deleted %></td>
+        <td><%= end_user.deleted_at %></td>
         <td><%= link_to 'Show', end_user %></td>
         <td><%= link_to 'Edit', edit_end_user_path(end_user) %></td>
         <td><%= link_to 'Destroy', end_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
