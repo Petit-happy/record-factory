@@ -5,6 +5,19 @@ class Admin::ArrivalsController < ApplicationController
     @arrivals = Arrival.page(params[:page]).reverse_order
   end
 
+  # GET /arrivals
+  # GET /arrivals.json
+  def index
+    @arrivals = Arrival.all
+    @products = Product.all
+  end
+
+  # GET /arrivals/1
+  # GET /arrivals/1.json
+  def show
+  end
+
+  # GET /arrivals/new
   def new
     @product = Product.find(params[:product_id])
     @arrival = Arrival.new

@@ -28,8 +28,4 @@ class Order < ApplicationRecord
       end
         u
     end
-    # def total
-    #   d_price = 500
-    #   total(d_price)
-    # end
 end

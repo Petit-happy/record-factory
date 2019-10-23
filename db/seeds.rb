@@ -35,7 +35,13 @@ Artist.create!(
        },
        {
            artist_name: '桑田佳祐'
-       }
+       },
+       {
+            artist_name: 'rolling stones'
+        },
+        {
+            artist_name: 'Led Zeppelin'
+        }
    ]
 )
 
@@ -46,7 +52,10 @@ Genre.create!(
        },
        {
            genre_name: 'rock'
-       }
+       },
+       {
+            genre_name: '演歌'
+        }
    ]
 )
 
@@ -57,13 +66,19 @@ Label.create!(
        },
        {
            label_name: 'レーベル名B'
-       }
+       },
+       {
+            label_name: 'レーベル名C'
+        },
+        {
+            label_name: 'レーベル名D'
+        }
    ]
 )
 Product.create!(
     [
         {
-            genre_id: 1,
+            genre_id: 2,
             label_id: 1,
             artist_id: 2,
             photo_id: 1,
@@ -72,11 +87,20 @@ Product.create!(
             product_name: '製品名A',
         },
         {
-            genre_id: 1,
+            genre_id: 3,
             label_id: 1,
             artist_id: 2,
             photo_id: 1,
             product_price: 3500,
+            sales_status: 1,
+            product_name: '製品名B',
+        },
+        {
+            genre_id: 1,
+            label_id: 1,
+            artist_id: 3,
+            photo_id: 1,
+            product_price: 3200,
             sales_status: 1,
             product_name: '製品名C',
         }
@@ -114,10 +138,20 @@ CartItem.create!(
 )
 
 Address.create!(
-   end_user_id: 1,
-   delivery_address: 'ここは=order_addressでコピー作成',
-   delivery_name: 'おじいちゃんの家',
-   delivery_post_code: '300-0001'
+    [
+        {
+        end_user_id: 1,
+        delivery_address: 'ここは=order_addressでコピー作成',
+        delivery_name: 'おじいちゃんの家',
+        delivery_post_code: '300-0001'
+        },
+        {
+        end_user_id: 1,
+        delivery_address: 'aaaa',
+        delivery_name: 'おばあちゃんの家',
+        delivery_post_code: '300-0002'
+        }
+    ]
 )
 
 Arrival.create!(
@@ -144,7 +178,15 @@ Disc.create!(
        {
            product_id: 1,
            disc_no: 2
-       }
+       },
+       {
+           product_id: 2,
+           disc_no: 1
+       },
+       {
+            product_id: 3,
+            disc_no: 1
+        }
    ]
 )
 Song.create!(
@@ -160,9 +202,19 @@ Song.create!(
            song_name: '曲名B'
        },
        {
-           disc_id: 1,
-           song_no: 3,
+           disc_id: 2,
+           song_no: 1,
            song_name: '曲名C'
        },
+       {
+            disc_id: 3,
+            song_no: 1,
+            song_name: '曲名D'
+        },
+        {
+            disc_id: 3,
+            song_no: 2,
+            song_name: '曲名E'
+        }
    ]
 )
