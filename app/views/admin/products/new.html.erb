@@ -5,11 +5,9 @@
     商品名（シングル・アルバム名）
     <%= f.text_field :product_name %>
     アーティスト名
-    <%
-=begin%>
- <%= autocomplete_field_tag 'artist[name]', nil,  autocomplete_artist_name_artists_path %> 
-<%
-=end%>
+
+ <%= autocomplete_field_tag 'artist[name]', nil,  autocomplete_artist_artist_name_admin_products_path %> 
+
     価格（税別）
 <%= f.text_field :product_price %>
 
@@ -21,11 +19,15 @@
 <%
 =end%>
 <% end %>
-<%= @product.each do |p|  %>
+<%
+=begin%>
+ <%= @product.each do |p|  %>
     <%= @disc.each do | product_disc | %>
         <%= product_disc.disc_no %>
 <%end%>
 <%end%>
-
+ 
+<%
+=end%>
 
 

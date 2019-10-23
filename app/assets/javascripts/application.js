@@ -14,8 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery-ui
 //= require cocoon
 //= require autocomplete-rails
 //= require bootstrap-sprockets
 //= require_tree .
-//= require jquery_nested_form   #追記
+
