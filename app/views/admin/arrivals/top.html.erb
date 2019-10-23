@@ -1,15 +1,19 @@
-<h1>Welcome Administor!!</h1>
-
-入荷履歴
-
-<table border="0"">
-  <tr>
-    <th></th><th>入荷日時</th><th></th>
-  </tr>
-  <tr>
+<h1><span class="label label-default">おかえりなさい まろんさま(*ﾟ▽ﾟ)ﾉ</span></h1>
+  <h2><span class="label label-info">入荷履歴一覧</span></h2>
+<table class="" border="0" width="100%" height="50">
+    <tr>
+    <th>商品名</th>
+    <th>個数</th>
+    <th>予定日時</th>
+    <th></th>
+    </tr>
     <% @arrivals.each do |arrival| %>
-    <td> "を"　arrival_sum "個を追加しました"</td>
-    <td>arrived_at</td>
-    <td>delete</td>
-  </tr>
+        <tr>
+            <td><%= arrival.product.product_name %></td>
+            <td><%= arrival.arrival_sum %></td>
+            <!--ネストさせている場合はプロダクトidとアライバルidを指定-->
+            <td><%= arrival.arrived_at.strftime("%Y年%m月%d日 %H時") %>頃</td>
+            <td><%= link_to "入荷情報を削除する", admin_product_arrival_path(arrival.product_id,arrival.id), method: :delete, class:"btn-sm btn-danger" %></td>
+        </tr>
 <% end %>
+<%= paginate @arrivals %>

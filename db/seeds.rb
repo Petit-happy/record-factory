@@ -117,22 +117,32 @@ CartItem.create!(
 )
 
 Address.create!(
-   end_user_id: 1,
-   delivery_address: 'ここは=order_addressでコピー作成',
-   delivery_name: 'おじいちゃんの家',
-   delivery_post_code: '300-0001'
+    [
+        {
+        end_user_id: 1,
+        delivery_address: 'ここは=order_addressでコピー作成',
+        delivery_name: 'おじいちゃんの家',
+        delivery_post_code: '300-0001'
+        },
+        {
+        end_user_id: 1,
+        delivery_address: 'aaaa',
+        delivery_name: 'おばあちゃんの家',
+        delivery_post_code: '300-0002'
+        }
+    ]
 )
 
 Arrival.create!(
     [
        {
         product_id: 1,
-        arrival_sam: 2,
+        arrival_sum: 2,
         arrived_at: '2019/08/18'
        },
        {
         product_id: 2,
-        arrival_sam: 3,
+        arrival_sum: 3,
         arrived_at: '2019/08/18'
        }
     ]

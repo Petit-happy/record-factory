@@ -26,9 +26,9 @@
 <!--idをもった情報を更新するため、@product(id)情報が必要-->
 <%= form_for([:admin, @product, @arrival]) do |f| %>
   個数:
-  <%= f.text_field :arrival_sam %><!--入荷個数の入力-->
+  <%= f.text_field :arrival_sum %><!--入荷個数の入力-->
 入荷日:
-  <%= f.text_area :arrived_at %><!--入荷日の入力-->
+  <%= f.date_field :arrived_at %><!--入荷日の入力-->
   <%= f.submit '入荷情報を確定する' %>
 <% end %>
 

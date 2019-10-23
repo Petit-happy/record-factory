@@ -3,10 +3,10 @@
 
 one:
   product_id: 1
-  arrival_sam: 1
-  arrived_at: 
+  arrival_sum: 1
+  arrived_at:
 
 two:
   product_id: 1
-  arrival_sam: 1
-  arrived_at: 
+  arrival_sum: 1
+  arrived_at:
