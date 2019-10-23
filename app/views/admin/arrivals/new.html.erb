@@ -1,3 +1,5 @@
+<%= render 'shared/error', model: @arrival %>
+
 <h2><span class="label label-success">入荷情報編集</span></h2>
 
 <%= attachment_image_tag @product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
