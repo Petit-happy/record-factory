@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_044211) do
     t.text "address"
     t.string "post_code"
     t.string "phone_number"
-    t.boolean "is_deleted"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_end_users_on_email", unique: true
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2019_10_15_044211) do
     t.integer "product_price"
     t.integer "sales_status"
     t.string "product_name"
-    t.boolean "is_deleted"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

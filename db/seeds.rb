@@ -27,7 +27,6 @@ EndUser.create!(
    address: '東京',
    post_code: '1000001',
    phone_number: '08012345678',
-   is_deleted: 'true'
 )
 Artist.create!(
    [
@@ -71,7 +70,6 @@ Product.create!(
             product_price: 1280,
             sales_status: 1,
             product_name: '製品名A',
-            is_deleted: 'true'
         },
         {
             genre_id: 1,
@@ -81,7 +79,6 @@ Product.create!(
             product_price: 3500,
             sales_status: 1,
             product_name: '製品名C',
-            is_deleted: 'true'
         }
     ]
 )

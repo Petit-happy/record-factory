@@ -27,7 +27,7 @@
         <td><%= product.product_price %></td>
         <td><%= product.sales_status %></td>
         <td><%= product.product_name %></td>
-        <td><%= product.is_deleted %></td>
+        <td><%= product.deleted_at %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

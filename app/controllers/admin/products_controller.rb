@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
   PER = 16
   def index
+    redirect_to admin_products_path if params[:keyword] == "" # キーワードが入力されていないとトップページに飛ぶ
     @products = Product.search(params[:search])
     @products = Product.page(params[:page]).reverse_order
   end
