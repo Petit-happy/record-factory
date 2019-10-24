@@ -1,4 +1,4 @@
-class LabelsController < ApplicationController
+class Admin::LabelsController < ApplicationController
   before_action :set_label, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,8 +13,8 @@ class LabelsController < ApplicationController
   def create
     @label = Label.new(label_params)
     if @label.save
-      flash[:notice] = "successfully posted"
-      redirect_to labels_path
+      flash[:notice] = "レーベル名の登録が完了しました"
+      redirect_to admin_labels_path
     else
       render :index
     end
@@ -23,7 +23,7 @@ class LabelsController < ApplicationController
   def destroy
     @label = Label.find(params[:id])
     @label.destroy
-    redirect_to labels_path
+    redirect_to admin_labels_path
   end
 
   private

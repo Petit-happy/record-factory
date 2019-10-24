@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get 'cart_items/order_check'
     get 'cart_items/confirmation'
     get 'products/search'
-    resources :orders
+    resources :orders, only: [:index, :new, :create]
     resources :products, only: [:show] do
       resources :cart_items, only: [:create]
     end
@@ -14,13 +14,17 @@ Rails.application.routes.draw do
     resources :products, only: [:show]
     root to: 'end_users#top'
   end
+  #admin直下にgenre artist labelを入れました
   namespace :admin do
     get 'products/search'
-    resources :orders
+    resources :orders, only: [:show, :edit, :update, :index]
+    resources :genres, only: [:index, :new, :create, :destroy]
+    resources :labels, only: [:index, :new, :create, :destroy]
+    resources :artists, only: [:index, :new, :create, :destroy]
     resources :products do
-      resources :arrivals
+    resources :arrivals, only: [:top, :index, :create, :destroy]
     end
-    resources :end_users
+    resources :end_users, only: [:show, :edit, :update, :destroy, :top, :index]
     root to: 'arrivals#top'
   end
   get 'end_users/show'
@@ -36,13 +40,10 @@ Rails.application.routes.draw do
     passwords:     'end_users/passwords',
     registrations: 'end_users/registrations'
   }
-  # 下の部分もnamespaceにする
+# namespaceの振り分け必要！
   resources :songs
   resources :discs
-  resources :labels
-  resources :artists
   resources :addresses
-  resources :genres
   resources :order_details
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

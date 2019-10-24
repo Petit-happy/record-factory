@@ -1,4 +1,4 @@
-class ArtistsController < ApplicationController
+class Admin::ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -13,8 +13,8 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     if @artist.save
-      flash[:notice] = "successfully posted"
-      redirect_to artists_path
+      flash[:notice] = "アーティスト名の登録が完了しました"
+      redirect_to admin_artists_path
     else
       render :index
     end
@@ -23,7 +23,7 @@ class ArtistsController < ApplicationController
   def destroy
     @artist = Artist.find(params[:id])
     @artist.destroy
-    redirect_to artists_path
+    redirect_to admin_artists_path
   end
 
   private
