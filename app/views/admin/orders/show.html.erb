@@ -1,5 +1,4 @@
 <h2><span class="label label-primary">会員様ご注文内容</span></h2>
-
 <table>
   <tr>
     <th>受注ID : </th>
@@ -8,10 +7,8 @@
     <td><%= @order.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
   </tr>
 </table>
-
 <table>
 <% @details.each do |detail| %>
-
   <tr>
     <th>画像</th>
     <td><%= attachment_image_tag detail.product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %></td>
@@ -50,10 +47,8 @@
   </tr>
 </table>
 <% end %>
-
 <h3><span class="label label-primary">会員様情報</span></h3>
 <table class="" width="100%" height="">
-
     <tr>
       <th>会員様氏名</th>
       <td><%= @order.end_user.family_name_kanji %> <%= @order.end_user.given_name_kanji %></td>
@@ -85,6 +80,7 @@
   </table>
     <%= form_for(@order, url: {controller: "orders", action: "update"}) do |f| %>
     <p>発送ステータス</p>
+    <!-- 下記コードで日本語の状態でプルダウン変更できる -->
     <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
     <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
     <% end %>

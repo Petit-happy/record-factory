@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
   PER = 16
   def index
+    redirect_to admin_products_path if params[:keyword] == "" # キーワードが入力されていないとトップページに飛ぶ
     @products = Product.search(params[:search])
     @products = Product.page(params[:page]).reverse_order
   end
@@ -24,7 +25,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      flash[:notice] = "successfully updated"
+      flash[:notice] = "商品情報の更新が完了しました"
       redirect_to admin_products_path
     else
       render 'edit'

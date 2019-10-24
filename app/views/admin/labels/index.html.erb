@@ -1,6 +1,6 @@
 <h2><span class="label label-info">登録レーベル一覧</span></h2>
 
-<%= form_for(@label) do |f| %>
+<%= form_for(@label, url:admin_labels_path) do |f| %>
 <div class="field">
   <%= f.label :'レーベル名' %><br>
   <%= f.text_field :label_name, autofocus: true %>
@@ -20,7 +20,7 @@
     <% @labels.each do |label| %>
       <tr>
         <td><%= label.label_name %></td>
-        <td><%= link_to 'Destroy', label, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <td><%= link_to 'このレーベルを削除する', admin_label_path(label), method: :delete, data: { confirm: '本当に削除しますか?' }, class:"btn-sm btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

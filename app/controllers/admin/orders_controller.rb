@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  PER = 30
   def index
     @orders = Order.page(params[:page]).reverse_order
   end
@@ -15,7 +16,7 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
-      flash[:notice] = "更新が完了しました"
+      flash[:notice] = "注文ステータスの更新が完了しました"
       redirect_to admin_orders_path
     else
       render 'edit'

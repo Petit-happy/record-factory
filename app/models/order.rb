@@ -1,6 +1,4 @@
 class Order < ApplicationRecord
-
-
     has_many :order_details, dependent: :destroy
     accepts_nested_attributes_for :order_details
     belongs_to :end_user
@@ -30,8 +28,4 @@ class Order < ApplicationRecord
       end
         u
     end
-    # def total
-    #   d_price = 500
-    #   total(d_price)
-    # end
 end

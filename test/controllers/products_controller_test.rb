@@ -17,7 +17,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create product" do
     assert_difference('Product.count') do
-      post products_url, params: { product: { artist_id: @product.artist_id, genre_id: @product.genre_id, is_deleted: @product.is_deleted, label_id: @product.label_id, photo_id: @product.photo_id, product_name: @product.product_name, product_price: @product.product_price, sales_status: @product.sales_status } }
+      post products_url, params: { product: { artist_id: @product.artist_id, genre_id: @product.genre_id, deleted_at: @product.deleted_at, label_id: @product.label_id, photo_id: @product.photo_id, product_name: @product.product_name, product_price: @product.product_price, sales_status: @product.sales_status } }
     end
 
     assert_redirected_to product_url(Product.last)
@@ -34,7 +34,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product" do
-    patch product_url(@product), params: { product: { artist_id: @product.artist_id, genre_id: @product.genre_id, is_deleted: @product.is_deleted, label_id: @product.label_id, photo_id: @product.photo_id, product_name: @product.product_name, product_price: @product.product_price, sales_status: @product.sales_status } }
+    patch product_url(@product), params: { product: { artist_id: @product.artist_id, genre_id: @product.genre_id, deleted_at: @product.deleted_at, label_id: @product.label_id, photo_id: @product.photo_id, product_name: @product.product_name, product_price: @product.product_price, sales_status: @product.sales_status } }
     assert_redirected_to product_url(@product)
   end
 

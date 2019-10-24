@@ -1,5 +1,5 @@
-class GenresController < ApplicationController
-  before_action :set_genre, only: [:show, :edit, :update, :destroy]
+class Admin::GenresController < ApplicationController
+  before_action :set_genre, only: [:destroy]
 
   def index
     @genre = Genre.new
@@ -13,8 +13,8 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      flash[:notice] = "successfully posted"
-      redirect_to genres_path
+      flash[:notice] = "ジャンル名の登録が完了しました"
+      redirect_to admin_genres_path
     else
       render :index
     end
@@ -23,16 +23,14 @@ class GenresController < ApplicationController
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to genres_path
+    redirect_to admin_genres_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_genre
       @genre = Genre.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def genre_params
       params.require(:genre).permit(:genre_name, tags_attributes: [:id, :_destroy])
     end
