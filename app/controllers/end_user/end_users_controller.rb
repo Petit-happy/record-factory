@@ -1,5 +1,8 @@
 class EndUser::EndUsersController < ApplicationController
+  PER = 16
   def top
+    @products = Product.search(params[:search])
+    @products = Product.page(params[:page]).reverse_order
   end
 
   def edit
@@ -27,4 +30,7 @@ class EndUser::EndUsersController < ApplicationController
    def end_user_params
       params.require(:end_user).permit(:family_name_kanji, :given_name_kanji, :family_name_kana, :given_name_kana, :address, :post_code, :email, :password, :phone_number )
    end
+   def product_params
+    params.require(:product).permit(:product_price, :sales_status, :product_name, :photo_id)
+  end
 end

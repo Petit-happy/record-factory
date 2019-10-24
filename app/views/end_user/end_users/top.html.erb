@@ -1,4 +1,25 @@
-<h1>EndUser::EndUsers#top</h1>
-<p>Find me in app/views/end_user/end_users/top.html.erb</p>
-
-<li><%= link_to "logout", destroy_end_user_session_path ,method: :delete %></li>
+<div class="product-index">
+  <h2><span class="label label-info">登録商品一覧</span></h2>
+  <%= form_tag(end_user_root_path, :method => 'get' ) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag '商品を検索する', :product_name => nil %>
+  <% end %>
+  <table>
+    <% @products.each do |product| %>
+    <tr>
+      <td>
+        <%= link_to admin_product_path(product) do %>
+        <%= attachment_image_tag product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= link_to product.product_name, admin_product_path(product) %></td>
+    </tr>
+    <tr>
+      <td><%= product.product_price.to_s(:currency, locale: :ja) %></td>
+    </tr>
+    <% end %>
+  </table>
+        <%= paginate @products %>
+</div>
