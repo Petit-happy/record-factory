@@ -8,13 +8,13 @@
     <% @products.each do |product| %>
     <tr>
       <td>
-        <%= link_to admin_product_path(product) do %>
+        <%= link_to end_user_product_path(product) do %>
         <%= attachment_image_tag product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
         <% end %>
       </td>
     </tr>
     <tr>
-      <td><%= link_to product.product_name, admin_product_path(product) %></td>
+      <td><%= link_to product.product_name, end_user_product_path(product) %></td>
     </tr>
     <tr>
       <td><%= product.product_price.to_s(:currency, locale: :ja) %></td>

@@ -1,6 +1,7 @@
 class EndUser::EndUsersController < ApplicationController
   PER = 16
   def top
+    redirect_to end_user_root_path if params[:keyword] == "" # キーワードが入力されていないとトップページに飛ぶ
     @products = Product.search(params[:search])
     @products = Product.page(params[:page]).reverse_order
   end
@@ -22,6 +23,9 @@ class EndUser::EndUsersController < ApplicationController
       else
         render 'edit'
       end
+  end
+
+  def leave
   end
 
   def destroy
