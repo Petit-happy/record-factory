@@ -1,3 +1,17 @@
 <h1>購入確定画面</h1>
 
+<div>購入情報掲載（小計等）</div>
 
+<div>支払い方法</div>
+<%= @payment %>
+<div>配送先名</div>
+<%= @delivery.delivery_name %>
+<div>配送先郵便番号</div>
+<%= @delivery.delivery_post_code %>
+<div>配送先住所</div>
+<%= @delivery.delivery_address %>
+
+<%= form_for @order, url:end_user_orders_path do |f| %>
+
+  <%= f.submit "確定" %>
+<% end %>
