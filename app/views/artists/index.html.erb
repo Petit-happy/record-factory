@@ -19,7 +19,7 @@
     <% @artists.each do |artist| %>
       <tr>
         <td><%= artist.artist_name %></td>
-        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <td><%= link_to 'このアーティストを削除する', artist, method: :delete, data: { confirm: '本当に削除しますか?' }, class:"btn-sm btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

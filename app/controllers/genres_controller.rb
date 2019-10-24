@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  before_action :set_genre, only: [:show, :edit, :update, :destroy]
+  before_action :set_genre, only: [:destroy]
 
   def index
     @genre = Genre.new
@@ -27,12 +27,10 @@ class GenresController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_genre
       @genre = Genre.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def genre_params
       params.require(:genre).permit(:genre_name, tags_attributes: [:id, :_destroy])
     end

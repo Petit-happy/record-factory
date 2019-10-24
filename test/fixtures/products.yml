@@ -8,7 +8,6 @@ one:
   product_price: 1
   sales_status: 1
   product_name: MyString
-  is_deleted: false
 
 two:
   genre_id: 1
@@ -18,4 +17,3 @@ two:
   product_price: 1
   sales_status: 1
   product_name: MyString
-  is_deleted: false

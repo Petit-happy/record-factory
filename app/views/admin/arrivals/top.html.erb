@@ -12,7 +12,7 @@
             <td><%= arrival.product.product_name %></td>
             <td><%= arrival.arrival_sum %></td>
             <!--ネストさせている場合はプロダクトidとアライバルidを指定-->
-            <td><%= arrival.arrived_at.strftime("%Y年%m月%d日 %H時") %>頃</td>
+            <td><%= arrival.arrived_at.strftime('%Y/%m/%d') %>予定</td>
             <td><%= link_to "入荷情報を削除する", admin_product_arrival_path(arrival.product_id,arrival.id), method: :delete, class:"btn-sm btn-danger" %></td>
         </tr>
 <% end %>

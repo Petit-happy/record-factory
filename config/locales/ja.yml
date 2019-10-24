@@ -1,7 +1,7 @@
-ja:
-  enums:
-    order:
-      order_status:
+ja: #日本語
+  enums: #enumerate
+    order: #モデル
+      order_status: #カラム
         accept: "受付中"
         prepare: "出荷準備中"
         delivery: "出荷済み"
