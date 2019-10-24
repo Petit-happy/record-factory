@@ -43,8 +43,13 @@
       <td><%= @order.order_total_unit %></td>
     </tr>
     <tr>
+<<<<<<< HEAD
       <th>ステータス</th>
       <td><%= detail.product.sales_status_i18n %></td>
+=======
+      <th>合計</th>
+      <td><%= @order.total_price_method.round.to_s(:delimited, delimiter: ',') %>円</td>
+>>>>>>> master
     </tr>
   </table>
   <% end %>

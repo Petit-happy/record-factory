@@ -1,55 +1,44 @@
 <p id="notice"><%= notice %></p>
+<div class = "container">
+<div class = "row">
+<h2><span class="label label-success">登録商品詳細</span></h2>
 
-<p>
-  <%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-</p>
-
-<p>
-  <strong>商品名:</strong>
-  <%= @product.product_name %>
-</p>
-<p>
-  <strong>アーティスト名:</strong>
-  <%= @product.artist.artist_name %>
-</p>
-<p>
-  <strong>価格（税抜）:</strong>
-  <%= @product.product_price %>
-</p>
-<p>
-  <strong>ジャンル名:</strong>
- <%= @product.genre.genre_name %>
-
-</p>
-
-<p>
-  <strong>レーベル名:</strong>
-  <%= @product.label.label_name %>
-</p>
-
-<p>
-  <strong>在庫数:</strong>
-  <%= @product.stock %>
-<p>
-  <strong>ステータス（販売中・販売停止中）:</strong>
-  <%= @product.sales_status %>
-</p>
-
+<p>ジャンル名:<%= @product.genre.genre_name %></p>
+<p>レーベル名:<%= @product.label.label_name %></p>
+<p>アーティスト名:<%= @product.artist.artist_name %></p>
+<p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+<p>商品価格:<%= @product.product_price.to_s(:currency, locale: :ja) %></p>
+<p>商品ステータス:<%= @product.sales_status_i18n %></p>
+<p>商品名:<%= @product.product_name %></p>
+<p>在庫数:<%= @product.stock %><p>
   <% @product.deleted_at %>
-
-<p>
+</div>
+<div class = "row">
   <div>収録内容</div>
+<% @disc.each do |disc| %>
+  <p>DISC NO. <%= disc.disc_no %></p>
+    <% @songs.each do |song| %>
+    <p>NO. <%= song.song_no %></p>
+    <%= song.song_name %>
+    <% end %>
+<% end %>
+</div>
 
-  <strong>Is deleted:</strong>
-  <%= @product.deleted_at %>
-</p>
+
 <!--idをもった情報を更新するため、@product(id)情報が必要-->
           <div class="">
 					  <%= form_for([:end_user, @product, @cart_item]) do |f| %>
               個数:
 						  <%= f.select :cart_sum, [["1点", 1],["2点", 2]], class:"btn btn-primary form-control mt-5 col-sm-12" %>
-          <%= f.submit "cartに入れる" %>
+          <%= f.submit "cartに入れる",class:"btn-sm btn-primary" %>
           </div>
           <% end %>
+<div crass = row >
+<%= link_to '商品一覧へ戻る', end_user_root_path, class:"btn-sm btn-success" %>
+</div>
+ 論理削除
+ <strong>Is deleted:</strong>
+  <%= @product.deleted_at %>
+</p>
 
-<%= link_to 'トップへ', end_user_root_path %>
+</div>

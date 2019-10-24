@@ -1,5 +1,9 @@
 class EndUser::EndUsersController < ApplicationController
+  PER = 16
   def top
+    redirect_to end_user_root_path if params[:keyword] == "" # キーワードが入力されていないとトップページに飛ぶ
+    @products = Product.search(params[:search])
+    @products = Product.page(params[:page]).reverse_order
   end
 
   def edit
@@ -21,10 +25,16 @@ class EndUser::EndUsersController < ApplicationController
       end
   end
 
+  def leave
+  end
+
   def destroy
   end
   private
    def end_user_params
       params.require(:end_user).permit(:family_name_kanji, :given_name_kanji, :family_name_kana, :given_name_kana, :address, :post_code, :email, :password, :phone_number )
    end
+   def product_params
+    params.require(:product).permit(:product_price, :sales_status, :product_name, :photo_id)
+  end
 end

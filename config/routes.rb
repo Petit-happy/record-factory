@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :destroy, :edit, :new]
     # current_userが持っているcartの一括削除
     delete 'cart_items' => 'cart_items#destroy_all', as: 'd_all_cart_item'
-    resources :end_users, only: [:show, :edit, :update, :destroy]
+    resources :end_users, only: [:edit, :update, :destroy]
+    resources :end_users, only: [:show] do
+      get 'end_users/leave'
+    end
     resources :products, only: [:show]
     root to: 'end_users#top'
   end

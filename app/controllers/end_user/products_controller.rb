@@ -2,6 +2,8 @@ class EndUser::ProductsController < ApplicationController
   before_action :authenticate_end_user!
   def show
     @product = Product.find(params[:id])
+    @disc = @product.discs
+    @songs = Song.all
     @cart_item = CartItem.new
     # binding.pry
   end
