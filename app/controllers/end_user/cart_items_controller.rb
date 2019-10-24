@@ -61,6 +61,4 @@ class EndUser::CartItemsController < ApplicationController
     def cart_item_params
       params.require(:cart_item).permit(:end_user_id, :product_id, :cart_sum)
     end
-    
-    
 end
