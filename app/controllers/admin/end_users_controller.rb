@@ -1,4 +1,5 @@
 class Admin::EndUsersController < ApplicationController
+  PER = 30
   def top
     @arrivals = Arrival.all
   end

@@ -20,7 +20,7 @@
     <% @labels.each do |label| %>
       <tr>
         <td><%= label.label_name %></td>
-        <td><%= link_to 'Destroy', label, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <td><%= link_to 'このレーベルを削除する', label, method: :delete, data: { confirm: '本当に削除しますか?' }, class:"btn-sm btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

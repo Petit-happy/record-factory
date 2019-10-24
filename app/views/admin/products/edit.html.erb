@@ -16,11 +16,11 @@
 <%= form_for ([:admin, @product]) do |f| %>
 <div class="field">
   <%= f.label :'商品価格' %>
-  <%= f.text_field :product_price %>
+  <%= f.text_field :product_price, autofocus: true  %>
 </div>
 <div class="field">
   <%= f.label :'商品名' %>
-  <%= f.text_field :product_name %>
+  <%= f.text_field :product_name, autofocus: true  %>
 </div>
 <div class="field">
   <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]} %>

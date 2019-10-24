@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     passwords:     'end_users/passwords',
     registrations: 'end_users/registrations'
   }
+  # 下の部分もnamespaceにする
   resources :songs
   resources :discs
   resources :labels
