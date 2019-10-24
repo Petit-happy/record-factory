@@ -1,9 +1,17 @@
 class Admin::ProductsController < ApplicationController
   PER = 16
   def index
-    redirect_to admin_products_path if params[:keyword] == "" # キーワードが入力されていないとトップページに飛ぶ
-    @products = Product.search(params[:search])
-    @products = Product.page(params[:page]).reverse_order
+    unless params[:search].blank?
+      @products = Product.left_joins(:artist).left_joins(discs: :songs).where("(artists.artist_name LIKE ?) or (songs.song_name LIKE ?) or (products.product_name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).distinct
+
+#      artist = Product.joins(:artist).where("artist_name LIKE ?", "%#{params[:search]}%")
+#      song =  Product.joins(discs: :songs).where("song_name LIKE ?", "%#{params[:search]}%")
+#      title = Product.where("product_name LIKE ?", "%#{params[:search]}%")
+#      merged_result = artist | title
+#      @products = merged_result | song
+    else
+      @products = Product.all.page(params[:page])
+    end
   end
 
   def show
