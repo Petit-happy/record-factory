@@ -12,12 +12,6 @@ class Admin::ArrivalsController < ApplicationController
     @products = Product.all
   end
 
-  # GET /arrivals/1
-  # GET /arrivals/1.json
-  def show
-  end
-
-  # GET /arrivals/new
   def new
     @product = Product.find(params[:product_id])
     @arrival = Arrival.new
@@ -27,9 +21,13 @@ class Admin::ArrivalsController < ApplicationController
     @arrival = Arrival.new(arrival_params)
     @p = Product.find(params[:product_id])
     @arrival.product_id = @p.id #アライバルが持っているプロダクトid
-    @arrival.save
-    #binding.pry
-    redirect_to admin_root_path
+    if @arrival.save
+      flash[:notice] = "新規入荷情報の登録が完了しました"
+      #binding.pry
+      redirect_to admin_root_path
+    else
+      render 'new'
+    end
   end
 
   def destroy

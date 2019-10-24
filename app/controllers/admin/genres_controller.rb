@@ -1,4 +1,4 @@
-class GenresController < ApplicationController
+class Admin::GenresController < ApplicationController
   before_action :set_genre, only: [:destroy]
 
   def index
@@ -13,8 +13,8 @@ class GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      flash[:notice] = "successfully posted"
-      redirect_to genres_path
+      flash[:notice] = "ジャンル名の登録が完了しました"
+      redirect_to admin_genres_path
     else
       render :index
     end
@@ -23,7 +23,7 @@ class GenresController < ApplicationController
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to genres_path
+    redirect_to admin_genres_path
   end
 
   private
