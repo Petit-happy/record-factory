@@ -1,26 +1,28 @@
-<h2><span class="label label-info">登録アーティスト一覧</span></h2>
+<div class="container">
+  <h2><span class="label label-info">登録アーティスト一覧</span></h2>
 
-<%= form_for(@artist, url:admin_artists_path) do |f| %>
-<div class="field">
-  <%= f.label :'アーティスト名'%><br>
-  <%= f.text_field :artist_name, autofocus: true %>
-</div>
-<%= f.submit '新規アーティスト名を登録する', class:"btn btn-primary" %>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>アーティスト名</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @artists.each do |artist| %>
+  <%= form_for(@artist, url:admin_artists_path) do |f| %>
+  <div class="field">
+    <%= f.label :'アーティスト名'%><br>
+    <%= f.text_field :artist_name, autofocus: true %>
+  </div>
+  <%= f.submit '新規アーティスト名を登録する', class:"btn btn-primary" %>
+  <% end %>
+  <table>
+    <thead>
       <tr>
-        <td><%= artist.artist_name %></td>
-        <td><%= link_to 'このアーティストを削除する', admin_artist_path(artist), method: :delete, data: { confirm: '本当に削除しますか?' }, class:"btn-sm btn-danger" %></td>
+        <th>アーティスト名</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @artists.each do |artist| %>
+        <tr>
+          <td><%= artist.artist_name %></td>
+          <td><%= link_to 'このアーティストを削除する', admin_artist_path(artist), method: :delete, data: { confirm: '本当に削除しますか?' }, class:"btn-sm btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

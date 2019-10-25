@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   namespace :end_user do
     get 'cart_items/order_check'
     get 'cart_items/confirmation'
-    get 'products/search'
     resources :orders, only: [:index, :new, :create]
     resources :products, only: [:show] do
       resources :cart_items, only: [:create]
@@ -10,19 +9,21 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :destroy, :edit, :new]
     # current_userが持っているcartの一括削除
     delete 'cart_items' => 'cart_items#destroy_all', as: 'd_all_cart_item'
-    resources :end_users, only: [:show, :edit, :update, :destroy]
+    resources :end_users, only: [:edit, :update, :destroy]
+    resources :end_users, only: [:show] do
+      get 'end_users/leave'
+    end
     resources :products, only: [:show]
     root to: 'end_users#top'
   end
   #admin直下にgenre artist labelを入れました
   namespace :admin do
-    get 'products/search'
     resources :orders, only: [:show, :edit, :update, :index]
     resources :genres, only: [:index, :new, :create, :destroy]
     resources :labels, only: [:index, :new, :create, :destroy]
     resources :artists, only: [:index, :new, :create, :destroy]
     resources :products do
-    resources :arrivals, only: [:top, :index, :create, :destroy]
+    resources :arrivals, only: [:top, :index, :create, :destroy, :new]
     end
     resources :end_users, only: [:show, :edit, :update, :destroy, :top, :index]
     root to: 'arrivals#top'

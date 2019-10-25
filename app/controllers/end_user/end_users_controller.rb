@@ -1,5 +1,11 @@
 class EndUser::EndUsersController < ApplicationController
+  PER = 16
   def top
+    unless params[:search].blank?
+      @products = Product.left_joins(:artist).left_joins(discs: :songs).where("(artists.artist_name LIKE ?) or (songs.song_name LIKE ?) or (products.product_name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).distinct
+    else
+      @products = Product.all.page(params[:page])
+    end
   end
 
   def edit
@@ -21,10 +27,16 @@ class EndUser::EndUsersController < ApplicationController
       end
   end
 
+  def leave
+  end
+
   def destroy
   end
   private
    def end_user_params
       params.require(:end_user).permit(:family_name_kanji, :given_name_kanji, :family_name_kana, :given_name_kana, :address, :post_code, :email, :password, :phone_number )
    end
+   def product_params
+    params.require(:product).permit(:product_price, :sales_status, :product_name, :photo_id)
+  end
 end
