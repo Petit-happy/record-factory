@@ -1,10 +1,15 @@
-<div class="product-index">
+<div class="container">
   <h2><span class="label label-info">登録商品一覧</span></h2>
+
+  <% unless @products.present? %>
+  <h2>検索結果がありません</h2>
+  <% end %>
+
   <%= form_tag(end_user_root_path, :method => 'get' ) do %>
   <%= text_field_tag :search %>
   <%= submit_tag '商品を検索する', :product_name => nil %>
   <% end %>
-  <table>
+  <table class="" border="0" width="100%" height="50" cellspacing="15">
     <% @products.each do |product| %>
     <tr>
       <td>

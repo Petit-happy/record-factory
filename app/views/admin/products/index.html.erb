@@ -1,15 +1,15 @@
-<div class="container">
-  <h2><span class="label label-info">登録商品一覧</span></h2>
-  <% unless @products.present? %>
-  <h2>検索結果がありません</h2>
-  <% end %>
+  <div class="container">
+    <h2><span class="label label-info">登録商品一覧</span></h2>
+    <% unless @products.present? %>
+    <h2>検索結果がありません</h2>
+    <% end %>
 
-  <%= form_tag(admin_products_path, :method => 'get' ) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag '商品名で検索する', :product_name => nil, class:"btn-sm btn-primary" %>
-  <% end %>
+    <%= form_tag(admin_products_path, :method => 'get' ) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag '商品名で検索する', :product_name => nil, class:"btn-sm btn-primary" %>
+    <% end %>
 
-  <%= link_to '新規商品を登録する', new_admin_product_path, class:"btn-sm btn-success"  %>
+    <%= link_to '新規商品を登録する', new_admin_product_path, class:"btn-sm btn-success"  %>
 
   <div class="pdflex">
     <% @products.each do |product| %>
@@ -20,5 +20,3 @@
     <div class="flex item3"><%= product.product_price.to_s(:currency, locale: :ja) %></div>
     <% end %>
   </div>
-        <%= paginate @products %>
-</div>
