@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
 #      merged_result = artist | title
 #      @products = merged_result | song
     else
-      @products = Product.all.page(params[:page])
+      @products = Product.with_deleted.all.page(params[:page])
     end
   end
 
@@ -54,7 +54,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @product = Product.new(product_params)
     #=====アーティストidをプロダクトに入れる======
       artists = Artist.all

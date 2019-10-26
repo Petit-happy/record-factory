@@ -4,7 +4,7 @@
   <p>ジャンル名:<%= @product.genre.genre_name %></p>
   <p>レーベル名:<%= @product.label.label_name %></p>
   <p>アーティスト名:<%= @product.artist.artist_name %></p>
-  <p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+  <p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 150, 150, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'150x150' %></p>
   <p>商品価格:<%= @product.product_price.to_s(:currency, locale: :ja) %></p>
   <p>商品ステータス:<%= @product.sales_status_i18n %></p>
   <p>商品名:<%= @product.product_name %></p>
