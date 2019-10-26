@@ -9,15 +9,14 @@
   <p>商品ステータス:<%= @product.sales_status_i18n %></p>
   <p>商品名:<%= @product.product_name %></p>
 
-  <% @disc.each do |disc| %>
-    <p>DISC NO. <%= disc.disc_no %></p>
-      <% @songs.each do |song| %>
-      <p>NO. <%= song.song_no %></p>
-      <%= song.song_name %>
-      <% end %>
-  <% end %>
-  <br>
-  <%= link_to '商品一覧に戻る', admin_products_path, class:"btn-sm btn-success" %>
-  <%= link_to '入荷情報を編集する', new_admin_product_arrival_path(@product), class:"btn-sm btn-primary" %>
-  <%= link_to '商品情報を編集する', edit_admin_product_path(@product), class:"btn-sm btn-info" %>
-</div>
+<% @discs.each do |disc| %>
+  <p>DISC NO. <%= disc.disc_no %></p>
+    <% disc.songs.each do |song| %>
+    <p>SONG NO. <%= song.song_no %>
+    <%= song.song_name %></p>
+    <% end %>
+<% end %>
+<br>
+<%= link_to '商品一覧に戻る', admin_products_path, class:"btn-sm btn-success" %>
+<%= link_to '入荷情報を編集する', new_admin_product_arrival_path(@product), class:"btn-sm btn-primary" %>
+<%= link_to '商品情報を編集する', edit_admin_product_path(@product), class:"btn-sm btn-info" %>
