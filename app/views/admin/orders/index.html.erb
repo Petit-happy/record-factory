@@ -9,7 +9,7 @@
                     <th>氏名</th>
                 </tr>
                 <tr>
-                    <td class="click"><%= link_to order.id, admin_order_path(order) %></td>
+                    <td class="click">NO. <%= link_to order.id, admin_order_path(order) %></td>
                     <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
                     <td><%= order.end_user.family_name_kanji %><%= order.end_user.given_name_kanji %></td>
                 </tr>

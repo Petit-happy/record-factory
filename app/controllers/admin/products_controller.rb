@@ -54,7 +54,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @product = Product.new(product_params)
       artists = Artist.all
       hash = artist_params

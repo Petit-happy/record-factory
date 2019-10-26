@@ -16,6 +16,7 @@ class Admin::LabelsController < ApplicationController
       flash[:notice] = "レーベル名の登録が完了しました"
       redirect_to admin_labels_path
     else
+      @labels = Label.all
       render :index
     end
   end
