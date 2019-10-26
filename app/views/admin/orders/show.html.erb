@@ -8,46 +8,32 @@
       <td><%= @order.created_at.strftime("%Y年%m月%d日 %H時") %></td>
     </tr>
   </table>
-  <table>
+  <table width="100%">
   <% @details.each do |detail| %>
     <tr>
-      <th>画像</th>
-      <td><%= attachment_image_tag detail.product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %></td>
-    </tr>
-    <tr>
+      <th>ジャケット画像</th>
       <th>商品名</th>
-      <td><%= detail.product.product_name %></td>
-    </tr>
-    <tr>
       <th>アーティスト名</th>
-      <td><%= detail.product.artist.artist_name %></td>
-    </tr>
-    <tr>
       <th>価格(税別)</th>
-      <td><%= detail.product.product_price.to_s(:delimited, delimiter: ',') %>円</td>
-    </tr>
-    <tr>
       <th>ジャンル</th>
-      <td><%= detail.product.genre.genre_name %></td>
-    </tr>
-    <tr>
       <th>レーベル名</th>
-      <td><%= detail.product.label.label_name %></td>
-    </tr>
-    <tr>
       <th>在庫数</th>
-      <td><%= detail.product.stock %></td>
-    </tr>
-    <tr>
       <th>購入個数</th>
-      <td><%= @order.order_total_unit %></td>
+      <th>ステータス</th>
     </tr>
     <tr>
-      <th>ステータス</th>
+      <td><%= attachment_image_tag detail.product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %></td>
+      <td><%= detail.product.product_name %></td>
+      <td><%= detail.product.artist.artist_name %></td>
+      <td><%= detail.product.product_price.to_s(:delimited, delimiter: ',') %>円</td>
+      <td><%= detail.product.genre.genre_name %></td>
+      <td><%= detail.product.label.label_name %></td>
+      <td><%= detail.product.stock %></td>
+      <td><%= @order.order_total_unit %></td>
       <td><%= detail.product.sales_status_i18n %></td>
     </tr>
+      <% end %>
   </table>
-  <% end %>
   <h3><span class="label label-primary">会員様情報</span></h3>
   <table class="" width="100%" height="">
       <tr>

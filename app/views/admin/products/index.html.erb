@@ -14,7 +14,7 @@
   <div class="pdflex">
     <% @products.each do |product| %>
         <%= link_to admin_product_path(product) do %>
-        <div class="flex item1"><%= attachment_image_tag product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %></div>
+        <div class="flex item1"><%= attachment_image_tag product, :photo, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg", size:'150x150' %></div>
         <% end %>
       <div class="flex item2"><%= link_to product.product_name, admin_product_path(product) %></div>
     <div class="flex item3"><%= product.product_price.to_s(:currency, locale: :ja) %></div>
