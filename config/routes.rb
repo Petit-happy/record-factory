@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :end_user do
     get 'cart_items/order_check'
     get 'cart_items/confirmation'
-    get 'products/search'
+    get 'cart_items/fix'
     resources :orders, only: [:index, :new, :create]
     resources :products, only: [:show] do
       resources :cart_items, only: [:create]
@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     root to: 'end_users#top'
   end
   namespace :admin do
-    get 'products/search'
     resources :orders, only: [:show, :edit, :update, :index]
     resources :genres, only: [:index, :new, :create, :destroy]
     resources :labels, only: [:index, :new, :create, :destroy]
