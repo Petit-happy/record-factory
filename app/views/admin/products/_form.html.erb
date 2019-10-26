@@ -1,0 +1,10 @@
+
+  <h3>Disc</h3>
+  <div id="discs">
+    <%= f.fields_for :discs do |disc| %>
+      <%= render 'disc_fields', f: disc %>
+    <% end %>
+    <div id="links">
+      <%= link_to_add_association 'disc追加',f, :discs %>
+    </div>
+  </div>

@@ -1,28 +1,29 @@
 class EndUser::OrdersController < ApplicationController
   def create
     #binding.pry
-    @order = Order.new(order_params)
-    @address = params[:address_id]
+    @order = Order.new(order_status: :accept)
+    #binding.pry
+    @address = params[:order][:address_id]
     @delivery = Address.find(@address)
-
+    @cart_items = current_end_user.cart_items
+    
     # @order.order_details.build
-    current_end_user.carts.each do |cart|
-      orderdetail = OrderDetail.new
-      orderdetail.order_id = @order.id
-      orderdetail.unit = cart.cart_sum
-      orderdetail.product_id = cart.product_id
-      orderdetail.price = cart.product.price
+    @cart_items.each do |cart|
+      order_detail = OrderDetail.new
+      order_detail.order_id = @order.id
+      order_detail.unit = cart.cart_sum
+      order_detail.product_id = cart.product_id
+      order_detail.price = cart.product.product_price
       order_detail.save
       cart.destroy
     end
+    @order.end_user_id = current_end_user.id
     @order.delivery_cost = Order.find(1).delivery_cost
-    @order.total_price = Order.total_price_method
-    @order.status = 0
-    @order.post_code = @delivery.delivery_post_code
-    @order.address = @delivery.delivery_address
-
+    @order.total_price = CartItem.total_cart_price(@cart_items)
+    # @order.status = 0
+    @order.order_post_code = @delivery.delivery_post_code
+    @order.order_address = @delivery.delivery_address
     @order.save
-    #binding.pry
     redirect_to end_user_root_path
   end
 
@@ -36,8 +37,6 @@ class EndUser::OrdersController < ApplicationController
   end
 
 end
-
-
 def order_params
   params.require(:order).permit(
     :delivery_cost,
