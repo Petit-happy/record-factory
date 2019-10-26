@@ -73,6 +73,9 @@ class EndUser::CartItemsController < ApplicationController
     end
   end
 
+  def fix
+  end
+
 private
     def set_cart_item
       @cart_item = CartItem.find(params[:id])

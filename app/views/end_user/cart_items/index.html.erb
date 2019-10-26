@@ -21,8 +21,8 @@
   <tbody>
     <% @cart_items.each do |cart_item| %>
       <tr>
-        <%= link_to end_user_product_path(product) do %>
-        <td><%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
+        <%= link_to end_user_product_path(@products) do %>
+        <td><%= attachment_image_tag cart_item.product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
         <% end %>
         <td><%= cart_item.end_user.family_name_kanji %>　<%= cart_item.end_user.given_name_kanji %>　　</td>
         <td><%= cart_item.product.product_name %>　　</td>
