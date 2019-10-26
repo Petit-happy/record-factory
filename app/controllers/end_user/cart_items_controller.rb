@@ -60,6 +60,7 @@ class EndUser::CartItemsController < ApplicationController
   end
   def confirmation
     @order = Order.new
+    @cart_items = current_end_user.cart_items
     @address = params[:address_id]
     @delivery = Address.find(@address)
     @method_of_payment = params[:method_of_payment]

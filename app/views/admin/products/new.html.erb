@@ -1,4 +1,42 @@
-<div class="container">
-  <h1>Admin::Products#new</h1>
-  <p>Find me in app/views/admin/products/new.html.erb</p>
-</div>
+<p>新規商品</p>
+
+
+<%= form_for @product , url: admin_products_path do |form| %>
+
+<%= form.attachment_field :photo, placeholder: "画像" %>
+<br>
+    商品名（シングル・アルバム名）
+    <%= form.text_field :product_name %>
+<br>
+    アーティスト名
+    <%= autocomplete_field_tag 'artist[name]', nil ,  autocomplete_artist_artist_name_admin_products_path %>
+<br>
+    価格（税別）
+    <%= form.text_field :product_price %>
+<br>
+
+    ジャンル
+    <%= form.select :genre_id, options_for_select(@genres_for_options) %>
+<br>
+    ステータス
+    <%= form.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]} %>
+<br>
+    レーベル
+    <%= form.select :label_id, options_for_select(@labels_for_options) %>
+<br>
+    <%= render 'form', f: form %>
+    <%= form.submit %>
+<% end %>
+<%= link_to 'Back', new_admin_product_path %>
+
+
+
+
+
+
+
+
+
+
+
+

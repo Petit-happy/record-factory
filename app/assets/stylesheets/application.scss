@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */
@@ -23,6 +24,7 @@
     'Times New Roman OS',
     'sans-serif',
     'Noto Serif JP';
+  color: #FFFFFF;
 }
 
 .clearfix::after {
@@ -35,6 +37,25 @@ header {
  background-color: #650000;
  width: 100%;
  -webkit-text-stroke: 1px #000000;
+ 	text-shadow:1px 1px 0 #CB6500;
+}
+.field {
+  color: #000000;
+}
+
+.bg {
+    background-image: url(record.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    opacity: 0.5;
+}
+// 背景透過
+.bgmask {
+  height: 100%;
+  background-color:rgba(204, 204, 204, 0.1);
+  z-index:0;
+  overflow: hidden;
 }
 
 body , html {
@@ -47,6 +68,8 @@ body , html {
   height: 100%;
   min-height: 100%;
   text-align: center;
+  font-size: 16px;
+  margin: 0 auto;
 }
 // フッターが入らないので下に100px余白を用意
 .footer_m {
@@ -131,6 +154,18 @@ footer .container {
 .copyright{
   text-align: center;
 }
+
+.pdflex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex {
+  display: block;
+}
+
 /*ドロワー*/
 .l-drawer {
   position: relative;

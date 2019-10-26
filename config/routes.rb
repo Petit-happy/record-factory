@@ -16,15 +16,16 @@ Rails.application.routes.draw do
     resources :products, only: [:show]
     root to: 'end_users#top'
   end
-  #admin直下にgenre artist labelを入れました
   namespace :admin do
     resources :orders, only: [:show, :edit, :update, :index]
     resources :genres, only: [:index, :new, :create, :destroy]
     resources :labels, only: [:index, :new, :create, :destroy]
     resources :artists, only: [:index, :new, :create, :destroy]
     resources :products do
-    resources :arrivals, only: [:top, :index, :create, :destroy, :new]
+      resources :arrivals, only: [:top, :index, :create, :destroy, :new]
+      get :autocomplete_artist_artist_name, on: :collection # 追加
     end
+
     resources :end_users, only: [:show, :edit, :update, :destroy, :top, :index]
     root to: 'arrivals#top'
   end
