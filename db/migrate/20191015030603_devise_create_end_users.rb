@@ -40,7 +40,7 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       # t.string :email
       # t.string :passwords
       t.string :phone_number
-      t.boolean :is_deleted
+      t.datetime :deleted_at
       t.timestamps null: false
     end
 

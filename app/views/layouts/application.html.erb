@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  <div class="cont">
+  <div class="">
 
  <% if admin_user_signed_in? %>
 
@@ -24,7 +24,11 @@
 <%= render 'shared/before_sign_in_header' %>
 
 <% end %>
-
+ <% if flash[:notice] %>
+ <div class="">
+   <%= flash[:notice] %>
+ </div>
+ <% end %>
   <div class="footer_m">
     <%= yield %>
   </div>

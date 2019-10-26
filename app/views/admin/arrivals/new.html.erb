@@ -1,34 +1,37 @@
-<h2><span class="label label-success">入荷情報編集</span></h2>
+<div class="container">
+  <%= render 'shared/error', model: @arrival %>
 
-<%= attachment_image_tag @product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
-<table border="1">
-<tr>
-  <th>商品名:</th>
-  <td><%= @product.product_name %></td>
-</tr>
-<tr>
-  <th>アーティスト名:</th>
-  <td><%= @product.artist.artist_name %></td>
-</tr>
-<tr>
-  <th>価格(税込み):</th>
-  <td><%= @product.product_price %></td>
-</tr>
-<tr>
-<th>ジャンル:</th>
-<td><%= @product.genre.genre_name %></td>
-</tr>
-<tr>
-<th>レーベル:</th>
-<td><%= @product.label.label_name %></td>
-</tr>
-</table>
-<!--idをもった情報を更新するため、@product(id)情報が必要-->
-<%= form_for([:admin, @product, @arrival]) do |f| %>
-  個数:
-  <%= f.text_field :arrival_sum %><!--入荷個数の入力-->
-入荷日:
-  <%= f.date_field :arrived_at %><!--入荷日の入力-->
-  <%= f.submit '入荷情報を確定する' %>
-<% end %>
+  <h2><span class="label label-success">入荷情報編集</span></h2>
 
+  <%= attachment_image_tag @product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
+  <table border="1">
+  <tr>
+    <th>商品名:</th>
+    <td><%= @product.product_name %></td>
+  </tr>
+  <tr>
+    <th>アーティスト名:</th>
+    <td><%= @product.artist.artist_name %></td>
+  </tr>
+  <tr>
+    <th>価格(税込み):</th>
+    <td><%= @product.product_price %></td>
+  </tr>
+  <tr>
+  <th>ジャンル:</th>
+  <td><%= @product.genre.genre_name %></td>
+  </tr>
+  <tr>
+  <th>レーベル:</th>
+  <td><%= @product.label.label_name %></td>
+  </tr>
+  </table>
+  <!--idをもった情報を更新するため、@product(id)情報が必要-->
+  <%= form_for([:admin, @product, @arrival]) do |f| %>
+    個数:
+    <%= f.text_field :arrival_sum %><!--入荷個数の入力-->
+  入荷日:
+    <%= f.date_field :arrived_at %><!--入荷日の入力-->
+    <%= f.submit '入荷情報を確定する', class:"btn-sm btn-success" %>
+  <% end %>
+</div>

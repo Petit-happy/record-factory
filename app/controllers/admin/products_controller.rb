@@ -1,8 +1,17 @@
 class Admin::ProductsController < ApplicationController
   PER = 16
   def index
-    @products = Product.search(params[:search])
-    @products = Product.page(params[:page]).reverse_order
+    unless params[:search].blank?
+      @products = Product.left_joins(:artist).left_joins(discs: :songs).where("(artists.artist_name LIKE ?) or (songs.song_name LIKE ?) or (products.product_name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).distinct
+
+#      artist = Product.joins(:artist).where("artist_name LIKE ?", "%#{params[:search]}%")
+#      song =  Product.joins(discs: :songs).where("song_name LIKE ?", "%#{params[:search]}%")
+#      title = Product.where("product_name LIKE ?", "%#{params[:search]}%")
+#      merged_result = artist | title
+#      @products = merged_result | song
+    else
+      @products = Product.all.page(params[:page])
+    end
   end
 
   def show
@@ -37,7 +46,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      flash[:notice] = "successfully updated"
+      flash[:notice] = "商品情報の更新が完了しました"
       redirect_to admin_products_path
     else
       render 'edit'

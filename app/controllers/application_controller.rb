@@ -22,9 +22,15 @@ class ApplicationController < ActionController::Base
       end
     end
 #sign outした後に飛ぶページ
-#sign outするとエンドユーザートップに飛びます（admin含)
+#デバイスのモデル名はハッシュで
       def after_sign_out_path_for(resource)
-        end_user_root_path
+      # end_user_root_path
+        case resource
+        when :end_user
+          end_user_root_path
+        when :admin_user
+          new_admin_user_session_path
+        end
       end
 
 
@@ -34,7 +40,4 @@ class ApplicationController < ActionController::Base
       # 第 3 引数 => オプション full: true (任意)
       autocomplete :artist, :artist_name, full: true
 
-
-
-
-  end
+    end
