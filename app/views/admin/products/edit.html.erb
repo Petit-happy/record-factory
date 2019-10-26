@@ -24,7 +24,7 @@
     <%= f.text_field :product_name, autofocus: true  %>
   </div>
   <div class="field">
-    <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]} %>
+    <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}, class:"" %>
   </div>
   <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
   <% end %>
