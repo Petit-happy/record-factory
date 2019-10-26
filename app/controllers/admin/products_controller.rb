@@ -1,15 +1,22 @@
 class Admin::ProductsController < ApplicationController
   PER = 16
   def index
-    redirect_to admin_products_path if params[:keyword] == "" # キーワードが入力されていないとトップページに飛ぶ
-    @products = Product.search(params[:search])
-    @products = Product.page(params[:page]).reverse_order
+    unless params[:search].blank?
+      @products = Product.left_joins(:artist).left_joins(discs: :songs).where("(artists.artist_name LIKE ?) or (songs.song_name LIKE ?) or (products.product_name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).distinct
+
+#      artist = Product.joins(:artist).where("artist_name LIKE ?", "%#{params[:search]}%")
+#      song =  Product.joins(discs: :songs).where("song_name LIKE ?", "%#{params[:search]}%")
+#      title = Product.where("product_name LIKE ?", "%#{params[:search]}%")
+#      merged_result = artist | title
+#      @products = merged_result | song
+    else
+      @products = Product.all.page(params[:page])
+    end
   end
 
   def show
     @product = Product.find(params[:id])
-    @disc = @product.discs
-    @songs = Song.all
+    @discs = @product.discs
   end
 
   def edit
@@ -20,6 +27,20 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @disc = @product.discs.build
+    @song = @disc.songs.build
+    genres = Genre.all
+    labels = Label.all
+    # ==genre,select作る==
+    @genres_for_options = Hash.new
+    genres.each do |g|
+      @genres_for_options.store(g.genre_name, g.id)
+    end
+    #==label,selectを作る==
+    @labels_for_options = Hash.new
+    labels.each do |l|
+      @labels_for_options.store(l.label_name, l.id)
+    end
   end
 
   def update
@@ -32,6 +53,34 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def create
+    #binding.pry
+    @product = Product.new(product_params)
+      artists = Artist.all
+      hash = artist_params
+      hash["name"]
+      artists.each do |artist|
+        if artist.artist_name == hash["name"]
+          @product.artist_id = artist.id
+        end
+      end
+    if @product.save
+      redirect_to admin_product_path(@product.id)
+    else
+      genres = Genre.all
+      @genres_for_options = Hash.new
+        genres.each do |g|
+          @genres_for_options.store(g.genre_name, g.id)
+        end
+      labels = Label.all
+      @labels_for_options = Hash.new
+        labels.each do |l|
+          @labels_for_options.store(l.label_name, l.id)
+        end
+      render new_admin_product_path
+    end
+  end
+
   def destroy
     @order = Product.find(params[:id])
     @order.destroy
@@ -39,7 +88,11 @@ class Admin::ProductsController < ApplicationController
   end
 
   private
+  #createさせるために必要な情報！
   def product_params
-    params.require(:product).permit(:product_price, :sales_status, :product_name, :photo_id)
+    params.require(:product).permit(:product_price, :sales_status, :product_name, :artist_id, :label_id, :genre_id,:photo_id, discs_attributes: [:id, :disc_no, :_destroy, songs_attributes: [:id, :song_no, :song_name, :_destroy]])
+  end
+  def artist_params
+    params.require(:artist).permit(:name)
   end
 end

@@ -14,8 +14,10 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery-ui
 //= require cocoon
 //= require autocomplete-rails
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require_tree .
+

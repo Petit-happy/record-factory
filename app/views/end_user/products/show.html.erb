@@ -26,7 +26,7 @@
 
 
 <!--idをもった情報を更新するため、@product(id)情報が必要-->
-          <div class="row">
+          <div class="">
 					  <%= form_for([:end_user, @product, @cart_item]) do |f| %>
               個数:
 						  <%= f.select :cart_sum, [["1点", 1],["2点", 2]], class:"btn btn-primary form-control mt-5 col-sm-12" %>

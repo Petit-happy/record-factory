@@ -2,7 +2,7 @@ class Admin::ArrivalsController < ApplicationController
   before_action :set_arrival, only: [:show, :edit, :update, :destroy]
   PER = 30
   def top
-    @arrivals = Arrival.page(params[:page]).reverse_order
+    @arrivals = Arrival.page(params[:page])
   end
 
   # GET /arrivals

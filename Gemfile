@@ -75,4 +75,7 @@ gem 'cocoon'
 gem 'rails4-autocomplete'
 gem 'enum_help'
 gem 'rails-i18n'
+gem "nested_form"
+gem 'jquery-ui-rails'
+
 gem 'paranoia', '~> 2.3', '>= 2.3.1'
