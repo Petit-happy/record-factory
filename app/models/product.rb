@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   has_many :order_details, dependent: :destroy
   enum sales_status: { sold: 0, selling: 1, stop: 2} # enumを使ってステータス表示を可能にした
   attachment :photo
+  accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
   def self.search(search)
     if search
       where(['product_name LIKE ?', "%#{search}%"])
