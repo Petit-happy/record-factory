@@ -18,5 +18,5 @@ admin用ログイン情報
 email : web@camp.com
 password : infratop
 end_user用ログイン情報
-email : 
-password : 
+email : aaabb@aaa
+password : 111111
