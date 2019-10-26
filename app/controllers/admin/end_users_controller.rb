@@ -5,7 +5,7 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def index
-    @end_users = EndUser.page(params[:page])
+    @end_users = EndUser.with_deleted.page(params[:page])
   end
 
   def show
@@ -29,7 +29,7 @@ class Admin::EndUsersController < ApplicationController
 
   def destroy
     @end_user = EndUser.find(params[:id])
-    @end_user.destroy
+    @end_user.really_destroy!
     redirect_to admin_end_users_path
   end
 

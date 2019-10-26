@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
 #      merged_result = artist | title
 #      @products = merged_result | song
     else
-      @products = Product.all.page(params[:page])
+      @products = Product.with_deleted.all.page(params[:page])
     end
   end
 

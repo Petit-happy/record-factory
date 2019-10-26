@@ -68,7 +68,9 @@
       <%= form_for(@order, url: {controller: "orders", action: "update"}) do |f| %>
       <p>発送ステータス</p>
       <!-- 下記コードで日本語の状態でプルダウン変更できる -->
-      <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]} %>
+      <div class="field">
+        <%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]}, class:"text-primary" %>
+      </div>
       <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
       <% end %>
 </div>

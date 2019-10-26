@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
   PER = 30
   def index
-    @orders = Order.page(params[:page])
+    @orders = Order.all.page(params[:page])
   end
 
   def show
