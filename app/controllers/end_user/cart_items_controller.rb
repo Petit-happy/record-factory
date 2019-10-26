@@ -4,6 +4,7 @@ class EndUser::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_end_user.cart_items
+    @products = Product.all
     # binding.pry
   end
 
@@ -63,7 +64,6 @@ class EndUser::CartItemsController < ApplicationController
     @address = params[:address_id]
     @delivery = Address.find(@address)
     @method_of_payment = params[:method_of_payment]
-  
     if @method_of_payment == 0
         @payment = "クレジットカード"
     elsif @method_of_payment == 1
@@ -71,6 +71,9 @@ class EndUser::CartItemsController < ApplicationController
     else @mehod_of_payment == 2
         @payment ="代引き"
     end
+  end
+
+  def fix
   end
 
 private

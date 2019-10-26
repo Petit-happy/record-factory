@@ -1,9 +1,11 @@
 class EndUser::EndUsersController < ApplicationController
   PER = 16
   def top
-    redirect_to end_user_root_path if params[:keyword] == "" # キーワードが入力されていないとトップページに飛ぶ
-    @products = Product.search(params[:search])
-    @products = Product.page(params[:page]).reverse_order
+    unless params[:search].blank?
+      @products = Product.left_joins(:artist).left_joins(discs: :songs).where("(artists.artist_name LIKE ?) or (songs.song_name LIKE ?) or (products.product_name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).distinct
+    else
+      @products = Product.all.page(params[:page])
+    end
   end
 
   def edit

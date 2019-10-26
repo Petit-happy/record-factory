@@ -1,12 +1,9 @@
 class EndUser::OrdersController < ApplicationController
   def create
-    #binding.pry
     @order = Order.new(order_status: :accept)
-    #binding.pry
     @address = params[:order][:address_id]
     @delivery = Address.find(@address)
     @cart_items = current_end_user.cart_items
-    
     # @order.order_details.build
     @cart_items.each do |cart|
       order_detail = OrderDetail.new
@@ -24,7 +21,7 @@ class EndUser::OrdersController < ApplicationController
     @order.order_post_code = @delivery.delivery_post_code
     @order.order_address = @delivery.delivery_address
     @order.save
-    redirect_to end_user_root_path
+    redirect_to end_user_cart_items_fix_path
   end
 
   def index

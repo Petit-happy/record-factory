@@ -5,7 +5,6 @@ class EndUser::ProductsController < ApplicationController
     @disc = @product.discs
     @songs = Song.all
     @cart_item = CartItem.new
-    # binding.pry
   end
   def search
   end

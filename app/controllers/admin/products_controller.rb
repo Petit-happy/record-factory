@@ -79,6 +79,7 @@ class Admin::ProductsController < ApplicationController
         end
       render new_admin_product_path
     end
+    binding.pry
   end
 
   def destroy
@@ -90,7 +91,7 @@ class Admin::ProductsController < ApplicationController
   private
   #createさせるために必要な情報！
   def product_params
-    params.require(:product).permit(:product_price, :sales_status, :product_name, :artist_id, :label_id, :genre_id,:photo_id, discs_attributes: [:id, :disc_no, :_destroy, songs_attributes: [:id, :song_no, :song_name, :_destroy]])
+    params.require(:product).permit(:product_price, :sales_status, :product_name, :artist_id, :label_id, :genre_id,:photo_id, :image, discs_attributes: [:id, :disc_no, :_destroy, songs_attributes: [:id, :song_no, :song_name, :_destroy]])
   end
   def artist_params
     params.require(:artist).permit(:name)
