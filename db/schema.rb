@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_053703) do
     t.integer "genre_id"
     t.integer "label_id"
     t.integer "artist_id"
-    t.integer "photo_id"
+    t.string "photo_id"
     t.integer "product_price"
     t.integer "sales_status"
     t.string "product_name"
