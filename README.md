@@ -17,6 +17,7 @@ control + c で終了します。
 admin用ログイン情報
 email : web@camp.com
 password : infratop
+
 end_user用ログイン情報
 email : aaabb@aaa
 password : 111111
