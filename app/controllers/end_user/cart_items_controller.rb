@@ -25,7 +25,8 @@ class EndUser::CartItemsController < ApplicationController
     cart_item.product_id = product.id
     cart_item.end_user_id = current_end_user.id
     cart_item.save
-    redirect_back(fallback_location: end_user_root_path)
+    redirect_to end_user_cart_items_path
+    #redirect_back(fallback_location: end_user_root_path)
   end
 
   # post_image = PostImage.find(params[:post_image_id])
