@@ -10,7 +10,7 @@ class Admin::ProductsController < ApplicationController
 #      merged_result = artist | title
 #      @products = merged_result | song
     else
-      @products = Product.all.page(params[:page])
+      @products = Product.with_deleted.all.page(params[:page])
     end
   end
 
@@ -54,16 +54,16 @@ class Admin::ProductsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @product = Product.new(product_params)
+    #=====アーティストidをプロダクトに入れる======
       artists = Artist.all
       hash = artist_params
-      hash["name"]
       artists.each do |artist|
         if artist.artist_name == hash["name"]
           @product.artist_id = artist.id
         end
       end
+    #=====アーティストidをプロダクトに入れる======
     if @product.save
       redirect_to admin_product_path(@product.id)
     else
@@ -79,7 +79,7 @@ class Admin::ProductsController < ApplicationController
         end
       render new_admin_product_path
     end
-    binding.pry
+    #binding.pry
   end
 
   def destroy
@@ -91,7 +91,7 @@ class Admin::ProductsController < ApplicationController
   private
   #createさせるために必要な情報！
   def product_params
-    params.require(:product).permit(:product_price, :sales_status, :product_name, :artist_id, :label_id, :genre_id,:photo_id, :image, discs_attributes: [:id, :disc_no, :_destroy, songs_attributes: [:id, :song_no, :song_name, :_destroy]])
+    params.require(:product).permit(:product_price, :sales_status, :product_name, :artist_id, :label_id, :genre_id, :photo, :image, discs_attributes: [:id, :disc_no, :_destroy, songs_attributes: [:id, :song_no, :song_name, :_destroy]])
   end
   def artist_params
     params.require(:artist).permit(:name)

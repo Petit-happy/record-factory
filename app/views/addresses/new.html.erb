@@ -1,5 +1,26 @@
 <h1>新規配送先入力画面</h1>
 
-<%= render 'form', address: @address %>
+<%= form_for @address  do |f| %>
+　
+　 <div class="field">
+    <%= f.label :配送先名 %>
+    <%= f.text_area :delivery_name %>
+  </div>
+
+　<div class="field">
+    <%= f.label :配送先郵便番号 %>
+    <%= f.text_field :delivery_post_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :配送先住所 %>
+    <%= f.text_area :delivery_address %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "提出" %>
+  </div>
 
 <%= link_to 'Back', addresses_path %>
+<% end %>

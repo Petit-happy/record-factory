@@ -16,6 +16,7 @@ class Admin::ArtistsController < ApplicationController
       flash[:notice] = "アーティスト名の登録が完了しました"
       redirect_to admin_artists_path
     else
+      @artists = Artist.all
       render :index
     end
   end
