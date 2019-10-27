@@ -75,6 +75,8 @@ class EndUser::CartItemsController < ApplicationController
   end
 
   def fix
+    @order = Order.find(params[:order_id])
+    @order_details = @order.order_details
   end
 
 private
