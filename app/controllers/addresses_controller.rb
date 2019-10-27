@@ -17,16 +17,9 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-
-    respond_to do |format|
-      if @address.save
-        format.html { redirect_to @address, notice: 'Address was successfully created.' }
-        format.json { render :show, status: :created, location: @address }
-      else
-        format.html { render :new }
-        format.json { render json: @address.errors, status: :unprocessable_entity }
-      end
-    end
+    @address.end_user_id = current_end_user.id
+    @address.save
+    redirect_to end_user_end_user_path(current_end_user.id)
   end
 
   def update
@@ -45,11 +38,9 @@ class AddressesController < ApplicationController
   end
 
   def destroy
+    @address= Address.find(params[:id])
     @address.destroy
-    respond_to do |format|
-      format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to end_user_end_user_path(current_end_user.id)
   end
 
   private
