@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このアプリケーションはRuby on Railsで作成されています。
 
-Things you may want to cover:
+Git cloneした後は
+bundle install
+rails db:migrate
+rails db:seed
+をターミナルで実行してください。
 
-* Ruby version
+デプロイしてないため、
+rails s -b 0.0.0.0
+をターミナルで実行してサーバーを起動して下さい。
 
-* System dependencies
+control + c で終了します。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+admin用ログイン情報
+email : web@camp.com
+password : infratop
+end_user用ログイン情報
+email : 
+password : 

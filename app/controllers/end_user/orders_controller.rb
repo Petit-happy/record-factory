@@ -4,15 +4,13 @@ class EndUser::OrdersController < ApplicationController
     @address = params[:order][:address_id]
     @delivery = Address.find(@address)
     @cart_items = current_end_user.cart_items
-    # @order.order_details.build
     @cart_items.each do |cart|
-      order_detail = OrderDetail.new
-      order_detail.order_id = @order.id
+      order_detail = @order.order_details.build
       order_detail.unit = cart.cart_sum
       order_detail.product_id = cart.product_id
       order_detail.price = cart.product.product_price
       order_detail.save
-      cart.destroy
+      #cart.destroy
     end
     @order.end_user_id = current_end_user.id
     @order.delivery_cost = Order.find(1).delivery_cost
@@ -21,7 +19,7 @@ class EndUser::OrdersController < ApplicationController
     @order.order_post_code = @delivery.delivery_post_code
     @order.order_address = @delivery.delivery_address
     @order.save
-    redirect_to end_user_cart_items_fix_path
+    redirect_to end_user_order_cart_items_fix_path(@order)
   end
 
   def index
