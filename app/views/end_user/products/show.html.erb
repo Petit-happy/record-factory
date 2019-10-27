@@ -1,3 +1,4 @@
+<% binding.pry %>
 <p id="notice"><%= notice %></p>
 <div class = "container">
 <div class = "row">
@@ -6,7 +7,8 @@
 <p>ジャンル名:<%= @product.genre.genre_name %></p>
 <p>レーベル名:<%= @product.label.label_name %></p>
 <p>アーティスト名:<%= @product.artist.artist_name %></p>
-<p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+<% binding.pry %>
+<p>ジャケット写真:<%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
 <p>商品価格:<%= @product.product_price.to_s(:currency, locale: :ja) %></p>
 <p>商品ステータス:<%= @product.sales_status_i18n %></p>
 <p>商品名:<%= @product.product_name %></p>
