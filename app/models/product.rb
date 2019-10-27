@@ -39,4 +39,17 @@ class Product < ApplicationRecord
   def stock
     stock = total_arrival_unit_a - total_order_detail_unit_a
   end
+
+
+  def stock_array
+    stock_a = []
+    x = 0
+    # quantityは0スタート配列に入れてゆく
+    # timesは数え上げてくれる（0~)
+    # stock_a.push(stock)
+    stock.times do |quantity|
+      stock_a.push(quantity + 1)
+    end
+    stock_a
+  end
 end
