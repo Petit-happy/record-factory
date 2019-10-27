@@ -12,6 +12,9 @@
 </div><br>
 
 <div class="row alert alert-warning">
-  <button type="button" class="btn btn-danger">退会</button> 退会処理を実行します。
+<%= link_to end_user_end_user_path(@end_user), method: :delete, data: { confirm: '本当に退会しますか？' } do %>
+
+<button type="button" class="btn btn-danger">退会</button>
+<% end %>
 </div>
 </div>

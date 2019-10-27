@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     passwords:     'end_users/passwords',
     registrations: 'end_users/registrations'
   }
+# namespaceの振り分け必要！
   resources :songs
   resources :discs
   resources :addresses
