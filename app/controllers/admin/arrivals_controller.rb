@@ -1,4 +1,5 @@
 class Admin::ArrivalsController < ApplicationController
+  before_action :authenticate_admin_user!
   before_action :set_arrival, only: [:show, :edit, :update, :destroy]
   PER = 30
   def top
