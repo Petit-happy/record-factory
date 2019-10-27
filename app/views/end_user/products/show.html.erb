@@ -1,4 +1,3 @@
-<% binding.pry %>
 <p id="notice"><%= notice %></p>
 <div class = "container">
 <div class = "row">
@@ -7,8 +6,7 @@
 <p>ジャンル名:<%= @product.genre.genre_name %></p>
 <p>レーベル名:<%= @product.label.label_name %></p>
 <p>アーティスト名:<%= @product.artist.artist_name %></p>
-<% binding.pry %>
-<p>ジャケット写真:<%= attachment_image_tag @product, :image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+<p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
 <p>商品価格:<%= @product.product_price.to_s(:currency, locale: :ja) %></p>
 <p>商品ステータス:<%= @product.sales_status_i18n %></p>
 <p>商品名:<%= @product.product_name %></p>
@@ -25,13 +23,11 @@
     <% end %>
 <% end %>
 </div>
-
-
-<!--idをもった情報を更新するため、@product(id)情報が必要-->
+<!--cart-->
           <div class="">
 					  <%= form_for([:end_user, @product, @cart_item]) do |f| %>
               個数:
-						  <%= f.select :cart_sum, [["1点", 1],["2点", 2]], class:"btn btn-primary form-control mt-5 col-sm-12" %>
+						  <%= f.select :cart_sum, @product.stock_array, class:"btn btn-primary form-control mt-5 col-sm-12" %>
           <%= f.submit "cartに入れる",class:"btn-sm btn-primary" %>
           </div>
           <% end %>
