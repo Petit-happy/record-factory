@@ -10,3 +10,11 @@ ja: #日本語
         sold: "販売終了"
         selling: "販売中"
         stop: "販売停止"
+  devise:
+    sessions:
+      end_user:
+        signed_in: "ログインに成功しました！"
+        signed_out: "ログアウトしました！"
+      admin_user:
+        signed_in: "管理者ログインに成功しました！"
+        signed_out: "ログアウトしました！"

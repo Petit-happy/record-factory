@@ -39,7 +39,8 @@ class EndUser::CartItemsController < ApplicationController
   end
 
   def order_check
-    addresses = Address.all
+    @end_user = current_end_user
+    addresses = @end_user.addresses
     @addresses_for_options = Hash.new
     addresses.each do |address|
       @addresses_for_options.store(address.delivery_address, address.id)
@@ -61,6 +62,8 @@ class EndUser::CartItemsController < ApplicationController
   end
 
   def fix
+    @order = Order.find(params[:order_id])
+    @order_details = @order.order_details
   end
 
 private
