@@ -24,19 +24,22 @@
 <% end %>
 </div>
 <!--cart-->
+<% if @product.stock_array.blank? then %>
+<div class="alert alert-warning">
+  <strong>売り切れ中！！</strong> 入荷するまで待ってね！！
+</div>
+<% else %>
           <div class="">
-					  <%= form_for([:end_user, @product, @cart_item]) do |f| %>
+					<%= form_for([:end_user, @product, @cart_item]) do |f| %>
               個数:
 						  <%= f.select :cart_sum, @product.stock_array, class:"btn btn-primary form-control mt-5 col-sm-12" %>
           <%= f.submit "cartに入れる",class:"btn-sm btn-primary" %>
           </div>
           <% end %>
+<% end %>
 <div crass = row >
 <%= link_to '商品一覧へ戻る', end_user_root_path, class:"btn-sm btn-success" %>
 </div>
- 論理削除
- <strong>Is deleted:</strong>
-  <%= @product.deleted_at %>
 </p>
 
 </div>

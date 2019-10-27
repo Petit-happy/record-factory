@@ -24,7 +24,6 @@ class Admin::ArrivalsController < ApplicationController
     @arrival.product_id = @p.id #アライバルが持っているプロダクトid
     if @arrival.save
       flash[:notice] = "新規入荷情報の登録が完了しました"
-      #binding.pry
       redirect_to admin_root_path
     else
       render 'new'

@@ -4,7 +4,7 @@ class EndUser::EndUsersController < ApplicationController
     unless params[:search].blank?
       @products = Product.left_joins(:artist).left_joins(discs: :songs).where("(artists.artist_name LIKE ?) or (songs.song_name LIKE ?) or (products.product_name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).distinct
     else
-      @products = Product.all.page(params[:page])
+      @products = Product.with_deleted.all.page(params[:page])
     end
   end
 
@@ -28,9 +28,15 @@ class EndUser::EndUsersController < ApplicationController
   end
 
   def leave
+    @end_user = current_end_user
   end
 
   def destroy
+    @end_user = EndUser.find(params[:id])
+    @end_user.destroy
+    respond_to do |format|
+      format.html { redirect_to end_user_root_url, notice: '退会処理が完了いたしました' }
+    end
   end
   private
    def end_user_params

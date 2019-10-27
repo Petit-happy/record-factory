@@ -74,7 +74,6 @@ class Admin::ProductsController < ApplicationController
         end
       render new_admin_product_path
     end
-    #binding.pry
   end
 
   def destroy
