@@ -4,10 +4,11 @@
       <h2><span class="label label-success">登録商品詳細</span></h2>
     </div>
   <div class="row">
-    <div class="col-lg-5">
-      <p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">
+      <%= attachment_image_tag @product, :photo, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
     </div>
-    <div class="col-lg-7">
+    <div class="col-lg-3">
       <div class="row text-left">
         <p>ジャンル名:<%= @product.genre.genre_name %></p>
         <p>レーベル名:<%= @product.label.label_name %></p>
@@ -17,8 +18,12 @@
         <p>商品名:<%= @product.product_name %></p>
       </div>
     </div>
+    <div class="col-lg-3"></div>
   </div>
     <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3 text-left">
       <% @discs.each do |disc| %>
         <p>DISC NO. <%= disc.disc_no %></p>
           <% disc.songs.each do |song| %>
@@ -26,6 +31,9 @@
           <%= song.song_name %></p>
           <% end %>
       <% end %>
+      </div>
+      <div class="col-lg-3"></div>
+
     </div>
       <br>
       <%= link_to '商品一覧に戻る', admin_products_path, class:"btn-sm btn-success" %>
