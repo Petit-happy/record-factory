@@ -4,9 +4,8 @@ class EndUser::OrdersController < ApplicationController
     @address = params[:order][:address_id]
     @delivery = Address.find(@address)
     @cart_items = current_end_user.cart_items
-    # @order.order_details.build
     @cart_items.each do |cart|
-      order_detail = OrderDetail.new
+      order_detail = @order.order_details.build
       order_detail.order_id = @order.id
       order_detail.unit = cart.cart_sum
       order_detail.product_id = cart.product_id
