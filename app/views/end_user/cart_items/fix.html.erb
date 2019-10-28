@@ -1,0 +1,32 @@
+<h1>ありがとうございます。注文が確定されました。</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ジャケット</th>
+      <th>製品名</th>
+      <th>価格</th>
+      <th>点数</th>
+      <th>ジャンル</th>
+      <th>アーティスト</th>
+      <th>レーベル</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <% @order_details.each do |detail| %>
+        <td><%= attachment_image_tag detail.product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
+        <td><%= detail.product.product_name %>　　</td>
+        <td><%= detail.product.product_price %>　　</td>
+        <td><%= detail.unit %>個　　</td>
+        <td><%= detail.product.genre.genre_name %>　　</td>
+        <td><%= detail.product.artist.artist_name %>　　</td>
+        <td><%= detail.product.label.label_name %>　　</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+総商品点数 　: 　<%= @order.order_total_unit %>
+商品総計 　 :　<%= @order.total_price_method %>

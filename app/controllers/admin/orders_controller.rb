@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin_user!
   PER = 30
   def index
     @orders = Order.all.page(params[:page])

@@ -5,37 +5,23 @@ class EndUser::CartItemsController < ApplicationController
   def index
     @cart_items = current_end_user.cart_items
     @products = Product.all
-    # binding.pry
   end
-
-
-  def show
-  end
-
-
   def new
     @cart_item = CartItem.new
   end
-
-  def edit
-  end
-
   def create
     product = Product.find(params[:product_id])
+    # ##カートの中０でカートを作ろうとした時
     cart_item = CartItem.new(cart_item_params)
     cart_item.product_id = product.id
     cart_item.end_user_id = current_end_user.id
-    cart_item.save
-    redirect_to end_user_cart_items_path
-    #redirect_back(fallback_location: end_user_root_path)
+    if cart_item.save
+      redirect_to end_user_cart_items_path
+      else
+      flash[:notice] = "カート作成エラーです"
+      redirect_back(fallback_location: end_user_root_path)
+    end
   end
-
-  # post_image = PostImage.find(params[:post_image_id])
-  # comment = current_user.post_comments.new(post_comment_params)
-  # comment.post_image_id = post_image.id
-  # comment.save
-  # redirect_to post_image_path(post_image)
-
   def destroy
     @cart_item.destroy
     respond_to do |format|
@@ -53,7 +39,8 @@ class EndUser::CartItemsController < ApplicationController
   end
 
   def order_check
-    addresses = Address.all
+    @end_user = current_end_user
+    addresses = @end_user.addresses
     @addresses_for_options = Hash.new
     addresses.each do |address|
       @addresses_for_options.store(address.delivery_address, address.id)
@@ -75,6 +62,8 @@ class EndUser::CartItemsController < ApplicationController
   end
 
   def fix
+    @order = Order.find(params[:order_id])
+    @order_details = @order.order_details
   end
 
 private

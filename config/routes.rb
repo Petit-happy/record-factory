@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   namespace :end_user do
     get 'cart_items/order_check'
     get 'cart_items/confirmation'
-    get 'cart_items/fix'
-    resources :orders, only: [:index, :new, :create]
+    resources :orders, only: [:index, :new]
+    resources :orders, only: [:create] do
+      get 'cart_items/fix'
+    end
     resources :products, only: [:show] do
       resources :cart_items, only: [:create]
     end
@@ -43,6 +45,7 @@ Rails.application.routes.draw do
     passwords:     'end_users/passwords',
     registrations: 'end_users/registrations'
   }
+# namespaceの振り分け必要！
   resources :songs
   resources :discs
   resources :addresses
