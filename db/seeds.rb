@@ -28,7 +28,7 @@ EndUser.create!(
    post_code: '1000001',
    phone_number: '08012345678',
 )
-10.times do
+100.times do
     gimei = Gimei.name
     address = Gimei.address
     EndUser.create!(
@@ -59,7 +59,7 @@ Artist.create!(
         }
    ]
 )
-10.times do
+30.times do
     Artist.create!(
         artist_name: Faker::Artist.name
     )
@@ -79,7 +79,7 @@ Genre.create!(
     ]
  )
 
-10.times do
+30.times do
     Genre.create!(
         genre_name: Faker::Music.genre
     )
@@ -101,7 +101,7 @@ Label.create!(
         }
    ]
 )
-10.times do
+30.times do
     Label.create!(
         label_name: Faker::Coffee.blend_name
     )
@@ -138,7 +138,7 @@ Product.create!(
     ]
 )
 
-5.times do
+30.times do
     Product.create!(
         genre_id: rand(1..5),
         label_id: rand(1..5),
@@ -159,7 +159,7 @@ Order.create!(
     order_address: 'アメリカ'
  )
 
-5.times do
+30.times do
     address = Gimei.address
     Order.create!(
         end_user_id: rand(1..5),
@@ -187,7 +187,7 @@ OrderDetail.create!(
     ]
 )
 
-5.times do
+30.times do
     OrderDetail.create!(
         order_id: rand(1..5),
         product_id: rand(1..5),
@@ -196,11 +196,13 @@ OrderDetail.create!(
 )
 end
 
+40.times do
 CartItem.create!(
    end_user_id: rand(1..5),
    product_id: rand(1..5),
    cart_sum: rand(1..10)
 )
+end
 
 Address.create!(
     [
@@ -219,7 +221,7 @@ Address.create!(
     ]
 )
 
-5.times do
+30.times do
     address = Gimei.address
     Address.create!(
         end_user_id: rand(1..5),
@@ -229,7 +231,7 @@ Address.create!(
     )
 end
 
-5.times do
+50.times do
 Arrival.create!(
     product_id: rand(1..5),
     arrival_sum: rand(30..100),
@@ -258,38 +260,17 @@ Disc.create!(
    ]
 )
 
-5.times do
+40.times do
     Disc.create!(
         product_id: rand(1..5),
            disc_no: 1
     )
 end
+
+60.times do
 Song.create!(
-   [
-       {
-           disc_id: 1,
-           song_no: 1,
-           song_name: '曲名A'
-       },
-       {
-           disc_id: 1,
-           song_no: 2,
-           song_name: '曲名B'
-       },
-       {
-           disc_id: 2,
-           song_no: 1,
-           song_name: '曲名C'
-       },
-       {
-            disc_id: 3,
-            song_no: 1,
-            song_name: '曲名D'
-        },
-        {
-            disc_id: 3,
-            song_no: 2,
-            song_name: '曲名E'
-        }
-   ]
+           disc_id: rand(1..5),
+           song_no: rand(1..5),
+           song_name: Faker::Games::Pokemon.name
 )
+end
