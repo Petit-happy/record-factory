@@ -81,7 +81,7 @@ Product.create!(
             genre_id: 2,
             label_id: 1,
             artist_id: 2,
-            photo_id: '',
+            photo_id: '4db2fef439b89f21b9c8b733112a950549ba8a3a4c2df356ee9f8020ed5e',
             product_price: 1280,
             sales_status: 1,
             product_name: '製品名A',
