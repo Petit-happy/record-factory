@@ -1,33 +1,58 @@
 <div class="container">
-  <%= render 'shared/error', model: @product %>
-  <h2><span class="label label-success">登録商品情報編集</span></h2>
-  <p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'150x150' %></p>
-  <p>ジャンル名:<%= @product.genre.genre_name %></p>
-  <p>レーベル名:<%= @product.label.label_name %></p>
-  <p>アーティスト名:<%= @product.artist.artist_name %></p>
-
-  <% @disc.each do |disc| %>
-  <p>DISC NO. <%= disc.disc_no %></p>
-  <% @songs.each do |song| %>
-  <p>NO. <%= song.song_no %></p>
-  <%= song.song_name %>
-  <% end %>
-  <% end %>
-
-  <%= form_for ([:admin, @product]) do |f| %>
-  <div class="field">
-    <%= f.label :'商品価格' %>
-    <%= f.text_field :product_price, autofocus: true  %>
-  </div>
-  <div class="field">
-    <%= f.label :'商品名' %>
-    <%= f.text_field :product_name, autofocus: true  %>
-  </div>
-  <div class="field">
-    <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}, class:"" %>
-  </div>
-  <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
-  <% end %>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= render 'shared/error', model: @product %>
+      <h2><span class="label label-success">登録商品情報編集</span></h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3">
+        <%= attachment_image_tag @product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'150x150' %>
+      </div>
+      <div class="col-lg-3 text-left">
+        <p>ジャンル名:<%= @product.genre.genre_name %></p>
+        <p>レーベル名:<%= @product.label.label_name %></p>
+        <p>アーティスト名:<%= @product.artist.artist_name %></p>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3 text-left">
+        <% @disc.each do |disc| %>
+          <p>DISC NO. <%= disc.disc_no %></p>
+            <% disc.songs.each do |song| %>
+              <p>NO. <%= song.song_no %><%= song.song_name %></p>
+            <% end %>
+        <% end %>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+    <div class="row">
+      <%= form_for ([:admin, @product]) do |f| %>
+        <div class="col-lg-4 text-right">
+          <div class="field">
+            <%= f.label :'商品価格' %>
+            <%= f.text_field :product_price, autofocus: true  %>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="field">
+            <%= f.label :'商品名' %>
+            <%= f.text_field :product_name, autofocus: true  %>
+          </div>
+        </div>
+        <div class="col-lg-4 text-left">
+          <div class="field">
+            <%= f.select :sales_status, Product.sales_statuses.keys.map {|k| [I18n.t("enums.product.sales_status.#{k}"), k]}, class:"" %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <%= f.submit "変更を保存する", class:"btn-sm btn-success" %>
+      <% end %>
+      </div>
 
   <br>
   <%= link_to '商品詳細に戻る', admin_product_path(@product), class:"btn-sm btn-success" %>

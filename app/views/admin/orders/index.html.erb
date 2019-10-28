@@ -1,42 +1,51 @@
 <div class="container">
-    <h2><span class="label label-info">ご注文履歴一覧</span></h2>
-        <table class="" border="0" width="50%" height="50" cellspacing="15">
-            <!--order情報を繰り返し-->
-            <% @orders.each do |order| %>
-                <tr>
-                    <th>注文番号</th>
-                    <th>購入日</th>
-                    <th>氏名</th>
-                </tr>
-                <tr>
-                    <td class="click">NO. <%= link_to order.id, admin_order_path(order) %></td>
-                    <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-                    <td><%= order.end_user.family_name_kanji %><%= order.end_user.given_name_kanji %></td>
-                </tr>
-                <tr>
-                    <th>商品名</th>
-                    <th>購入枚数</th>
-                    <th>小計</th>
-                </tr>
-                <!--orderの中でorderdetial情報を繰り返す-->
-                    <% order.order_details.each do |order_detail|%>
-                    <tr>
-                        <!--たくさんあるorderdetailの箱の中で１つのproduct情報をもってくる-->
-                        <td><%= order_detail.product.product_name %></td>
-                        <td><%= order_detail.unit %></td>
-                        <td><%= order_detail.unit_price.to_s(:currency, locale: :ja) %></td>
+    <div class="row">
+        <h2><span class="label label-info">ご注文履歴一覧</span></h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+                <table class="" border="1" width="100%" height="50" cellspacing="15">
+                    <!--order情報を繰り返し-->
+                    <% @orders.each do |order| %>
+                        <tr>
+                            <th>注文番号</th>
+                            <th>購入日</th>
+                            <th>氏名</th>
                         </tr>
+                        <tr>
+                            <td class="click">NO. <%= link_to order.id, admin_order_path(order) %></td>
+                            <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                            <td><%= order.end_user.family_name_kanji %><%= order.end_user.given_name_kanji %></td>
+                        </tr>
+                        <tr>
+                            <th>商品名</th>
+                            <th>購入枚数</th>
+                            <th>小計</th>
+                        </tr>
+                        <!--orderの中でorderdetial情報を繰り返す-->
+                            <% order.order_details.each do |order_detail|%>
+                            <tr>
+                                <!--たくさんあるorderdetailの箱の中で１つのproduct情報をもってくる-->
+                                <td><%= order_detail.product.product_name %></td>
+                                <td><%= order_detail.unit %></td>
+                                <td><%= order_detail.unit_price.to_s(:currency, locale: :ja) %></td>
+                                </tr>
+                            <% end %>
+                            </tr>
+                            <tr>
+                                <th>購入価格総計</th>
+                                <td colspan="2"><%= order.total_price.to_s(:currency, locale: :ja) %></td>
+                            </tr>
+                            <tr>
+                                <th>ステータス</th>
+                                <td colspan="2"><%= order.order_status_i18n %></td>
+                            </tr>
                     <% end %>
-                    </tr>
-                    <tr>
-                        <th>購入価格総計</th>
-                        <td colspan="2"><%= order.total_price.to_s(:currency, locale: :ja) %></td>
-                    </tr>
-                    <tr>
-                        <th>ステータス</th>
-                        <td colspan="2"><%= order.order_status_i18n %></td>
-                    </tr>
-            <% end %>
-        </table>
-        <%= paginate @orders %>
+                </table>
+                <%= paginate @orders %>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+    </div>
 </div>
