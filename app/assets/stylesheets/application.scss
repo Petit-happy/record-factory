@@ -153,11 +153,16 @@ footer .container {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  display: inline-block;
+  margin: 10px;
 }
 
 .flex {
   display: block;
 }
+
+
+
 
 
 /*ドロワー*/
