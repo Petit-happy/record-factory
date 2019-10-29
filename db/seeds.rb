@@ -28,6 +28,21 @@ EndUser.create!(
    post_code: '1000001',
    phone_number: '08012345678',
 )
+100.times do
+    gimei = Gimei.name
+    address = Gimei.address
+    EndUser.create!(
+        email: Faker::Internet.email,
+        password: rand(111111..999999),
+        family_name_kanji: gimei.last.kanji,
+        given_name_kanji: gimei.first.kanji,
+        family_name_kana: gimei.last.katakana,
+        given_name_kana: gimei.first.katakana,
+        address: address.kanji,
+        post_code: rand(1111111..9999999),
+        phone_number: Faker::PhoneNumber.phone_number,
+    )
+end
 Artist.create!(
    [
        {
@@ -44,20 +59,31 @@ Artist.create!(
         }
    ]
 )
+30.times do
+    Artist.create!(
+        artist_name: Faker::Artist.name
+    )
+end
 
 Genre.create!(
-   [
-       {
-           genre_name: 'pops'
-       },
-       {
-           genre_name: 'rock'
-       },
-       {
-            genre_name: '演歌'
+    [
+        {
+            genre_name: 'pops'
+        },
+        {
+            genre_name: 'rock'
+        },
+        {
+             genre_name: '演歌'
         }
-   ]
-)
+    ]
+ )
+
+30.times do
+    Genre.create!(
+        genre_name: Faker::Music.genre
+    )
+end
 
 Label.create!(
    [
@@ -75,13 +101,18 @@ Label.create!(
         }
    ]
 )
+30.times do
+    Label.create!(
+        label_name: Faker::Coffee.blend_name
+    )
+end
 Product.create!(
     [
         {
             genre_id: 2,
             label_id: 1,
             artist_id: 2,
-            photo_id: '2ff7a1c2d4d55aa127cf545bbc6ef19e059241a9ea4c0b60de29226a1b85',
+            photo_id: '',
             product_price: 1280,
             sales_status: 1,
             product_name: '製品名A',
@@ -90,7 +121,7 @@ Product.create!(
             genre_id: 3,
             label_id: 1,
             artist_id: 2,
-            photo_id: 'd6a6cf69af4ed53c4e23b3e665e7a2df119333caee79d1b95864c0cb5db4',
+            photo_id: '',
             product_price: 3500,
             sales_status: 1,
             product_name: '製品名B',
@@ -99,43 +130,79 @@ Product.create!(
             genre_id: 1,
             label_id: 1,
             artist_id: 3,
-            photo_id: 'c15d7ce1742f0834448ac7744fd22b9dca410d5d2d0552d2f6bbd2496db7',
+            photo_id: '',
             product_price: 3200,
             sales_status: 1,
             product_name: '製品名C',
         }
     ]
 )
+
+50.times do
+    Product.create!(
+        genre_id: rand(1..30),
+        label_id: rand(1..30),
+        artist_id: rand(1..30),
+        photo_id: '',
+        product_price: rand(500..6000),
+        sales_status: 1,
+        product_name: Faker::Music.album,
+    )
+end
+
 Order.create!(
-   end_user_id: 1,
-   delivery_cost: 500,
-   total_price: 2000,
-   order_status: 1,
-   order_post_code: '200-0001',
-   order_address: 'アメリカ'
+    end_user_id: 1,
+    delivery_cost: 500,
+    total_price: 2000,
+    order_status: 1,
+    order_post_code: '200-0001',
+    order_address: 'アメリカ'
+ )
+
+30.times do
+    address = Gimei.address
+    Order.create!(
+        end_user_id: rand(1..50),
+        delivery_cost: 500,
+        total_price: 2000,
+        order_status: 1,
+        order_post_code: Faker::Address.postcode,
+        order_address: address.kanji
 )
+end
 OrderDetail.create!(
     [
         {
         order_id: 1,
         product_id: 1,
-        price: 1285,
+        price: 100,
         unit: 2
         },
         {
         order_id: 1,
         product_id: 2,
-        price: 3500,
+        price: 100,
         unit: 1
         }
     ]
 )
 
-CartItem.create!(
-   end_user_id: 1,
-   product_id: 1,
-   cart_sum: 3
+30.times do
+    OrderDetail.create!(
+        order_id: rand(1..20),
+        product_id: rand(1..20),
+        price: 100,
+        unit: rand(1..10)
 )
+end
+
+40.times do
+CartItem.create!(
+   end_user_id: rand(1..40),
+   product_id: rand(1..30),
+   cart_sum: rand(1..10)
+)
+end
 
 Address.create!(
     [
@@ -146,7 +213,7 @@ Address.create!(
         delivery_post_code: '300-0001'
         },
         {
-        end_user_id: 1,
+        end_user_id: 2,
         delivery_address: 'aaaa',
         delivery_name: 'おばあちゃんの家',
         delivery_post_code: '300-0002'
@@ -154,20 +221,23 @@ Address.create!(
     ]
 )
 
+20.times do
+    address = Gimei.address
+    Address.create!(
+        end_user_id: rand(1..30),
+        delivery_address: address.kanji,
+        delivery_name: address.city.kanji,
+        delivery_post_code: Faker::Address.postcode
+    )
+end
+
+20.times do
 Arrival.create!(
-    [
-       {
-        product_id: 1,
-        arrival_sum: 2,
-        arrived_at: '2019/08/18'
-       },
-       {
-        product_id: 2,
-        arrival_sum: 3,
-        arrived_at: '2019/08/18'
-       }
-    ]
+    product_id: rand(1..30),
+    arrival_sum: rand(30..100),
+    arrived_at: '2018/10/15 10:48:27'
 )
+end
 
 Disc.create!(
    [
@@ -189,32 +259,20 @@ Disc.create!(
         }
    ]
 )
-Song.create!(
-   [
-       {
-           disc_id: 1,
-           song_no: 1,
-           song_name: '曲名A'
-       },
-       {
-           disc_id: 1,
-           song_no: 2,
-           song_name: '曲名B'
-       },
-       {
-           disc_id: 2,
-           song_no: 1,
-           song_name: '曲名C'
-       },
-       {
-            disc_id: 3,
-            song_no: 1,
-            song_name: '曲名D'
-        },
-        {
-            disc_id: 3,
-            song_no: 2,
-            song_name: '曲名E'
-        }
-   ]
-)
+
+20.times do |x|
+    Disc.create!(
+        product_id: x+1,
+           disc_no: 1
+    )
+end
+
+10.times do |x|
+    10.times do |y|
+    Song.create!(
+        disc_id: x + 1,
+        song_no: y + 1,
+        song_name: Faker::Games::Pokemon.name
+    )
+    end
+end
