@@ -1,22 +1,31 @@
   <div class="container">
-    <h2><span class="label label-info">登録商品一覧</span></h2>
-    <% unless @products.present? %>
-    <h2>検索結果がありません</h2>
-    <% end %>
-
-    <%= form_tag(admin_products_path, :method => 'get' ) do %>
-    <%= text_field_tag :search %>
-    <%= submit_tag '商品名で検索する', :product_name => nil, class:"btn-sm btn-primary" %>
-    <% end %>
-
-    <%= link_to '新規商品を登録する', new_admin_product_path, class:"btn-sm btn-success"  %>
-
-  <div class="pdflex">
-    <% @products.each do |product| %>
-        <%= link_to admin_product_path(product) do %>
-        <div class="flex item1"><%= attachment_image_tag product, :photo, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg", size:'150x150' %></div>
-        <% end %>
-      <div class="flex item2"><%= link_to product.product_name, admin_product_path(product) %></div>
-    <div class="flex item3"><%= product.product_price.to_s(:currency, locale: :ja) %></div>
-    <% end %>
+    <div class="row">
+          <h2><span class="label label-info">登録商品一覧</span></h2>
+    </div>
+          <% unless @products.present? %>
+          <h2>検索結果がありません</h2>
+          <% end %>
+    <div class="row">
+      <div class="col-lg-4 text-left">
+          <%= form_tag(admin_products_path, :method => 'get' ) do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '商品名で検索する', :product_name => nil, class:"btn-sm btn-primary" %>
+          <% end %>
+      </div>
+      <div class="col-lg-4">
+          <%= link_to '新規商品を登録する', new_admin_product_path, class:"btn-sm btn-success"  %>
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <% @products.each do |product| %>
+                <div class="pdflex">
+              <%= link_to admin_product_path(product) do %>
+              <div class="flex item1"><%= attachment_image_tag product, :photo, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg", size:'200x200' %></div>
+              <% end %>
+            <div class="flex item2"><%= link_to product.product_name, admin_product_path(product) %></div>
+            <div class="flex item3"><%= product.product_price.to_s(:currency, locale: :ja) %></div>
+              </div>
+          <% end %>
   </div>

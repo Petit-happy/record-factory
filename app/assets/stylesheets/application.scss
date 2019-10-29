@@ -47,7 +47,7 @@ text-shadow:1px 1px 0 #CB6500;
     background-image: url(record.jpg);
     background-size: cover;
     background-position: center;
-    height: 100%;
+    background-repeat: repeat-y !important;
 }
 
 
@@ -153,12 +153,29 @@ footer .container {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  display: inline-block;
+  margin: 10px;
 }
 
 .flex {
   display: block;
 }
 
+.aaa {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin: 10px;
+}
+
+.cart_btn {
+    margin: 10px 0px;
+}
+.order_check {
+    margin: 20px 0px;
+}
 
 /*ドロワー*/
 .l-drawer {
@@ -269,6 +286,10 @@ footer .container {
       }
     }
 
+    .confir{
+      padding: 100px, 0px;
+    }
+
     // メインエリアを暗くする
     .l-drawer__overlay {
       opacity: 0.3;
@@ -291,3 +312,5 @@ footer .container {
     transition: all .7s;
   }
 }
+
+

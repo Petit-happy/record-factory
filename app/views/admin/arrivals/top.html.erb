@@ -1,21 +1,29 @@
 <div class="container">
-  <h1><span class="label label-default">おかえりなさい まろんさま(*ﾟ▽ﾟ)ﾉ</span></h1>
+  <div class="row">
     <h2><span class="label label-info">入荷履歴一覧</span></h2>
-  <table class="" border="0" width="50%" height="50" cellspacing="15">
-      <tr>
-      <th>商品名</th>
-      <th>個数</th>
-      <th>予定日時</th>
-      <th></th>
-      </tr>
-      <% @arrivals.each do |arrival| %>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <table class="" border="0" width="50%" height="50" cellspacing="15">
           <tr>
-              <td><%= arrival.product.product_name %></td>
-              <td><%= arrival.arrival_sum %></td>
-              <!--ネストさせている場合はプロダクトidとアライバルidを指定-->
-              <td><%= arrival.arrived_at.strftime('%Y/%m/%d') %>予定</td>
-              <td><%= link_to "入荷情報を削除する", admin_product_arrival_path(arrival.product_id,arrival.id), method: :delete, class:"btn-sm btn-danger" %></td>
+          <th>商品名</th>
+          <th>個数</th>
+          <th>予定日時</th>
+          <th></th>
           </tr>
-  <% end %>
-  <%= paginate @arrivals %>
+          <% @arrivals.each do |arrival| %>
+              <tr>
+                  <td><%= arrival.product.product_name %></td>
+                  <td><%= arrival.arrival_sum %></td>
+                  <!--ネストさせている場合はプロダクトidとアライバルidを指定-->
+                  <td><%= arrival.arrived_at.strftime('%Y/%m/%d') %>予定</td>
+                  <td><%= link_to "入荷情報を削除する", admin_product_arrival_path(arrival.product_id,arrival.id), method: :delete, class:"btn-sm btn-danger" %></td>
+              </tr>
+          <% end %>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+      <%= paginate @arrivals %>
 </div>

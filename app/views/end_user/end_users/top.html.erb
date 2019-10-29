@@ -1,5 +1,5 @@
 <div class="container">
-  <h2><span class="label label-info">登録商品一覧</span></h2>
+  <h2><span class="label label-info">商品一覧</span></h2>
 
   <% unless @products.present? %>
   <h2>検索結果がありません</h2>
@@ -9,22 +9,14 @@
   <%= text_field_tag :search %>
   <%= submit_tag '商品を検索する', :product_name => nil %>
   <% end %>
-  <table class="" border="0" width="100%" height="50" cellspacing="15">
     <% @products.each do |product| %>
-    <tr>
-      <td>
+      <div class="aaa">
         <%= link_to end_user_product_path(product) do %>
-        <%= attachment_image_tag product, :photo, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
+        <div class="flex item1"><%= attachment_image_tag product, :photo, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg", size:'200x200' %></div>
         <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= link_to product.product_name, end_user_product_path(product) %></td>
-    </tr>
-    <tr>
-      <td><%= product.product_price.to_s(:currency, locale: :ja) %></td>
-    </tr>
+        <div class="flex item2"><%= link_to product.product_name, end_user_product_path(product) %></div></<div>
+        <div class="flex item3"><%= product.product_price.to_s(:currency, locale: :ja) %></div></<div>
+      </div>
     <% end %>
-  </table>
         <%= paginate @products %>
 </div>
