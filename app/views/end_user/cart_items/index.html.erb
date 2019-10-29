@@ -35,9 +35,9 @@
     <% end %>
   </tbody>
 </table><br>
-<div class= cart_btn>
-<%= link_to 'カート内の商品を全て削除する', end_user_d_all_cart_item_path, method: :delete, data: { confirm: 'カート内の商品を全て削除しますか？' }, class:"btn btn-outline-warning" %>
-</div>
+
+<%= link_to 'カート内の商品を全て削除する', end_user_d_all_cart_item_path, method: :delete, data: { confirm: 'カート内の商品を全て削除しますか？' }, class:"btn btn-danger btn-lg active" %>
+
 
 総商品点数 　: 　<%= CartItem.total_cart_sum(@cart_items) %>
 商品総計 　 :　<%= CartItem.total_cart_price(@cart_items) %>
