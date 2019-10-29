@@ -37,5 +37,4 @@ class CartItem < ApplicationRecord
         end
        x
     end
-
 end

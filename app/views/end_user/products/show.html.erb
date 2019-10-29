@@ -1,28 +1,40 @@
 <p id="notice"><%= notice %></p>
 <div class = "container">
-<div class = "row">
-<h2><span class="label label-success">登録商品詳細</span></h2>
+  <div class = "row col-lg-12">
+    <h2><span class="label label-success">登録商品詳細</span></h2>
+  </div>
+  <div class = "row">
+    <div class="col-lg-3 col-md-offset-3">
+      <%= attachment_image_tag @product, :photo, :fill, 200, 200, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
+    </div>
+    <div class="col-lg-3 text-left">
+        <p>ジャンル名:<%= @product.genre.genre_name %></p>
+        <p>レーベル名:<%= @product.label.label_name %></p>
+        <p>アーティスト名:<%= @product.artist.artist_name %></p>
+        <p>商品価格:<%= @product.product_price.to_s(:currency, locale: :ja) %></p>
+        <p>商品ステータス:<%= @product.sales_status_i18n %></p>
+        <p>商品名:<%= @product.product_name %></p>
+      <div>収録内容</div>
+      <% @disc.each do |disc| %>
+      <p class="bg-primary text-center">DISC NO. <%= disc.disc_no %></p>
 
-<p>ジャンル名:<%= @product.genre.genre_name %></p>
-<p>レーベル名:<%= @product.label.label_name %></p>
-<p>アーティスト名:<%= @product.artist.artist_name %></p>
-<p>ジャケット写真:<%= attachment_image_tag @product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></p>
-<p>商品価格:<%= @product.product_price.to_s(:currency, locale: :ja) %></p>
-<p>商品ステータス:<%= @product.sales_status_i18n %></p>
-<p>商品名:<%= @product.product_name %></p>
-<p>在庫数:<%= @product.stock %><p>
-  <% @product.deleted_at %>
-</div>
-<div class = "row">
-  <div>収録内容</div>
-<% @disc.each do |disc| %>
-  <p>DISC NO. <%= disc.disc_no %></p>
-    <% @songs.each do |song| %>
-    <p>NO. <%= song.song_no %></p>
-    <%= song.song_name %>
+         <table>
+        <% disc.songs.each do |song| %>
+        <tr>
+          <td>
+            <p>NO.<%= song.song_no %></p>
+          </td>
+          <td width = "300px">
+            <p class="text-center" ><%= song.song_name %></p>
+          </td>
+        <tr>
+        <% end %>
+        </table>
     <% end %>
-<% end %>
-</div>
+    </div>
+  </div>
+  <p class="bg-info text-center col-lg-4 col-md-offset-4">在庫数:<%= @product.stock %><p>
+<br>
 <!--cart-->
 <% if @product.stock_array.blank? then %>
 <div class="alert alert-warning">

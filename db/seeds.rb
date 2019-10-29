@@ -68,6 +68,84 @@ Artist.create!(
     )
 end
 
+30.times do
+Artist.create!(
+    artist_name: Faker::Name.name
+)
+end
+
+30.times do
+    Artist.create!(
+        artist_name: Faker::JapaneseMedia::DragonBall.character
+    )
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::OnePiece.character
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.real_name
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.game_name
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.location
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.item
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::Games::Zelda.character
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::Games::Zelda.location
+)
+end
+
+40.times do
+Artist.create!(
+    artist_name: Faker::Games::Pokemon.location
+)
+end
+
+40.times do
+Artist.create!(
+    artist_name: Faker::Games::Pokemon.move
+)
+end
+
+40.times do
+Artist.create!(
+    artist_name: Faker::Music::RockBand.name
+)
+end
+
+50.times do
+Artist.create!(
+    artist_name: Faker::Music::RockBand.name
+)
+end
+
 Genre.create!(
     [
         {
@@ -115,7 +193,9 @@ Product.create!(
             genre_id: 2,
             label_id: 1,
             artist_id: 2,
+
             photo_id: 'e4c18b3fd8bb1e1bb4ca538075a3222620a71c4022bc9c45215cf0b4fcdf',
+
             product_price: 1280,
             sales_status: 1,
             product_name: 'がらくた',

@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>ジャケット名</th>
-      <th>ユーザー名</th>
       <th>製品名</th>
       <th>価格</th>
       <th>販売状態</th>
@@ -22,9 +21,8 @@
     <% @cart_items.each do |cart_item| %>
       <tr>
         <%= link_to end_user_product_path(@products) do %>
-        <td><%= attachment_image_tag cart_item.product, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
+        <td><%= attachment_image_tag cart_item.product, :photo, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'100x100' %></td>
         <% end %>
-        <td><%= cart_item.end_user.family_name_kanji %>　<%= cart_item.end_user.given_name_kanji %>　　</td>
         <td><%= cart_item.product.product_name %>　　</td>
         <td><%= cart_item.product.product_price %>　　</td>
         <td><%= cart_item.product.sales_status_i18n %>　　</td>
@@ -32,21 +30,20 @@
         <td><%= cart_item.product.genre.genre_name %>　　</td>
         <td><%= cart_item.product.artist.artist_name %>　　</td>
         <td><%= cart_item.product.label.label_name %>　　</td>
-        <td><%= link_to 'カートから商品を削除', end_user_cart_item_path(cart_item), method: :delete, data: { confirm: 'カートから削除しますか？' } %></td>
+        <td><%= link_to 'カートから商品を削除', end_user_cart_item_path(cart_item), method: :delete, data: { confirm: 'カートから削除しますか？' }, class:"btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
 </table><br>
+<div class= cart_btn>
+<%= link_to 'カート内の商品を全て削除する', end_user_d_all_cart_item_path, method: :delete, data: { confirm: 'カート内の商品を全て削除しますか？' }, class:"btn btn-outline-warning" %>
+</div>
 
 総商品点数 　: 　<%= CartItem.total_cart_sum(@cart_items) %>
 商品総計 　 :　<%= CartItem.total_cart_price(@cart_items) %>
 
 
-
-
-
-<%= link_to 'カート内の商品を全て削除する', end_user_d_all_cart_item_path, method: :delete, data: { confirm: 'カート内の商品を全て削除しますか？' } %>
-
 <br>
-
-<%= link_to "購入情報確認入力画面へ", end_user_cart_items_order_check_path %>
+<div class= cart_btn>
+<%= link_to "購入情報入力画面へ", end_user_cart_items_order_check_path, class:"btn-sm btn-info"  %>
+</div>
