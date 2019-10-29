@@ -165,9 +165,21 @@ th{
   text-align: center;
 }
 
+.well{
+  background-color: transparent !important;
+}
+
 
 select{
-  width: 100px;
+  width: 150px;
+}
+
+th.new-left{
+  text-align: right;
+}
+
+td.new-right{
+  text-align: left;
 }
 
 
