@@ -138,11 +138,11 @@ Product.create!(
     ]
 )
 
-30.times do
+50.times do
     Product.create!(
-        genre_id: rand(1..5),
-        label_id: rand(1..5),
-        artist_id: rand(1..5),
+        genre_id: rand(1..30),
+        label_id: rand(1..30),
+        artist_id: rand(1..30),
         photo_id: '',
         product_price: rand(500..6000),
         sales_status: 1,
@@ -162,7 +162,7 @@ Order.create!(
 30.times do
     address = Gimei.address
     Order.create!(
-        end_user_id: rand(1..5),
+        end_user_id: rand(1..50),
         delivery_cost: 500,
         total_price: 2000,
         order_status: 1,
@@ -189,8 +189,8 @@ OrderDetail.create!(
 
 30.times do
     OrderDetail.create!(
-        order_id: rand(1..5),
-        product_id: rand(1..5),
+        order_id: rand(1..20),
+        product_id: rand(1..20),
         price: 100,
         unit: rand(1..10)
 )
@@ -198,8 +198,8 @@ end
 
 40.times do
 CartItem.create!(
-   end_user_id: rand(1..5),
-   product_id: rand(1..5),
+   end_user_id: rand(1..40),
+   product_id: rand(1..30),
    cart_sum: rand(1..10)
 )
 end
@@ -221,19 +221,19 @@ Address.create!(
     ]
 )
 
-30.times do
+20.times do
     address = Gimei.address
     Address.create!(
-        end_user_id: rand(1..5),
+        end_user_id: rand(1..30),
         delivery_address: address.kanji,
         delivery_name: address.city.kanji,
         delivery_post_code: Faker::Address.postcode
     )
 end
 
-50.times do
+20.times do
 Arrival.create!(
-    product_id: rand(1..5),
+    product_id: rand(1..30),
     arrival_sum: rand(30..100),
     arrived_at: '2018/10/15 10:48:27'
 )
@@ -260,17 +260,19 @@ Disc.create!(
    ]
 )
 
-40.times do
+20.times do |x|
     Disc.create!(
-        product_id: rand(1..5),
+        product_id: x+1,
            disc_no: 1
     )
 end
 
-60.times do
-Song.create!(
-           disc_id: rand(1..5),
-           song_no: rand(1..5),
-           song_name: Faker::Games::Pokemon.name
-)
+10.times do |x|
+    10.times do |y|
+    Song.create!(
+        disc_id: x + 1,
+        song_no: y + 1,
+        song_name: Faker::Games::Pokemon.name
+    )
+    end
 end
