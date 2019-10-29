@@ -3,7 +3,6 @@ class EndUser::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @disc = @product.discs
-    @songs = Song.all
     @cart_item = CartItem.new
   end
   def search

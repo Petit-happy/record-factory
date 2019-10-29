@@ -301,7 +301,7 @@ OrderDetail.create!(
         order_id: rand(1..20),
         product_id: rand(1..20),
         price: 100,
-        unit: rand(1..10)
+        unit: rand(1..5)
 )
 end
 

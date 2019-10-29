@@ -29,12 +29,13 @@ class CartItem < ApplicationRecord
         x=0
         # 配列を並べる
         y.each do |f|
-             #抽出した配列からproduct_priceを計算する
+            #抽出した配列からproduct_priceを計算する
             f.each do |g|
                 p = Product.find(g.product_id)
-                x += p.product_price
+                x += p.product_price * g.cart_sum
             end
         end
        x
     end
+
 end
