@@ -45,7 +45,7 @@ text-shadow:1px 1px 0 #CB6500;
 
 .bg {
     background-image: url(record.jpg);
-    background-size: cover;
+    // background-size: auto;
     background-position: center;
     background-attachment: scroll;
     min-height: 100vh;
@@ -152,18 +152,48 @@ footer .container {
 .pdflex {
   display: flex;
   flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   display: inline-block;
   margin: 10px;
+  width: 20%;
 }
 
 .flex {
   display: block;
 }
 
+th{
+  text-align: center;
+}
+
+.well{
+  background-color: transparent !important;
+}
 
 
+select{
+  width: 150px;
+}
+
+th.new-left{
+  text-align: right;
+}
+
+td.new-right{
+  text-align: left;
+}
+
+.top{
+  padding: auto;
+}
+
+
+.order-t{
+  border-collapse: collapse;
+  border: solid 2px #000000;/*表全体を線で囲う*/
+}
 
 
 /*ドロワー*/

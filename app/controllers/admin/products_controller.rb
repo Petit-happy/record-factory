@@ -1,11 +1,11 @@
 class Admin::ProductsController < ApplicationController
   before_action :authenticate_admin_user!
-  PER = 16
+  PER = 20
   def index
     unless params[:search].blank?
       @products = Product.left_joins(:artist).left_joins(discs: :songs).where("(artists.artist_name LIKE ?) or (songs.song_name LIKE ?) or (products.product_name LIKE ?)","%#{params[:search]}%","%#{params[:search]}%","%#{params[:search]}%").page(params[:page]).distinct
     else
-      @products = Product.with_deleted.all.page(params[:page])
+      @products = Product.with_deleted.all.page(params[:page]).per(24)
     end
   end
 
