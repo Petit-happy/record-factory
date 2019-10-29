@@ -62,10 +62,88 @@ Artist.create!(
         }
    ]
 )
-30.times do
+50.times do
     Artist.create!(
         artist_name: Faker::Artist.name
     )
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::Name.name
+)
+end
+
+30.times do
+    Artist.create!(
+        artist_name: Faker::JapaneseMedia::DragonBall.character
+    )
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::OnePiece.character
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.real_name
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.game_name
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.location
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::JapaneseMedia::SwordArtOnline.item
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::Games::Zelda.character
+)
+end
+
+30.times do
+Artist.create!(
+    artist_name: Faker::Games::Zelda.location
+)
+end
+
+40.times do
+Artist.create!(
+    artist_name: Faker::Games::Pokemon.location
+)
+end
+
+40.times do
+Artist.create!(
+    artist_name: Faker::Games::Pokemon.move
+)
+end
+
+40.times do
+Artist.create!(
+    artist_name: Faker::Music::RockBand.name
+)
+end
+
+50.times do
+Artist.create!(
+    artist_name: Faker::Music::RockBand.name
+)
 end
 
 Genre.create!(
@@ -82,7 +160,7 @@ Genre.create!(
     ]
  )
 
-30.times do
+50.times do
     Genre.create!(
         genre_name: Faker::Music.genre
     )
@@ -104,7 +182,7 @@ Label.create!(
         }
    ]
 )
-30.times do
+50.times do
     Label.create!(
         label_name: Faker::Coffee.blend_name
     )
@@ -171,11 +249,11 @@ Product.create!(
 
 50.times do
     Product.create!(
-        genre_id: rand(1..30),
-        label_id: rand(1..30),
-        artist_id: rand(1..30),
+        genre_id: rand(1..50),
+        label_id: rand(1..50),
+        artist_id: rand(1..50),
         photo_id: '694b7d1add8381fe9cc68f3b4b04e500b4366f6b677547be951367a233c8',
-        product_price: rand(500..6000),
+        product_price: rand(5000000..600000000),
         sales_status: 1,
         product_name: Faker::Music.album,
     )
