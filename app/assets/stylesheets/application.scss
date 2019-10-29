@@ -45,9 +45,9 @@ text-shadow:1px 1px 0 #CB6500;
 
 .bg {
     background-image: url(record.jpg);
-    background-size: cover;
+    // background-size: auto;
     background-position: center;
-    height: 100%;
+    background-repeat: repeat-y !important;
 }
 
 
@@ -180,6 +180,16 @@ th.new-left{
 
 td.new-right{
   text-align: left;
+}
+
+.top{
+  padding: auto;
+}
+
+
+.order-t{
+  border-collapse: collapse;
+  border: solid 2px #000000;/*表全体を線で囲う*/
 }
 
 
