@@ -1,26 +1,29 @@
-<h1>新規配送先入力画面</h1>
+<div class="container">
+<div class="col-md-10 col-md-offset-1">
+      <h2><span class="label label-info">新規配送先入力画面</span></h2>
+  <%= form_for @address  do |f| %>
+  　
+  　 <div class="field">
+      <%= f.label :配送先名 %>
+      <%= f.text_area :delivery_name %>
+    </div>
 
-<%= form_for @address  do |f| %>
-　
-　 <div class="field">
-    <%= f.label :配送先名 %>
-    <%= f.text_area :delivery_name %>
-  </div>
+  　<div class="field">
+      <%= f.label :配送先郵便番号 %>
+      <%= f.text_field :delivery_post_code %>
+    </div>
 
-　<div class="field">
-    <%= f.label :配送先郵便番号 %>
-    <%= f.text_field :delivery_post_code %>
-  </div>
-
-  <div class="field">
-    <%= f.label :配送先住所 %>
-    <%= f.text_area :delivery_address %>
-  </div>
+    <div class="field">
+      <%= f.label :配送先住所 %>
+      <%= f.text_area :delivery_address %>
+    </div>
 
 
-  <div class="actions">
-    <%= f.submit "完了",class:"btn btn-success"%>
-  </div>
+    <div class="actions">
+      <%= f.submit "入力を完了する",class:"btn btn-success"%>
+    </div>
 
-<%= link_to 'Back', end_user_end_user_path(current_end_user.id),class:"btn btn-primary" %>
-<% end %>
+  <%= link_to '前の画面に戻る', end_user_end_user_path(current_end_user.id),class:"btn btn-primary" %>
+  <% end %>
+</div>
+</div>

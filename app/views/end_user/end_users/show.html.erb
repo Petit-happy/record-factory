@@ -1,52 +1,55 @@
-<h1>マイページ</h1>
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <h2><span class="label label-info text-left">登録情報詳細</span></h2>
+  <table>
+    <tr>
+      <th>名前（姓・名）</th>
+    　<td><%= @end_user.family_name_kanji %><%= @end_user.given_name_kanji %></td>
+    </tr>
+    <tr>
+      <th>名前（カナ姓・カナ名）</th>
+      <td><%= @end_user.family_name_kana %><%= @end_user.given_name_kana %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= @end_user.post_code %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @end_user.address %></td>
+    </tr>
+     <% @end_user.addresses.each do |address| %>
+     <tr>
+        <th>配送先名</th>
+        <td><%= address.delivery_name %></td>
+     </tr>
+     <tr>
+        <th>配送先郵便番号</th>
+        <td><%= address.delivery_post_code %></td>
+     </tr>
+     <tr>
+        <th>配送先住所</th>
+        <td><%= address.delivery_address %></td>
 
-<table>
-  <tr>
-    <th>名前（姓・名）</th>
-  　<td><%= @end_user.family_name_kanji %><%= @end_user.given_name_kanji %></td>
-  </tr>
-  <tr>
-    <th>名前（カナ姓・カナ名）</th>
-    <td><%= @end_user.family_name_kana %><%= @end_user.given_name_kana %></td>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @end_user.post_code %></td>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <td><%= @end_user.address %></td>
-  </tr>
-   <% @end_user.addresses.each do |address| %>
-   <tr>
-      <th>配送先名</th>
-      <td><%= address.delivery_name %></td>
-   </tr>
-   <tr>
-      <th>配送先郵便番号</th>
-      <td><%= address.delivery_post_code %></td>
-   </tr>
-   <tr>
-      <th>配送先住所</th>
-      <td><%= address.delivery_address %></td>
-
-      <td><%= link_to "削除", address_path(address),method: :delete %></td>
-   </tr>
-   <% end %>
-   <tr>
-    <th>電話番号</th>
-    <td><%= @end_user.phone_number %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @end_user.email %></td>
-  </tr>
-</table>
-<table>
-  <tr>
-    <td><%= link_to "退会する", end_user_end_user_end_users_leave_path(@end_user), class:"btn btn-danger active"%></td>
-    <td><%= link_to "購入履歴", end_user_orders_path,class:"btn btn-success active"%></td>
-    <td><%= link_to "編集", edit_end_user_end_user_path,class:"btn btn-info active"%></td>
-    <td><%= link_to "配送先情報入力画面へ", new_address_path,class:"btn btn-primary active"%></td>
-  </tr>
-</table>
+        <td><%= link_to "削除", address_path(address),method: :delete %></td>
+     </tr>
+     <% end %>
+     <tr>
+      <th>電話番号</th>
+      <td><%= @end_user.phone_number %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @end_user.email %></td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td><%= link_to "退会する", end_user_end_user_end_users_leave_path(@end_user), class:"btn btn-danger active"%></td>
+      <td><%= link_to "購入履歴", end_user_orders_path,class:"btn btn-success active"%></td>
+      <td><%= link_to "編集", edit_end_user_end_user_path,class:"btn btn-info active"%></td>
+      <td><%= link_to "配送先情報入力画面へ", new_address_path,class:"btn btn-primary active"%></td>
+    </tr>
+  </table>
+</div>
+  </div>
