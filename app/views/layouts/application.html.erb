@@ -25,7 +25,6 @@
 <% end %>
 
 <div class="bg">
-  <div class="bgmask">
     <% if flash[:notice] %>
     <div class="flash">
       <%= flash[:notice] %>
@@ -33,13 +32,11 @@
     <% end %>
      <div class="footer_m">
        <%= yield %>
-   </div>
-   </div>
-
-
-<footer>
-<%= render 'shared/footer' %>
-</footer>
 </div>
-</body>
+
+  <footer>
+    <%= render 'shared/footer' %>
+  </footer>
+</div>
+  </body>
 </html>

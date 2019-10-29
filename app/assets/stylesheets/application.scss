@@ -48,7 +48,8 @@ header {
   background-image: url(record.jpg);
   // background-size: auto;
   background-position: center;
-  background-repeat: repeat-y !important;
+  background-attachment: scroll;
+  min-height: 100vh;
 }
 
 
@@ -159,10 +160,12 @@ footer .container {
 .pdflex {
   display: flex;
   flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   display: inline-block;
   margin: 10px;
+  width: 20%;
 }
 
 .flex {
@@ -175,8 +178,13 @@ th {
 
 .well {
   background-color: transparent !important;
+  padding: 0 !important;
+  margin-bottom: 0;
 }
 
+.form-group {
+  text-align: left;
+}
 
 .test22 {
   height: 1px;
@@ -197,9 +205,6 @@ td.new-right {
   text-align: left;
 }
 
-.top {
-  padding: auto;
-}
 
 
 .order-t {
@@ -339,4 +344,10 @@ td.new-right {
     -webkit-transition: all .7s;
     transition: all .7s;
   }
+}
+
+
+.test {
+  border: none;
+  -webkit-box-shadow: none;
 }
