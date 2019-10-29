@@ -47,7 +47,8 @@ text-shadow:1px 1px 0 #CB6500;
     background-image: url(record.jpg);
     background-size: cover;
     background-position: center;
-    background-repeat: repeat-y !important;
+    background-attachment: scroll;
+    min-height: 100vh;
 }
 
 
