@@ -44,9 +44,9 @@
 </table>
 <table>
   <tr>
-    <td><%= link_to "退会する", end_user_end_user_end_users_leave_path(@end_user)%></td>
-    <td><%= link_to "購入履歴", end_user_orders_path%></td>
-    <td><%= link_to "編集", edit_end_user_end_user_path %></td>
-    <td><%= link_to "配送先情報入力画面へ", new_address_path %></td>
+    <td><%= link_to "退会する", end_user_end_user_end_users_leave_path(@end_user), class:"btn btn-danger active"%></td>
+    <td><%= link_to "購入履歴", end_user_orders_path,class:"btn btn-success active"%></td>
+    <td><%= link_to "編集", edit_end_user_end_user_path,class:"btn btn-info active"%></td>
+    <td><%= link_to "配送先情報入力画面へ", new_address_path,class:"btn btn-primary active"%></td>
   </tr>
 </table>

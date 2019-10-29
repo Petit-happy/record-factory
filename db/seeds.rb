@@ -296,12 +296,12 @@ OrderDetail.create!(
     ]
 )
 
-30.times do
+20.times do
     OrderDetail.create!(
         order_id: rand(1..20),
         product_id: rand(1..20),
         price: 100,
-        unit: rand(1..10)
+        unit: rand(1..5)
 )
 end
 
@@ -340,7 +340,7 @@ Address.create!(
     )
 end
 
-20.times do
+100.times do
 Arrival.create!(
     product_id: rand(1..30),
     arrival_sum: rand(30..100),
