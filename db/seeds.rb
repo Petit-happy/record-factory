@@ -56,6 +56,9 @@ Artist.create!(
         },
         {
             artist_name: 'Led Zeppelin'
+        },
+        {
+            artist_name: 'Cindy Lauper'
         }
    ]
 )
@@ -112,28 +115,54 @@ Product.create!(
             genre_id: 2,
             label_id: 1,
             artist_id: 2,
-            photo_id: '',
+            photo_id: 'e4c18b3fd8bb1e1bb4ca538075a3222620a71c4022bc9c45215cf0b4fcdf',
             product_price: 1280,
             sales_status: 1,
-            product_name: '製品名A',
+            product_name: 'がらくた',
         },
         {
             genre_id: 3,
             label_id: 1,
             artist_id: 2,
-            photo_id: '',
+            photo_id: '45eb07518f6349c34cfd5ca287f7b36fa5e543a9c56a5952883c653f9c07',
             product_price: 3500,
             sales_status: 1,
-            product_name: '製品名B',
+            product_name: '明日晴れるかな',
         },
         {
             genre_id: 1,
             label_id: 1,
             artist_id: 3,
-            photo_id: '',
+            photo_id: 'b5ef2793a9ba2fcae2343b1a7ea8569d7218f0158514152088e955f72114',
             product_price: 3200,
             sales_status: 1,
-            product_name: '製品名C',
+            product_name: 'Sticky Fingers',
+        },
+        {
+            genre_id: 1,
+            label_id: 1,
+            artist_id: 4,
+            photo_id: 'ac813d62395498191f956fff12bec8a1ba92d25f38e53e8e58ab42d01be9',
+            product_price: 3700,
+            sales_status: 1,
+            product_name: 'In Through the Out Door',
+        },
+        {
+            genre_id: 1,
+            label_id: 1,
+            artist_id: 5,
+            photo_id: '28e1410740403f43860dc2040c099e2f667c50471a48a01a50b57ea5d02a',
+            product_price: 3200,
+            sales_status: 1,
+            product_name: 'Sticky Fingers',
+        },{
+            genre_id: 1,
+            label_id: 1,
+            artist_id: 3,
+            photo_id: '6a75bbe3dabadb402ff5600ac11f1771531cdc39003696f0b70d00313c7b',
+            product_price: 3200,
+            sales_status: 1,
+            product_name: 'Shes So Unusual',
         }
     ]
 )
@@ -143,7 +172,7 @@ Product.create!(
         genre_id: rand(1..30),
         label_id: rand(1..30),
         artist_id: rand(1..30),
-        photo_id: '',
+        photo_id: '694b7d1add8381fe9cc68f3b4b04e500b4366f6b677547be951367a233c8',
         product_price: rand(500..6000),
         sales_status: 1,
         product_name: Faker::Music.album,
@@ -262,12 +291,12 @@ Disc.create!(
 
 20.times do |x|
     Disc.create!(
-        product_id: x+1,
+        product_id: x+4,
            disc_no: 1
     )
 end
 
-10.times do |x|
+20.times do |x|
     10.times do |y|
     Song.create!(
         disc_id: x + 1,
