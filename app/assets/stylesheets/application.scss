@@ -167,8 +167,13 @@ th{
 
 .well{
   background-color: transparent !important;
+  padding: 0 !important;
+  margin-bottom: 0;
 }
 
+.form-group{
+  text-align: left;
+}
 
 select{
   width: 150px;
@@ -182,9 +187,6 @@ td.new-right{
   text-align: left;
 }
 
-.top{
-  padding: auto;
-}
 
 
 .order-t{
@@ -323,4 +325,10 @@ td.new-right{
     -webkit-transition: all .7s;
     transition: all .7s;
   }
+}
+
+
+.test{
+  border: none;
+  -webkit-box-shadow: none;
 }
