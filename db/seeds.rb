@@ -193,7 +193,9 @@ Product.create!(
             genre_id: 2,
             label_id: 1,
             artist_id: 2,
+
             photo_id: 'e4c18b3fd8bb1e1bb4ca538075a3222620a71c4022bc9c45215cf0b4fcdf',
+
             product_price: 1280,
             sales_status: 1,
             product_name: 'がらくた',

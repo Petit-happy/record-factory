@@ -1,29 +1,21 @@
-<h1>購入確定画面</h1>
+<h1><span class="label label-success">購入確定画面</span></h1>
 
-<div>購入情報掲載（小計等）</div>
-
-<div>支払い方法</div>
-<%= @payment %>
-<div>配送先名</div>
-<%= @delivery.delivery_name %>
-<div>配送先郵便番号</div>
-<%= @delivery.delivery_post_code %>
-<div>配送先住所</div>
-<%= @delivery.delivery_address %>
-
-<%= form_for @order, url:end_user_orders_path do |f| %>
-      <%= f.hidden_field :address_id, :value => @address %>
-  <%= f.submit "確定" %>
-<% end %>
-
-<h2>商品詳細</h2>
-<h1>カートの中身</h1>
-
+<h3>
+<div>[支払い方法]</div>
+<div>⇒<%= @payment %></div>
+<div>[配送先名]</div>
+<div>⇒<%= @delivery.delivery_name %></div>
+<div>[配送先郵便番号]</div>
+<div>⇒<%= @delivery.delivery_post_code %></div>
+<div>[配送先住所]</div>
+<div>⇒<%= @delivery.delivery_address %></div>
+<div>    </div>
+<span class="label label-warning">カートの中身</span><br>
+<div>    </div>
 <table>
   <thead>
     <tr>
-      <th>ジャケット名</th>
-      <th>ユーザー名</th>
+      <th>  </th>
       <th>製品名</th>
       <th>価格</th>
       <th>販売状態</th>
@@ -38,8 +30,7 @@
   <tbody>
     <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= attachment_image_tag @user, :photo, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></td>
-        <td><%= cart_item.end_user.family_name_kanji %>　<%= cart_item.end_user.given_name_kanji %>　　</td>
+        <td><%= attachment_image_tag @user, :photo, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'100x100' %></td>
         <td><%= cart_item.product.product_name %>　　</td>
         <td><%= cart_item.product.product_price %>　　</td>
         <td><%= cart_item.product.sales_status_i18n %>　　</td>
@@ -50,7 +41,13 @@
       </tr>
     <% end %>
   </tbody>
-</table><br>
-
+</table>
+<div class=confir>
 総商品点数 　: 　<%= CartItem.total_cart_sum(@cart_items) %>
 商品総計 　 :　<%= CartItem.total_cart_price(@cart_items) %>
+</div>
+<%= form_for @order, url:end_user_orders_path do |f| %>
+      <%= f.hidden_field :address_id, :value => @address %>
+  <%= f.submit "以上の内容で購入する" %>
+<% end %>
+</h3>

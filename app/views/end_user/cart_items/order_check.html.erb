@@ -1,13 +1,16 @@
 <h1>購入方法選択画面</h1>
-<div>お届け先住所</div>
+<h3>お届け先住所</h3>
 <%= form_tag("/end_user/cart_items/confirmation", method: "get") do %>
 <%= select_tag :address_id, options_for_select(@addresses_for_options) %>
-<div>支払い方法選択</div>
+<div class= "order_check">
+<h3>支払い方法選択</h3>
 <%= radio_button_tag(:method_of_payment, 0 ) %>クレジットカード
 <%= radio_button_tag(:method_of_payment, 1 ) %>銀行振り込み
 <%= radio_button_tag(:method_of_payment, 2 ) %>代引き
-
+</div>
+<div>
   <%= submit_tag("決定") %>
+</div>
 <% end %>
 </div>
 

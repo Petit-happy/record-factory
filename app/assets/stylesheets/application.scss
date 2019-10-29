@@ -172,6 +172,21 @@ footer .container {
   display: block;
 }
 
+.aaa {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
+  margin: 10px;
+}
+
+.cart_btn {
+    margin: 10px 0px;
+}
+.order_check {
+    margin: 20px 0px;
+}
 th {
   text-align: center;
 }
@@ -321,6 +336,10 @@ td.new-right {
         transform: rotate(45deg);
         top: 0;
       }
+    }
+
+    .confir{
+      padding: 100px, 0px;
     }
 
     // メインエリアを暗くする
