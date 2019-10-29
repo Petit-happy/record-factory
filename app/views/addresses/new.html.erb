@@ -19,8 +19,8 @@
 
 
   <div class="actions">
-    <%= f.submit "提出" %>
+    <%= f.submit "完了",class:"btn btn-success"%>
   </div>
 
-<%= link_to 'Back', addresses_path %>
+<%= link_to 'Back', end_user_end_user_path(current_end_user.id),class:"btn btn-primary" %>
 <% end %>
