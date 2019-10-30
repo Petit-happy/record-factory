@@ -1,5 +1,6 @@
 class EndUser::ProductsController < ApplicationController
   before_action :authenticate_end_user!
+  PER = 20
   def show
     @product = Product.find(params[:id])
     @disc = @product.discs

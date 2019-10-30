@@ -9,8 +9,9 @@
   <%= text_field_tag :search %>
   <%= submit_tag '商品を検索する', :product_name => nil %>
   <% end %>
+  <div class="row">
     <% @products.each do |product| %>
-      <div class="aaa">
+      <div class="pdflex">
         <%= link_to end_user_product_path(product) do %>
         <div class="flex item1"><%= attachment_image_tag product, :photo, :fill, 150, 150, format: 'jpeg', fallback: "no_image.jpg", size:'200x200' %></div>
         <% end %>
@@ -18,5 +19,6 @@
         <div class="flex item3"><%= product.product_price.to_s(:currency, locale: :ja) %></div></<div>
       </div>
     <% end %>
-        <%= paginate @products %>
 </div>
+        <%= paginate @products %>
+  </div>

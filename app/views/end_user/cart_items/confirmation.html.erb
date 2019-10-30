@@ -1,53 +1,59 @@
-<h1><span class="label label-success">購入確定画面</span></h1>
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
 
-<h3>
-<div>[支払い方法]</div>
-<div>⇒<%= @payment %></div>
-<div>[配送先名]</div>
-<div>⇒<%= @delivery.delivery_name %></div>
-<div>[配送先郵便番号]</div>
-<div>⇒<%= @delivery.delivery_post_code %></div>
-<div>[配送先住所]</div>
-<div>⇒<%= @delivery.delivery_address %></div>
-<div>    </div>
-<span class="label label-warning">カートの中身</span><br>
-<div>    </div>
-<table>
-  <thead>
-    <tr>
-      <th>  </th>
-      <th>製品名</th>
-      <th>価格</th>
-      <th>販売状態</th>
-      <th>点数</th>
-      <th>ジャンル</th>
-      <th>アーティスト</th>
-      <th>レーベル</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <h1><span class="label label-success">購入確定画面</span></h1>
 
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
-      <tr>
-        <td><%= attachment_image_tag @user, :photo, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'100x100' %></td>
-        <td><%= cart_item.product.product_name %>　　</td>
-        <td><%= cart_item.product.product_price %>　　</td>
-        <td><%= cart_item.product.sales_status_i18n %>　　</td>
-        <td><%= cart_item.cart_sum %>個　　</td>
-        <td><%= cart_item.product.genre.genre_name %>　　</td>
-        <td><%= cart_item.product.artist.artist_name %>　　</td>
-        <td><%= cart_item.product.label.label_name %>　　</td>
-      </tr>
+    <h3>
+    <div>[支払い方法]</div>
+    <div>⇒<%= @payment %></div>
+    <div>[配送先名]</div>
+    <div>⇒<%= @delivery.delivery_name %></div>
+    <div>[配送先郵便番号]</div>
+    <div>⇒<%= @delivery.delivery_post_code %></div>
+    <div>[配送先住所]</div>
+    <div>⇒<%= @delivery.delivery_address %></div>
+    <div>    </div>
+    <span class="label label-warning">カートの中身</span><br>
+    <div>    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>  </th>
+          <th>製品名</th>
+          <th>価格</th>
+          <th>販売状態</th>
+          <th>点数</th>
+          <th>ジャンル</th>
+          <th>アーティスト</th>
+          <th>レーベル</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= attachment_image_tag @user, :photo, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'100x100' %></td>
+            <td><%= cart_item.product.product_name %>　　</td>
+            <td><%= cart_item.product.product_price %>　　</td>
+            <td><%= cart_item.product.sales_status_i18n %>　　</td>
+            <td><%= cart_item.cart_sum %>個　　</td>
+            <td><%= cart_item.product.genre.genre_name %>　　</td>
+            <td><%= cart_item.product.artist.artist_name %>　　</td>
+            <td><%= cart_item.product.label.label_name %>　　</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class=confir>
+    総商品点数 　: 　<%= CartItem.total_cart_sum(@cart_items) %>
+    商品総計 　 :　<%= CartItem.total_cart_price(@cart_items) %>
+    </div>
+    <%= form_for @order, url:end_user_orders_path do |f| %>
+          <%= f.hidden_field :address_id, :value => @address %>
+      <%= f.submit "以上の内容で購入する" , class:"btn btn-primary"%>
     <% end %>
-  </tbody>
-</table>
-<div class=confir>
-総商品点数 　: 　<%= CartItem.total_cart_sum(@cart_items) %>
-商品総計 　 :　<%= CartItem.total_cart_price(@cart_items) %>
+    </h3>
+  </div>
+
 </div>
-<%= form_for @order, url:end_user_orders_path do |f| %>
-      <%= f.hidden_field :address_id, :value => @address %>
-  <%= f.submit "以上の内容で購入する" %>
-<% end %>
-</h3>
